@@ -55,7 +55,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.start') }}</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $period->startdate }}">
+                                <input disabled class="form-control" value="{{ $period->start }}">
                             </div>
                         </div>
 
@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.finish') }}</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $period->finishdate }}">
+                                <input disabled class="form-control" value="{{ $period->finish }}">
                             </div>
                         </div>
 
@@ -73,7 +73,11 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.nextday') }}</label>
                             <div class="col-sm-10">
-                                <input type="checkbox" disabled class="form-control" value="{{ $period->nextday }}">
+                                <input type="checkbox"  
+                                    @if($period->nextday==1)
+                                        checked
+                                    @endif 
+                                >
                             </div>
                         </div>
 
