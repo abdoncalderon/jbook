@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateProjectsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('projects', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique();
+            $table->dateTime('datestart');
+            $table->dateTime('datefinish');
+            $table->string('logofilename1');
+            $table->string('logofilename2');
+            $table->string('logofilename3');
+            $table->string('logofilename4');
+            $table->integer('maxtimeopen');
+            $table->integer('maxtimenote');
+            $table->integer('maxtimecomment');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('projects');
+    }
+}

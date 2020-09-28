@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Location;
+use App\Http\Requests\StoreLocationRequest;
+use App\Http\Requests\UpdateLocationRequest;
+
+class LocationController extends Controller
+{
+    public function index()
+    {
+        $locations = Location::get();
+        return view('locations.index', compact('locations'));
+    }
+
+    public function create()
+    {
+        return view('locations.create');
+    }
+
+    public function store(StoreLocationRequest $request )
+    {
+        Location::create($request ->validated());
+        
+        return redirect()->route('locations.index');
+    }
+
+    public function show(Location $location)
+    {
+        return view('locations.show',[
+            'location'=>$location
+            ]);
+    }
+
+    public function edit(Location $location)
+    {
+        return view('locations.edit',[
+            'location'=>$location
+            ]);
+    }
+    
+    public function update(Location $location, UpdateLocationRequest $request)
+    {
+        $location->update($request->validated());
+
+        return redirect()->route('locations.index');
+    }
+}
