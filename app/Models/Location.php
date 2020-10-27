@@ -16,8 +16,9 @@ class Location extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function periods(){
-        return $this->hasMany(Period::class);
+    public function periods()
+    {
+        return $this->hasMany(PeriodLocation::class);
     }
 
     public function uploadSequence(){

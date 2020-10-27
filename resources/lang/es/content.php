@@ -140,6 +140,7 @@ return [
     'legalsheet'=>'Folio',
     'opened'=>'Abierto',
     'closed'=>'Cerrado',
+    'equipment'=>'Equipo',
 
 
 
