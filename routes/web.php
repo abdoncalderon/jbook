@@ -54,3 +54,12 @@ Route::post('/locationsUsers','LocationUserController@store')->name('locationsUs
 Route::get('/locationsUsers/edit/{permit}','LocationUserController@edit')->name('locationsUsers.edit');
 Route::patch('/locationsUsers/{permit}','LocationUserController@update')->name('locationsUsers.update');
 
+/* Routes Periods */
+Route::resource('workbooks','WorkbookController');
+Route::get('getNumber/{location}','WorkbookController@getNumber')->name('workbooks.getNumber');
+
+/* Routes Daily Reports */
+Route::get('/dailyReports','DailyReportController@index')->name('dailyReports.index');
+Route::get('/dailyReports/create/{workbook}','DailyReportController@create')->name('dailyReports.create');
+// Route::resource('dailyReports','DailyReportController');
+

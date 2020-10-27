@@ -53,6 +53,7 @@ return [
     'collaborateReport'=>'Colabora',
     'approverReport'=>'Revisa',
     'approverWorkbook'=>'Aprueba',
+    'recordsuccessfullystored'=>'Registro Grabado con Exito',
     
     
 

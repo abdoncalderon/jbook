@@ -116,7 +116,7 @@
             },
         });
 
-        $("#brandsComputer").change(
+        /* $("#brandsComputer").change(
             function(event){
                 $.get("/getModelsComputer/"+event.target.value+"", 
                     function(response,state){
@@ -126,9 +126,9 @@
                             $("#model").append("<option value='"+response[i].name+"'> "+response[i].name+"</option>");
                         } 
                     });
-        });
+        }); */
 
-        $("#brandsMonitor").change(
+        /* $("#brandsMonitor").change(
             function(event){
                 $.get("/getModelsMonitor/"+event.target.value+"", 
                     function(response,state){
@@ -138,9 +138,9 @@
                             $("#model").append("<option value='"+response[i].name+"'> "+response[i].name+"</option>");
                         } 
                     });
-        });
+        }); */
 
-        $("#brandsPrinter").change(
+        /* $("#brandsPrinter").change(
             function(event){
                 $.get("/getModelsPrinter/"+event.target.value+"", 
                     function(response,state){
@@ -150,9 +150,9 @@
                             $("#model").append("<option value='"+response[i].name+"'> "+response[i].name+"</option>");
                         } 
                     });
-        });
+        }); */
 
-        $("#brandsOther").change(
+        /* $("#brandsOther").change(
             function(event){
                 $.get("/getModelsOther/"+event.target.value+"", 
                     function(response,state){
@@ -162,13 +162,26 @@
                             $("#model").append("<option value='"+response[i].name+"'> "+response[i].name+"</option>");
                         } 
                     });
-        });
+        }); */
 
-        $("#print").click(function(){
-            $('.container').printThis();
-        });
+        /* $("#print").click(
+            function(){
+                $('.container').printThis();
+            }
+        ); */
+
+        $("#location_id").change(
+            function(event){
+                
+                $.get("/getNumber/"+event.target.value+"", 
+                    function(response,state){
+                        $("#number").val(response[0].sequence);
+                    }
+                );
+            }
+        );
         
-    });
+     });
     
     function checkHDMI()
     {

@@ -10,23 +10,24 @@
 
         {{-- <li><a href="#"><i class="fa fa-bar-chart"></i> <span>Panel</span></a></li> --}}
         
-        <!-- Resources Menu -->
+        <!-- Project Menu -->
 
-        {{-- <li class="treeview">
+        <li class="treeview">
             <a href="#">
-                <i class="fa fa-desktop"></i>
-                <span>Recursos</span>
+                <i class="fa fa-book"></i>
+                <span> {{ __('content.workbook') }} </span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="{{ route('employees.index')}}"> Personas </a></li>
-                <li><a href="{{ route('equipments.index')}}"> Hardware </a></li>
-                <li><a href="#"> Software </a></li>
-                <li><a href="#"> Servicios </a></li>
+                <li><a href="{{ route('workbooks.index') }}"> {{ __('content.legalsheets') }} </a></li>
+                <li><a href="{{ route('dailyReports.index') }}"> {{ __('content.dailyreports') }} </a></li>
+                <li><a href="#"> {{ __('content.notes') }} </a></li>
+                {{-- <li><a href="#"> Software </a></li> --}}
+                {{-- <li><a href="#"> Servicios </a></li> --}}
             </ul>
-        </li> --}}
+        </li>
 
         <!-- Management Menu -->
 

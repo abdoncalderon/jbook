@@ -9,6 +9,9 @@ return [
     'view' => 'Ver',
     'save' => 'Guardar',
     'update'=>'Actualizar',
+    'create'=>'Crear',
+    'open'=>'Abrir',
+    'insert'=>'Insertar',
     
     
     'actions' => 'Acciones',
@@ -60,6 +63,7 @@ return [
     'locations'=>'Ubicaciones',
     'permits'=>'Permisos',
     'periods'=>'Periodos',
+    'period'=>'Periodo',
     
     'user' => 'Usuario',
     'fullname' => 'Nombre Completo',
@@ -123,6 +127,20 @@ return [
     'sequence'=>'Secuencia',
     'code'=>'Código',
     'hours'=>'horas',
+    'workbook'=>'Libro de Obra',
+    'workbooks'=>'Libros de Obra',
+    'dailyreports'=>'Reportes Diarios',
+    'dailyreport'=>'Reporte Diario',
+    'notes'=>'Anotaciones',
+    'date'=>'Fecha',
+    'number'=>'Número',
+    'day'=>'Día',
+    'days'=>'Días',
+    'legalsheets'=>'Folios',
+    'legalsheet'=>'Folio',
+    'opened'=>'Abierto',
+    'closed'=>'Cerrado',
+
 
 
 
