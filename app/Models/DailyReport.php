@@ -20,4 +20,26 @@ class DailyReport extends Model
     {
         return $this->belongsTo(Period::class);
     }
+
+    public function equipments()
+    {
+        return $this->hasMany(EquipmentDailyReport::class);
+    }
+
+    public function positions()
+    {
+        return $this->hasMany(PositionDailyReport::class);
+    }
+
+
+    public function status(){
+        $status = $this->status;
+        if ($status==0){
+            return __('content.draft');
+        }elseif($status==1){
+            return __('content.final');
+        }elseif($status==2){
+            return __('content.reviewed');
+        }
+    }
 }

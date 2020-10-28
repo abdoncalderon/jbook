@@ -61,5 +61,15 @@ Route::get('getNumber/{location}','WorkbookController@getNumber')->name('workboo
 /* Routes Daily Reports */
 Route::get('/dailyReports','DailyReportController@index')->name('dailyReports.index');
 Route::get('/dailyReports/create/{workbook}','DailyReportController@create')->name('dailyReports.create');
-// Route::resource('dailyReports','DailyReportController');
+Route::post('/dailyReports','DailyReportController@store')->name('dailyReports.store');
+Route::get('/dailyReports/edit/{dailyReport}','DailyReportController@edit')->name('dailyReports.edit');
+Route::patch('/dailyReports/{dailyReport}','DailyReportController@update')->name('dailyReports.update');
 
+/* Routes Equipments x Daily Reports */
+Route::post('/equipmentDailyReports','EquipmentDailyReportController@store')->name('equipmentDailyReports.store');
+Route::get('/equipmentDailyReports/destroy/{equipmentDailyReport}','EquipmentDailyReportController@destroy')->name('equipmentDailyReports.destroy');
+
+/* Routes Positions x Daily Reports */
+Route::post('/positionDailyReports','PositionDailyReportController@store')->name('positionDailyReports.store');
+Route::get('/positionDailyReports/destroy/{positionDailyReport}','PositionDailyReportController@destroy')->name('positionDailyReports.destroy');
+Route::get('/positionDailyReports/clone','PositionDailyReportController@clone')->name('positionDailyReports.clone');

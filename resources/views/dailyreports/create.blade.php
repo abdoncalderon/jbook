@@ -36,7 +36,7 @@
 
                 {{-- Start Form  --}}
 
-                <form class="form-horizontal" method="POST" action="{{ route('workbooks.store') }}">
+                <form class="form-horizontal" method="POST" action="{{ route('dailyReports.store') }}">
                     @csrf
 
                     {{-- Form Body --}}
@@ -46,6 +46,11 @@
                         {{-- Fields --}}
 
                         <div class="col-sm-4 col-md-6 col-lg-10">
+
+                            {{-- workbook_id --}}
+    
+                            <input id="workbook_id" hidden type="text" name="workbook_id" value="{{ $workbook->id }}">
+
 
                             {{-- dateWorkbook --}}
     
@@ -61,10 +66,9 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="dateWorkbook" disabled type="text" class="form-control" name="dateWorkbook" value="{{ $workbook->location->name }}">
+                                    <input id="location" disabled type="text" class="form-control" name="location" value="{{ $workbook->location->name }}">
                                 </div>
                             </div>
-
 
                             {{-- period --}}
                                 
@@ -94,40 +98,9 @@
                                 </div>
                             </div>
 
-                            {{-- equipments --}}
-    
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.equipments') }}</label>
-                                <div class="col-sm-10" >
-                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-                                        {{ __('content.add').' '.__('content.equipment') }}
-                                    </button>
-                                    <div>
-                                        <br>
-                                    </div>
-                                    <table id="equipments" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>{{ __('content.description') }}</th>
-                                                <th>{{ __('content.quantity') }}</th>
-                                                <th>{{ __('content.actions') }}</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
                             {{-- user_id --}}
     
                             <input id="user_id" hidden type="text" name="user_id" value="{{ auth()->user()->id }}">
-    
-                            {{-- number --}}
-
-                            
-    
-                            <input id="number" hidden type="text" name="number">
 
                         </div>
 
@@ -149,26 +122,6 @@
         </div>
 
     </section>
-
-    <div class="modal fade" id="modal-default">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">{{ __('content.add').' '.__('content.equipment') }}</h4>
-                </div>
-                <div class="modal-body">
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 @endsection
 

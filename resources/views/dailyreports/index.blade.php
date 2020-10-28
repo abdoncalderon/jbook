@@ -42,6 +42,7 @@
 
                     <thead>
                         <tr>
+                            <th>{{ __('content.location') }}</th>
                             <th>{{ __('content.date') }}</th>
                             <th>{{ __('content.period') }}</th>
                             <th>{{ __('content.status') }}</th>
@@ -54,12 +55,12 @@
                     <tbody>
                         @foreach($dailyReports as $dailyReport)
                             <tr>
+                                <td>{{ $dailyReport->workbook->location->name }}</td>
                                 <td>{{ $dailyReport->workbook->dateWorkbook }}</td>
                                 <td>{{ $dailyReport->period->name }}</td>
-                                <td>{{ $dailyReport->status }}</td>
                                 <td>{{ $dailyReport->status() }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="#">Ver</a>
+                                    <a class="btn btn-info btn-xs" href="{{ route('dailyReports.edit',$dailyReport) }}">{{ __('content.edit') }}</a>
                                 </td>
                             </tr>
                         @endforeach

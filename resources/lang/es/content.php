@@ -11,6 +11,7 @@ return [
     'update'=>'Actualizar',
     'create'=>'Crear',
     'open'=>'Abrir',
+    'close'=>'Cerrar',
     'insert'=>'Insertar',
     
     
@@ -141,10 +142,13 @@ return [
     'opened'=>'Abierto',
     'closed'=>'Cerrado',
     'equipment'=>'Equipo',
-
-
-
-
+    'position'=>'Puesto',
+    'draft'=>'Borrador',
+    'final'=>'Final',
+    'reviewed'=>'Revisado',
+    'contractor'=>'Contratista',
+    'clone'=>'Clonar',
+    
     'currency'=>'US$',
     
 ];

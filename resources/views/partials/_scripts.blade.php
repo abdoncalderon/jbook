@@ -172,12 +172,35 @@
 
         $("#location_id").change(
             function(event){
-                
                 $.get("/getNumber/"+event.target.value+"", 
                     function(response,state){
                         $("#number").val(response[0].sequence);
                     }
                 );
+            }
+        );
+
+        $("#add-equipment").click(
+            function(event){
+                var id = $("#equipment").val();
+                var quantity = $("#quantity").val();
+                var markup = "<tr><td>"+id+"</td><td></td><td>"+quantity+"</td><td><button id='delete-equipment' type='button'>{{ __('content.delete') }}</button></td></tr>";
+                $("#equipments tbody").append(markup);
+            }
+        );
+
+        $("#delete-equipment").click(
+            function(event){
+                $(this).parents("tr").remove();
+            }
+        );
+
+        $("#add-position").click(
+            function(event){
+                var id = $("#position").val();
+                var quantity = $("#quantity").val();
+                var markup = "<tr><td>"+id+"</td><td></td><td>"+quantity+"</td><td><button id='delete-position' type='button'>{{ __('content.delete') }}</button></td></tr>";
+                $("#positions tbody").append(markup);
             }
         );
         
