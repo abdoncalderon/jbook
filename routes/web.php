@@ -68,8 +68,9 @@ Route::patch('/dailyReports/{dailyReport}','DailyReportController@update')->name
 /* Routes Equipments x Daily Reports */
 Route::post('/equipmentDailyReports','EquipmentDailyReportController@store')->name('equipmentDailyReports.store');
 Route::get('/equipmentDailyReports/destroy/{equipmentDailyReport}','EquipmentDailyReportController@destroy')->name('equipmentDailyReports.destroy');
+Route::post('/equipmentDailyReports/clone','EquipmentDailyReportController@clone')->name('equipmentDailyReports.clone');
 
 /* Routes Positions x Daily Reports */
 Route::post('/positionDailyReports','PositionDailyReportController@store')->name('positionDailyReports.store');
 Route::get('/positionDailyReports/destroy/{positionDailyReport}','PositionDailyReportController@destroy')->name('positionDailyReports.destroy');
-Route::get('/positionDailyReports/clone','PositionDailyReportController@clone')->name('positionDailyReports.clone');
+Route::post('/positionDailyReports/clone','PositionDailyReportController@clone')->name('positionDailyReports.clone');

@@ -22,6 +22,10 @@ class Workbook extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function daily_reports(){
+        return $this->hasMany(DailyReport::class);
+    }
+
     public function status(){
         $dateWorkbook = strtotime($this->dateWorkbook);
         $today = strtotime(Carbon::today()->toDateString());

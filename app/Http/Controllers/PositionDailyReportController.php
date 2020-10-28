@@ -27,7 +27,16 @@ class PositionDailyReportController extends Controller
     }
 
     public function clone(Request $request){
-        $dateWorkBook = $request->dateWorkbook;
-        
+        $oldDailyReport = DailyReport::find($request->old_daily_report_id);
+        $dailyReport = DailyReport::find($request->daily_report_id);
+        foreach($oldDailyReport->positions as $positionDailyReport){
+            PositionDailyReport::create([
+                'daily_report_id'=>$request->daily_report_id,
+                'contractor_id'=>$positionDailyReport->contractor_id,
+                'position_id'=>$positionDailyReport->position_id,
+                'quantity'=>$positionDailyReport->quantity,
+            ]);
+        }
+        return redirect()->route('dailyReports.edit',$dailyReport);
     }
 }

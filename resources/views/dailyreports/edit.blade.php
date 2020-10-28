@@ -80,7 +80,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.description') }}</label>
                                 <div class="col-sm-10" >
-                                    <textarea id="report" class="form-control @error('report') is-invalid @enderror" rows="30" maxlength="65000" name="report" required autocomplete="report">{{ $dailyReport->report }}</textarea>
+                                    <textarea id="report" class="form-control @error('report') is-invalid @enderror" rows="20" style="resize: vertical" maxlength="65000" name="report" required autocomplete="report">{{ $dailyReport->report }}</textarea>
                                     @error('report')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -95,10 +95,10 @@
                                 <label class="col-sm-2 control-label">{{ __('content.equipments') }}</label>
                                 <div class="col-sm-10" >
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-equipments">
-                                        {{ __('content.add').' '.__('content.equipment') }}
+                                        {{ __('content.add') }}
                                     </button>
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-clone-equipments">
-                                        {{ __('content.clone').' '.__('content.equipments') }}
+                                        {{ __('content.clone').' '.__('content.from').'...' }}
                                     </button>
                                     <div>
                                         <br>
@@ -134,10 +134,10 @@
                                 <label class="col-sm-2 control-label">{{ __('content.positions') }}</label>
                                 <div class="col-sm-10" >
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-positions">
-                                        {{ __('content.add').' '.__('content.position') }}
+                                        {{ __('content.add') }}
                                     </button>
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-clone-positions">
-                                        {{ __('content.clone').' '.__('content.positions') }}
+                                        {{ __('content.clone').' '.__('content.from').'...' }}
                                     </button>
                                     <div>
                                         <br>
@@ -162,6 +162,43 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            {{-- events --}}
+    
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.events') }}</label>
+                                <div class="col-sm-10" >
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-events">
+                                        {{ __('content.add') }}
+                                    </button>
+                                    <div>
+                                        <br>
+                                    </div>
+                                    <table id="events" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ __('content.cause') }}</th>
+                                                <th>{{ __('content.start') }}</th>
+                                                <th>{{ __('content.finish') }}</th>
+                                                <th>{{ __('content.details') }}</th>
+                                                <th>{{ __('content.actions') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{-- @foreach($dailyReport->positions as $positionDailyReport)
+                                                <tr>
+                                                    <td>{{ $positionDailyReport->contractor->name }}</td>
+                                                    <td>{{ $positionDailyReport->position->name }}</td>
+                                                    <td>{{ $positionDailyReport->quantity }}</td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-xs" href="{{ route('positionDailyReports.destroy',$positionDailyReport) }}">{{ __('content.delete') }}</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -192,10 +229,9 @@
 
     </section>
 
-
     {{-- Add Equipments in Daily Report --}}
 
-    <div class="modal fade" id="modal-default-equipments">
+    <div class="modal fade" id="modal-equipments">
         <div class="modal-dialog">
             <form method="POST" action="{{ route('equipmentDailyReports.store') }}">
                 @csrf
@@ -320,48 +356,90 @@
 
     </div>
 
-        {{-- Clone Positions in Daily Report --}}
+    {{-- Clone Equipments in Daily Report --}}
 
-        <div class="modal fade" id="modal-clone-positions">
-            <div class="modal-dialog">
-                <form method="POST" action="{{ route('positionDailyReports.clone') }}">
-                    @csrf
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title">{{ __('content.clone').' '.__('content.positions') }}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div>
-                                
-                                {{-- Daily Report --}}
-    
-                                <input id="daily_report_id" hidden type="text" name="daily_report_id" value="{{ $dailyReport->id }}">
-    
-                                {{-- Location --}}
-    
-                                <input id="location_id" hidden type="text" name="location_id" value="{{ $dailyReport->workbook->location->id }}">
+    <div class="modal fade" id="modal-clone-equipments">
+        <div class="modal-dialog">
+            <form method="POST" action="{{ route('equipmentDailyReports.clone') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{{ __('content.clone').' '.__('content.equipments').' '.__('content.from').'...' }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
 
-                                {{-- Date Workbook --}}
-                                
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">{{ __('content.period') }}</label>
-                                    <input id="dateWorkbook"  type="date" class="form-control" name="dateWorkbook">
-                                </div>
-    
+                            {{-- Daily Report --}}
+
+                            <input id="daily_report_id" hidden type="text" name="daily_report_id" value="{{ $dailyReport->id }}">
+                            
+                            {{-- Old Daily Reports --}}
+                            
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">{{ __('content.dailyreports') }} {{ __('content.olds') }} </label>
+                                <select id="old_daily_report_id" name="old_daily_report_id" class="form-control" required>
+                                    <option value="">{{ __('messages.select') }} {{ __('content.date') }} {{ __('content.period') }}</option>
+                                    @foreach ($oldDailyReports as $oldDailyReport)
+                                        <option value="{{ $oldDailyReport->old_daily_report_id }}">{{ $oldDailyReport->dateWorkbook }} - {{ $oldDailyReport->period }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.close')}}</button>
-                            <button type="submit" class="btn btn-primary">{{__('content.clone')}}</button>
+
                         </div>
                     </div>
-                </form>
-                
-            </div>
-    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.close')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('content.clone')}}</button>
+                    </div>
+                </div>
+            </form>
         </div>
+    </div>
+
+    {{-- Clone Positions in Daily Report --}}
+
+    <div class="modal fade" id="modal-clone-positions">
+        <div class="modal-dialog">
+            <form method="POST" action="{{ route('positionDailyReports.clone') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{{ __('content.clone').' '.__('content.positions').' '.__('content.from').'...' }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+
+                            {{-- Daily Report --}}
+
+                            <input id="daily_report_id" hidden type="text" name="daily_report_id" value="{{ $dailyReport->id }}">
+                            
+                            {{-- Old Daily Reports --}}
+                            
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">{{ __('content.dailyreports') }} {{ __('content.olds') }} </label>
+                                <select id="old_daily_report_id" name="old_daily_report_id" class="form-control" required>
+                                    <option value="">{{ __('messages.select') }} {{ __('content.date') }} {{ __('content.period') }}</option>
+                                    @foreach ($oldDailyReports as $oldDailyReport)
+                                        <option value="{{ $oldDailyReport->old_daily_report_id }}">{{ $oldDailyReport->dateWorkbook }} - {{ $oldDailyReport->period }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.close')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('content.clone')}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 @endsection

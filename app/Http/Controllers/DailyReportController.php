@@ -47,13 +47,18 @@ class DailyReportController extends Controller
         $contractors = Contractor::all();
         $equipments = Equipment::all();
         $positions = Position::all();
-        $equipmentDailyReports = EquipmentDailyReport::where('daily_report_id',$dailyReport->id)->get();
-        $positionDailyReports = PositionDailyReport::where('daily_report_id',$dailyReport->id)->get();
+        $oldDailyReports = DailyReport::select('daily_reports.id as old_daily_report_id', 'workbooks.dateWorkbook as dateWorkbook', 'periods.name as period')
+                                            ->join('workbooks','daily_reports.workbook_id','=','workbooks.id')
+                                            ->join('periods','daily_reports.period_id','=','periods.id')
+                                            ->where('workbooks.location_id',$dailyReport->workbook->location_id)
+                                            ->orderBy('dateWorkbook','desc')
+                                            ->get();
         return view('dailyreports.edit')
         ->with('dailyReport',$dailyReport)
         ->with('contractors',$contractors)
         ->with('equipments',$equipments)
-        ->with('positions',$positions);
+        ->with('positions',$positions)
+        ->with('oldDailyReports',$oldDailyReports);
     }
 
     public function update(DailyReport $dailyReport, UpdateDailyReportRequest $request)

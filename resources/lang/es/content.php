@@ -148,6 +148,8 @@ return [
     'reviewed'=>'Revisado',
     'contractor'=>'Contratista',
     'clone'=>'Clonar',
+    'from'=>'Desde',
+    'olds'=>'Antiguos',
     
     'currency'=>'US$',
     
