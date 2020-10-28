@@ -89,7 +89,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.description') }}</label>
                                 <div class="col-sm-10" >
-                                    <textarea id="report" class="form-control @error('report') is-invalid @enderror" rows="30" maxlength="65000" name="report" required autocomplete="report"></textarea>
+                                    <textarea id="report" class="form-control @error('report') is-invalid @enderror" rows="20" style="resize: vertical" maxlength="65000" name="report" required autocomplete="report"></textarea>
                                     @error('report')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

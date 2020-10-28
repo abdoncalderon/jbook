@@ -23,6 +23,7 @@ return [
     'load'=>'Cargar',
     'search'=>'Buscar',
     'buy'=>'Comprar',
+    'show'=>'Mostrar',
     
 
     'login' => 'Iniciar Sesión',
@@ -65,6 +66,8 @@ return [
     'permits'=>'Permisos',
     'periods'=>'Periodos',
     'period'=>'Periodo',
+    'events'=>'Eventos',
+    'event'=>'Evento',
     
     'user' => 'Usuario',
     'fullname' => 'Nombre Completo',
@@ -150,7 +153,20 @@ return [
     'clone'=>'Clonar',
     'from'=>'Desde',
     'olds'=>'Antiguos',
-    
+    'cause'=>'Causa',
+    'internal'=>'Interno',
+    'external'=>'Externo',
+    'climate'=>'Climático',
+    'impact'=>'Impacto',
+    'yes'=>'Si',
+    'no'=>'No',
+    'attachment'=>'Adjunto',
+    'attachments'=>'Adjuntos',
+    'approve'=>'Aprobar',
+    'finalize'=>'Finalizar',
+    'author'=>'Autor',
+
+
     'currency'=>'US$',
     
 ];

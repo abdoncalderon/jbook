@@ -7,10 +7,8 @@ use App\Models\Workbook;
 use App\Models\Equipment;
 use App\Models\Position;
 use App\Http\Requests\StoreDailyReportRequest;
+use App\Http\Requests\UpdateDailyReportRequest;
 use App\Models\Contractor;
-use App\Models\EquipmentDailyReport;
-use App\Models\PositionDailyReport;
-use Illuminate\Http\Request;
 use Exception;
 
 class DailyReportController extends Controller

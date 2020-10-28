@@ -31,6 +31,15 @@ class DailyReport extends Model
         return $this->hasMany(PositionDailyReport::class);
     }
 
+    public function events()
+    {
+        return $this->hasMany(EventDailyReport::class);
+    }
+
+    public function attachments()
+    {
+        return $this->hasMany(AttachmentDailyReport::class);
+    }
 
     public function status(){
         $status = $this->status;

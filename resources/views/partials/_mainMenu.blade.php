@@ -23,7 +23,7 @@
             <ul class="treeview-menu">
                 <li><a href="{{ route('workbooks.index') }}"> {{ __('content.legalsheets') }} </a></li>
                 <li><a href="{{ route('dailyReports.index') }}"> {{ __('content.dailyreports') }} </a></li>
-                <li><a href="#"> {{ __('content.notes') }} </a></li>
+                <li><a href="{{ route('notes.index') }}"> {{ __('content.notes') }} </a></li>
                 {{-- <li><a href="#"> Software </a></li> --}}
                 {{-- <li><a href="#"> Servicios </a></li> --}}
             </ul>

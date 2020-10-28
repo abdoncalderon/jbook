@@ -184,21 +184,58 @@
                                                 <th>{{ __('content.cause') }}</th>
                                                 <th>{{ __('content.start') }}</th>
                                                 <th>{{ __('content.finish') }}</th>
-                                                <th>{{ __('content.details') }}</th>
+                                                <th>{{ __('content.impact') }}?</th>
                                                 <th>{{ __('content.actions') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- @foreach($dailyReport->positions as $positionDailyReport)
+                                            @foreach($dailyReport->events as $eventDailyReport)
                                                 <tr>
-                                                    <td>{{ $positionDailyReport->contractor->name }}</td>
-                                                    <td>{{ $positionDailyReport->position->name }}</td>
-                                                    <td>{{ $positionDailyReport->quantity }}</td>
+                                                    <td>{{ $eventDailyReport->cause }}</td>
+                                                    <td>{{ $eventDailyReport->start }}</td>
+                                                    <td>{{ $eventDailyReport->finish }}</td>
+                                                    <td>{{ $eventDailyReport->haveImpact() }}</td>
                                                     <td>
-                                                        <a class="btn btn-info btn-xs" href="{{ route('positionDailyReports.destroy',$positionDailyReport) }}">{{ __('content.delete') }}</a>
+                                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-show-event">{{ __('content.open') }}</button>
+                                                        <a class="btn btn-info btn-xs" href="{{ route('eventDailyReports.destroy',$eventDailyReport) }}">{{ __('content.delete') }}</a>
                                                     </td>
                                                 </tr>
-                                            @endforeach --}}
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                            {{-- attachments --}}
+    
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.attachments') }}</label>
+                                <div class="col-sm-10" >
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-attachments">
+                                        {{ __('content.add') }}
+                                    </button>
+                                    <div>
+                                        <br>
+                                    </div>
+                                    <table id="attachments" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ __('content.attachment') }}</th>
+                                                <th>{{ __('content.description') }}</th>
+                                                <th>{{ __('content.actions') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($dailyReport->attachments as $attachmentDailyReport)
+                                                <tr>
+                                                    <td><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt="" style="width: 150px"></td>
+                                                    <td>{{ $attachmentDailyReport->description }}</td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-xs" href="{{ route('attachmentDailyReports.destroy',$attachmentDailyReport) }}">{{ __('content.delete') }}</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -216,6 +253,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
+                        <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }} & {{ __('content.finalize') }}</button>
                         <a class="btn btn-info btn-sm" href="{{ route('dailyReports.index') }}">{{ __('content.cancel') }}</a>
                     </div>
 
@@ -440,6 +478,204 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    {{-- Add Events in Daily Report --}}
+
+    <div class="modal fade" id="modal-events">
+        <div class="modal-dialog">
+            <form method="POST" action="{{ route('eventDailyReports.store') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{{ __('content.add').' '.__('content.event') }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            
+                            {{-- Daily Report --}}
+    
+                            <input id="daily_report_id" hidden type="text" name="daily_report_id" value="{{ $dailyReport->id }}">
+    
+                            {{-- Cause --}}
+    
+                            <div class="form-group">
+                                <label for="cause">{{__('content.cause')}}</label>
+                                <select id="cause" name="cause" class="form-control" required>
+                                    <option value="">{{__('messages.select')}} {{__('content.cause')}}</option>
+                                    <option value="{{__('content.internal')}}">{{__('content.internal')}}</option>
+                                    <option value="{{__('content.external')}}">{{__('content.external')}}</option>
+                                    <option value="{{__('content.climate')}}">{{__('content.climate')}}</option>
+                                </select>
+                            </div>
+    
+                            {{-- Start --}}
+    
+                            <div class="form-group">
+                                <label for="start">{{__('content.start')}}</label>
+                                <input id="start" type="time" class="form-control" name="start" required>
+                            </div>
+    
+                            {{-- Finish --}}
+    
+                            <div class="form-group">
+                                <label for="finish">{{__('content.start')}}</label>
+                                <input id="finish" type="time" class="form-control" name="finish" required>
+                            </div>
+    
+                            {{-- Description --}}
+    
+                            <div class="form-group">
+                                <label for="description">{{__('content.description')}}</label>
+                                <textarea id="description" class="form-control" name="description" style="resize: vertical" required></textarea>
+                            </div>
+    
+                            {{-- Have Impact --}}
+    
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label for="haveImpact">
+                                        <input id="haveImpact" name="haveImpact" type="checkbox">{{__('content.impact')}}?
+                                    </label>
+                                </div>
+                            </div>
+    
+                            {{-- user_id --}}
+    
+                            <input id="user_id" hidden type="text" name="user_id" value="{{ auth()->user()->id }}">
+    
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.close')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('content.add')}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {{-- Show Event in Daily Report --}}
+
+    <div class="modal fade" id="modal-show-event">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{ __('content.show').' '.__('content.event') }}</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+
+                        {{-- Cause --}}
+                            
+                        <div class="form-group">
+                            <label for="cause">{{__('content.cause')}}</label>
+                            <input id="cause" disabled type="text" class="form-control" name="cause" value="{{ $eventDailyReport->cause ?? '' }}">
+                        </div>
+
+                        {{-- Start --}}
+
+                        <div class="form-group">
+                            <label for="start">{{__('content.start')}}</label>
+                            <input id="start" disabled type="text" class="form-control" name="start" value="{{ $eventDailyReport->start ?? '' }}">
+                        </div>
+
+                        {{-- Finish --}}
+
+                        <div class="form-group">
+                            <label for="finish">{{__('content.start')}}</label>
+                            <input id="finish" disabled type="text" class="form-control" name="finish" value="{{ $eventDailyReport->finish ?? '' }}">
+                        </div>
+
+                        {{-- Description --}}
+
+                        <div class="form-group">
+                            <label for="description">{{__('content.description')}}</label>
+                            <textarea id="description" disabled class="form-control" name="description" style="resize: vertical">{{ $eventDailyReport->description ?? '' }}</textarea>
+                        </div>
+
+                        {{-- Have Impact --}}
+
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label for="haveImpact">
+                                    <input id="haveImpact" disabled name="haveImpact" type="checkbox" {{ $eventDailyReport->haveImpact ?? ''==1 ? 'checked' : '' }}>{{__('content.impact')}}?
+                                </label>
+                            </div>
+                        </div>
+
+                        {{-- Author --}}
+
+                        <div class="form-group">
+                            <label for="author">{{__('content.author')}}</label>
+                            <input id="author" disabled type="text" class="form-control" name="author" value="{{ $eventDailyReport->user->name ?? '' }}">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.close')}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Add Attachemnts in Daily Report --}}
+
+    <div class="modal fade" id="modal-attachments">
+        <div class="modal-dialog">
+            <form method="POST" action="{{ route('attachmentDailyReports.store') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{{ __('content.add').' '.__('content.attachment') }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            
+                            {{-- Daily Report --}}
+
+                            <input id="daily_report_id" hidden type="text" name="daily_report_id" value="{{ $dailyReport->id }}">
+
+                            {{-- Filename --}}
+
+                            <div class="form-group">
+                                <label for="image">{{__('content.image')}}</label>
+                                <input id="image" type="file" class="form-control" name="image" accept="image/x-png,image/gif,image/jpeg,application/pdf" required>
+                            </div>
+
+
+                            {{-- Description --}}
+
+                            <div class="form-group">
+                                <label for="description">{{__('content.description')}}</label>
+                                <textarea id="description" class="form-control" name="description" style="resize: vertical" required></textarea>
+                            </div>
+
+                            {{-- Author --}}
+
+                            <input id="user_id" hidden type="text" name="user_id" value="{{ auth()->user()->id }}">
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.close')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('content.add')}}</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+
     </div>
 
 @endsection

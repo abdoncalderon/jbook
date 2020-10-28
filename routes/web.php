@@ -74,3 +74,18 @@ Route::post('/equipmentDailyReports/clone','EquipmentDailyReportController@clone
 Route::post('/positionDailyReports','PositionDailyReportController@store')->name('positionDailyReports.store');
 Route::get('/positionDailyReports/destroy/{positionDailyReport}','PositionDailyReportController@destroy')->name('positionDailyReports.destroy');
 Route::post('/positionDailyReports/clone','PositionDailyReportController@clone')->name('positionDailyReports.clone');
+
+/* Routes Events x Daily Reports */
+Route::post('/eventDailyReports','EventDailyReportController@store')->name('eventDailyReports.store');
+Route::get('/eventDailyReports/destroy/{eventDailyReport}','EventDailyReportController@destroy')->name('eventDailyReports.destroy');
+
+/* Routes Attachments x Daily Reports */
+Route::post('/attachmentDailyReports','AttachmentDailyReportController@store')->name('attachmentDailyReports.store');
+Route::get('/attachmentDailyReports/destroy/{attachmentDailyReport}','AttachmentDailyReportController@destroy')->name('attachmentDailyReports.destroy');
+
+/* Routes Notes */
+Route::get('/notes','NoteController@index')->name('notes.index');
+Route::get('/notes/create/{workbook}','NoteController@create')->name('notes.create');
+Route::post('/notes','NoteController@store')->name('notes.store');
+Route::get('/notes/edit/{note}','NoteController@edit')->name('notes.edit');
+Route::patch('/notes/{note}','NoteController@update')->name('notes.update');

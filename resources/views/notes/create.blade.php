@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
-@section('title', __('content.legalsheets'))
+@section('title', __('content.notes'))
 
-@section('section', __('content.legalsheets'))
+@section('section', __('content.notes'))
 
 @section('level', __('content.workbook'))
 
@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('workbooks.index')}}"> {{ __('content.legalsheets') }} </a></li>
-        <li class="active">{{ __('content.insert') }}</li>
+        <li class="active">{{ __('content.create').' '.__('content.note') }}</li>
     </ol>
 @endsection
 
@@ -31,12 +31,12 @@
                 @endif
                 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.insert').' '.__('content.legalsheet') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.create').' '.__('content.note') }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
 
-                <form class="form-horizontal" method="POST" action="{{ route('workbooks.store') }}">
+                <form class="form-horizontal" method="POST" action="{{ route('notes.store') }}">
                     @csrf
 
                     {{-- Form Body --}}
@@ -47,27 +47,50 @@
 
                         <div class="col-sm-4 col-md-6 col-lg-10">
 
-                            {{-- location --}}
-                                
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
-                                <div class="col-sm-10" >
-                                    <select id="location_id" name="location_id" class="form-control" required style="width: 100%;" >
-                                        <option value="">{{__('messages.select')}} {{__('content.location')}}</option>
-                                        @foreach ($locationsUser as $locationUser)
-                                            <option value="{{ $locationUser->location_id }}">{{ $locationUser->location->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                            {{-- workbook_id --}}
+    
+                            <input id="workbook_id" hidden type="text" name="workbook_id" value="{{ $workbook->id }}">
+
 
                             {{-- dateWorkbook --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.date') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="dateWorkbook" type="date" class="form-control @error('dateworkbook') is-invalid @enderror" name="dateWorkbook" required autofocus>
-                                    @error('dateworkbook')
+                                    <input id="dateWorkbook" disabled type="text" class="form-control" name="dateWorkbook" value="{{ $workbook->dateWorkbook }}">
+                                </div>
+                            </div>
+                            
+                            {{-- location --}}
+                                
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
+                                <div class="col-sm-10" >
+                                    <input id="location" disabled type="text" class="form-control" name="location" value="{{ $workbook->location->name }}">
+                                </div>
+                            </div>
+
+                            {{-- period --}}
+                                
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.period') }}</label>
+                                <div class="col-sm-10" >
+                                    <select id="period_id" name="period_id" class="form-control" required style="width: 100%;" >
+                                        <option value="">{{__('messages.select')}} {{__('content.period')}}</option>
+                                        @foreach ($workbook->location->periods as $periodLocation)
+                                            <option value="{{ $periodLocation->period_id }}">{{ $periodLocation->period->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- note --}}
+    
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.description') }}</label>
+                                <div class="col-sm-10" >
+                                    <textarea id="note" class="form-control @error('note') is-invalid @enderror" rows="20" style="resize: vertical" maxlength="65000" name="note" required autocomplete="report"></textarea>
+                                    @error('note')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -78,10 +101,6 @@
                             {{-- user_id --}}
     
                             <input id="user_id" hidden type="text" name="user_id" value="{{ auth()->user()->id }}">
-    
-                            {{-- number --}}
-    
-                            <input id="number" hidden type="text" name="number">
 
                         </div>
 

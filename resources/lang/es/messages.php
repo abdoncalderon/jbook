@@ -54,6 +54,9 @@ return [
     'approverReport'=>'Revisa',
     'approverWorkbook'=>'Aprueba',
     'recordsuccessfullystored'=>'Registro Grabado con Exito',
+    'timeexpiredtocreate'=>'Expiró tiempo para crear',
+    'timeexpiredtocomment'=>'Expiró tiempo para comentar',
+    'timeexpiredtonote'=>'Expiró tiempo para anotar',
     
     
 
