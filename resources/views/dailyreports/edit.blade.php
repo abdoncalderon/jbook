@@ -89,6 +89,8 @@
                                 </div>
                             </div>
 
+                            <hr>
+
                             {{-- equipments --}}
     
                             <div class="form-group">
@@ -127,6 +129,8 @@
                                     </table>
                                 </div>
                             </div>
+
+                            <hr>
 
                             {{-- positions --}}
     
@@ -167,6 +171,8 @@
                                 </div>
                             </div>
 
+                            <hr>
+
                             {{-- events --}}
     
                             <div class="form-group">
@@ -206,6 +212,7 @@
                                 </div>
                             </div>
 
+                            <hr>
 
                             {{-- attachments --}}
     
@@ -229,7 +236,7 @@
                                         <tbody>
                                             @foreach($dailyReport->attachments as $attachmentDailyReport)
                                                 <tr>
-                                                    <td><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt="" style="width: 150px"></td>
+                                                    <td><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt="" style="max-width: 30%; min-width:100%"></td>
                                                     <td>{{ $attachmentDailyReport->description }}</td>
                                                     <td>
                                                         <a class="btn btn-info btn-xs" href="{{ route('attachmentDailyReports.destroy',$attachmentDailyReport) }}">{{ __('content.delete') }}</a>
@@ -245,6 +252,14 @@
     
                             <input id="user_id" hidden type="text" name="user_id" value="{{ auth()->user()->id }}">
 
+                            {{-- status --}}
+    
+                            <input id="status" hidden type="text" name="status" value="{{ $dailyReport->status }}">
+
+                            {{-- approved by --}}
+    
+                            <input id="approvedid" hidden type="text" name="approvedid">
+
                         </div>
 
                     </div>
@@ -252,8 +267,8 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }} & {{ __('content.finalize') }}</button>
+                        <button id="save" type="submit" class="btn btn-success btn-sm">{{ __('content.save') }}</button>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-save-dailyreport">{{ __('content.save') }} & {{ __('content.finalize') }}</button>
                         <a class="btn btn-info btn-sm" href="{{ route('dailyReports.index') }}">{{ __('content.cancel') }}</a>
                     </div>
 
@@ -673,9 +688,31 @@
                     </div>
                 </div>
             </form>
-            
         </div>
+    </div>
 
+    {{-- Save & Finalize Daily Report--}}
+
+    <div class="modal fade" id="modal-save-dailyreport">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{ __('content.save').' & '.__('content.close').' '.__('content.dailyreport') }}</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <p class="">{{ __('messages.confirmapprovedailyreport') }}</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.no')}}</button>
+                    <button type="button" class="btn btn-primary" onclick="$('#status').val('1');$('#approvedid').val('{{ auth()->user()->id }}');$('#save').click();">{{__('content.yes')}}</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection

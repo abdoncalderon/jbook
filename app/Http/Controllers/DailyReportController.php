@@ -40,6 +40,16 @@ class DailyReportController extends Controller
         }
     }
 
+    public function review(DailyReport $dailyReport){
+        return view('dailyReports.review')
+        ->with('dailyReport',$dailyReport);
+    }
+
+    public function show(DailyReport $dailyReport){
+        return view('dailyReports.show')
+        ->with('dailyReport',$dailyReport);
+    }
+
     public function edit(DailyReport $dailyReport)
     {
         $contractors = Contractor::all();

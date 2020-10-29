@@ -41,12 +41,17 @@ class DailyReport extends Model
         return $this->hasMany(AttachmentDailyReport::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(CommentDailyReport::class);
+    }
+
     public function status(){
         $status = $this->status;
         if ($status==0){
             return __('content.draft');
         }elseif($status==1){
-            return __('content.final');
+            return __('content.finalized');
         }elseif($status==2){
             return __('content.reviewed');
         }

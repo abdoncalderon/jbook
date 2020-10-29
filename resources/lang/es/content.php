@@ -148,7 +148,7 @@ return [
     'equipment'=>'Equipo',
     'position'=>'Puesto',
     'draft'=>'Borrador',
-    'final'=>'Final',
+    'finalized'=>'Finalizado',
     'reviewed'=>'Revisado',
     'contractor'=>'Contratista',
     'clone'=>'Clonar',
@@ -166,6 +166,10 @@ return [
     'approve'=>'Aprobar',
     'finalize'=>'Finalizar',
     'author'=>'Autor',
+    'comment'=>'Comentario',
+    'comments'=>'Comentarios',
+    'review'=>'Revisar',
+    'origin'=>'Origen',
 
 
     'currency'=>'US$',

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AttachmentDailyReport extends Model
+class CommentDailyReport extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['daily_report_id','filename','description','user_id',];
+    protected $fillable = ['daily_report_id','section','dateComment','comment','user_id',];
 
     public function user()
     {

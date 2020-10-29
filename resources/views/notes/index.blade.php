@@ -43,7 +43,6 @@
                         <tr>
                             <th>{{ __('content.location') }}</th>
                             <th>{{ __('content.date') }}</th>
-                            <th>{{ __('content.period') }}</th>
                             <th>{{ __('content.author') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
@@ -56,10 +55,13 @@
                             <tr>
                                 <td>{{ $note->workbook->location->name }}</td>
                                 <td>{{ $note->workbook->dateWorkbook }}</td>
-                                <td>{{ $note->period->name }}</td>
                                 <td>{{ $note->user->name }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('notes.edit',$note) }}">{{ __('content.edit') }}</a>
+                                    @if($note->status==0)
+                                        <a class="btn btn-info btn-xs" href="{{ route('notes.edit',$note) }}">{{ __('content.edit') }}</a>
+                                    @else
+                                        <a class="btn btn-info btn-xs" href="{{ route('notes.show',$note) }}">{{ __('content.show') }}</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

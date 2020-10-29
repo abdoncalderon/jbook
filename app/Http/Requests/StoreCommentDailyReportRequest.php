@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateDailyReportRequest extends FormRequest
+class StoreCommentDailyReportRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,9 +14,11 @@ class UpdateDailyReportRequest extends FormRequest
     public function rules()
     {
         return [
-            'report'=>'required',
+            'daily_report_id'=>'required',
+            'section'=>'required',
+            'dateComment'=>'required',
+            'comment'=>'required',
             'user_id'=>'required',
-            'status'=>'required',
         ];
     }
 }

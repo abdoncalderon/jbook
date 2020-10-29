@@ -15,6 +15,7 @@ class UpdateNoteRequest extends FormRequest
     {
         return [
             'note'=>'required',
+            'status'=>'required',
         ];
     }
 }

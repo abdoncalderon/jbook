@@ -30,4 +30,9 @@ class Note extends Model
     {
         return $this->hasMany(AttachmentNote::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(CommentNote::class);
+    }
 }

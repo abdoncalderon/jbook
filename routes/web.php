@@ -62,6 +62,8 @@ Route::get('getNumber/{location}','WorkbookController@getNumber')->name('workboo
 Route::get('/dailyReports','DailyReportController@index')->name('dailyReports.index');
 Route::get('/dailyReports/create/{workbook}','DailyReportController@create')->name('dailyReports.create');
 Route::post('/dailyReports','DailyReportController@store')->name('dailyReports.store');
+Route::get('/dailyReports/show/{dailyReport}','DailyReportController@show')->name('dailyReports.show');
+Route::get('/dailyReports/review/{dailyReport}','DailyReportController@review')->name('dailyReports.review');
 Route::get('/dailyReports/edit/{dailyReport}','DailyReportController@edit')->name('dailyReports.edit');
 Route::patch('/dailyReports/{dailyReport}','DailyReportController@update')->name('dailyReports.update');
 
@@ -83,13 +85,22 @@ Route::get('/eventDailyReports/destroy/{eventDailyReport}','EventDailyReportCont
 Route::post('/attachmentDailyReports','AttachmentDailyReportController@store')->name('attachmentDailyReports.store');
 Route::get('/attachmentDailyReports/destroy/{attachmentDailyReport}','AttachmentDailyReportController@destroy')->name('attachmentDailyReports.destroy');
 
+/* Routes Comments x Daily Reports */
+Route::post('/commentDailyReports','CommentDailyReportController@store')->name('commentDailyReports.store');
+Route::get('/commentDailyReports/destroy/{commentDailyReport}','CommentDailyReportController@destroy')->name('commentDailyReports.destroy');
+
 /* Routes Notes */
 Route::get('/notes','NoteController@index')->name('notes.index');
 Route::get('/notes/create/{workbook}','NoteController@create')->name('notes.create');
 Route::post('/notes','NoteController@store')->name('notes.store');
+Route::get('/notes/show/{note}','NoteController@show')->name('notes.show');
 Route::get('/notes/edit/{note}','NoteController@edit')->name('notes.edit');
 Route::patch('/notes/{note}','NoteController@update')->name('notes.update');
 
-/* Routes Attachments x Daily Reports */
+/* Routes Attachments x Note */
 Route::post('/attachmentNotes','AttachmentNoteController@store')->name('attachmentNotes.store');
 Route::get('/attachmentNotes/destroy/{attachmentNote}','AttachmentNoteController@destroy')->name('attachmentNotes.destroy');
+
+/* Routes Comments x Note */
+Route::post('/commentNotes','CommentNoteController@store')->name('commentNotes.store');
+Route::get('/commentNotes/destroy/{commentNote}','CommentNoteController@destroy')->name('commentNotes.destroy');

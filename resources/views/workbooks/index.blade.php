@@ -45,7 +45,6 @@
                             <th>{{ __('content.location') }}</th>
                             <th>{{ __('content.date') }}</th>
                             <th>{{ __('content.number') }}</th>
-                            <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -58,11 +57,10 @@
                                 <td>{{ $workbook->location->name }}</td>
                                 <td>{{ $workbook->dateWorkbook }}</td>
                                 <td>{{ $workbook->number }}</td>
-                                <td>{{ $workbook->status() }}</td>
                                 <td>
                                     @if($workbook->status()==__('content.opened'))
-                                        <a class="btn btn-info btn-xs" href="{{ route('dailyReports.create',$workbook) }}">{{ __('content.dailyreports') }}</a>
-                                        <a class="btn btn-info btn-xs" href="{{ route('notes.create',$workbook) }}">{{ __('content.notes') }}</a>
+                                        <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('dailyReports.create',$workbook) }}">{{ __('content.dailyreport') }}</a>
+                                        <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('notes.create',$workbook) }}">{{ __('content.note') }}</a>
                                     @endif
                                 </td>
                             </tr>

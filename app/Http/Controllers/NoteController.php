@@ -33,6 +33,11 @@ class NoteController extends Controller
         }
     }
 
+    public function show(Note $note){
+        return view('notes.show')
+        ->with('note',$note);
+    }
+
     public function edit(Note $note)
     {
         return view('notes.edit')

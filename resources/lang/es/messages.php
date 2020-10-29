@@ -57,6 +57,9 @@ return [
     'timeexpiredtocreate'=>'Expiró tiempo para crear',
     'timeexpiredtocomment'=>'Expiró tiempo para comentar',
     'timeexpiredtonote'=>'Expiró tiempo para anotar',
+    'confirmsavenote'=>'La Anotación se guardará definitivamente. ¿Está Seguro?',
+    'confirmapprovedailyreport'=>'El Reporte Diario se guardará definitivamente y cambiará su estado a Finalizado. ¿Está Seguro?',
+    'confirmreviewdailyreport'=>'El Reporte Diario se cerrará por completo y cambiará su estado a Revisado. ¿Está Seguro?',
     
     
 
