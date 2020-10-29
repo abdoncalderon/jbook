@@ -89,3 +89,7 @@ Route::get('/notes/create/{workbook}','NoteController@create')->name('notes.crea
 Route::post('/notes','NoteController@store')->name('notes.store');
 Route::get('/notes/edit/{note}','NoteController@edit')->name('notes.edit');
 Route::patch('/notes/{note}','NoteController@update')->name('notes.update');
+
+/* Routes Attachments x Daily Reports */
+Route::post('/attachmentNotes','AttachmentNoteController@store')->name('attachmentNotes.store');
+Route::get('/attachmentNotes/destroy/{attachmentNote}','AttachmentNoteController@destroy')->name('attachmentNotes.destroy');

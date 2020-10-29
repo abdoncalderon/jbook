@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateNoteRequest extends FormRequest
+class StoreAttachmentNoteRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,7 +14,8 @@ class UpdateNoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'note'=>'required',
+            'note_id'=>'required',
+            'image'=>'required',
         ];
     }
 }

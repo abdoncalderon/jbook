@@ -35,7 +35,7 @@ class NoteController extends Controller
 
     public function edit(Note $note)
     {
-        return view('dailyreports.edit')
+        return view('notes.edit')
         ->with('note',$note);
     }
 

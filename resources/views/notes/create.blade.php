@@ -84,6 +84,10 @@
                                 </div>
                             </div>
 
+                            {{-- Note Date --}}
+    
+                            <input id="dateNote" hidden type="text" name="dateNote" value="{{ now()->format('Y-m-d H:i:s') }}">
+
                             {{-- note --}}
     
                             <div class="form-group">

@@ -136,6 +136,7 @@ return [
     'dailyreports'=>'Reportes Diarios',
     'dailyreport'=>'Reporte Diario',
     'notes'=>'Anotaciones',
+    'note'=>'Anotación',
     'date'=>'Fecha',
     'number'=>'Número',
     'day'=>'Día',

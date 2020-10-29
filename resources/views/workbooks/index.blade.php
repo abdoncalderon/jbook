@@ -62,7 +62,7 @@
                                 <td>
                                     @if($workbook->status()==__('content.opened'))
                                         <a class="btn btn-info btn-xs" href="{{ route('dailyReports.create',$workbook) }}">{{ __('content.dailyreports') }}</a>
-                                        <a class="btn btn-info btn-xs" href="#">{{ __('content.notes') }}</a>
+                                        <a class="btn btn-info btn-xs" href="{{ route('notes.create',$workbook) }}">{{ __('content.notes') }}</a>
                                     @endif
                                 </td>
                             </tr>
