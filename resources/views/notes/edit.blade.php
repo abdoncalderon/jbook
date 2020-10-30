@@ -113,7 +113,7 @@
                                         <tbody>
                                             @foreach($note->attachments as $attachmentNote)
                                                 <tr>
-                                                    <td><img src="{{ asset('images/attachments/notes/'.$attachmentNote->filename) }}" alt="" style="max-width: 30%; min-width: 100%"></td>
+                                                    <td><img src="{{ asset('images/attachments/notes/'.$attachmentNote->filename) }}" alt="" style="max-width: 50%; min-width: 100%"></td>
                                                     <td>{{ $attachmentNote->description }}</td>
                                                     <td>
                                                         <a class="btn btn-info btn-xs" href="{{ route('attachmentNotes.destroy',$attachmentNote) }}">{{ __('content.delete') }}</a>
