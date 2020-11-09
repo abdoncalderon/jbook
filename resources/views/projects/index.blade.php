@@ -21,7 +21,7 @@
 
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.projects') }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('projects.create') }}">{{ __('content.add') }}</a>
+                {{-- <a class="btn btn-success btn-sm" href="{{ route('projects.create') }}">{{ __('content.add') }}</a> --}}
             </div>
             
             <div class="box-body">

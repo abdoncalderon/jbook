@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('equipments.index')}}"> {{ __('content.equipments') }} </a></li>
-        <li class="active">{{ __('content.add') }}</li>
+        <li class="active">{{ __('content.edit') }}</li>
     </ol>
 @endsection
 
@@ -31,12 +31,12 @@
                 @endif
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add') }} {{ __('content.equipment') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $equipment->name }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
                
-                <form class="form-horizontal" method="POST" action="{{ route('equipments.store') }}">
+                <form class="form-horizontal" method="POST" action="{{ route('equipments.update',$equipment) }}">
                     @csrf
                     @method('PATCH')
 
@@ -49,9 +49,10 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10" >
-                                <input id="name" class="form-control" name="name" type="text" placeholder="Nombre">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $equipment->name }}" placeholder="Nombre">
                             </div>
                         </div>
+
 
                     </div>
 

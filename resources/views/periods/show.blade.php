@@ -32,15 +32,6 @@
 
                     <div class="box-body">
 
-                        {{-- Id  --}}
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Id</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $period->id }}">
-                            </div>
-                        </div>
-
                         {{-- Name  --}}
 
                         <div class="form-group">
@@ -73,7 +64,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.nextday') }}</label>
                             <div class="col-sm-10">
-                                <input type="checkbox"  
+                                <input disabled type="checkbox"  
                                     @if($period->nextday==1)
                                         checked
                                     @endif 

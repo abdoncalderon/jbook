@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contractor;
 use App\Http\Requests\StoreContractorRequest;
 use App\Http\Requests\UpdateContractorRequest;
+use Exception;
 
 class ContractorController extends Controller
 {
@@ -22,7 +23,6 @@ class ContractorController extends Controller
     public function store(StoreContractorRequest $request )
     {
         Contractor::create($request ->validated());
-        
         return redirect()->route('contractors.index');
     }
 
@@ -43,7 +43,16 @@ class ContractorController extends Controller
     public function update(Contractor $contractor, UpdateContractorRequest $request)
     {
         $contractor->update($request->validated());
-
         return redirect()->route('contractors.index');
+    }
+
+    public function destroy(Contractor $contractor)
+    {
+        try{
+            $contractor->delete();
+            return redirect()->route('contractors.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
     }
 }

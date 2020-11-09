@@ -9,7 +9,7 @@ class Location extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','code','project_id','sequence',];
+    protected $fillable = ['name','code','project_id','sequence','maxtimeopen','maxtimenote','maxtimecomment',];
 
     public function project()
     {

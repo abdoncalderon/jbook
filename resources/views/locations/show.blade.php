@@ -32,21 +32,12 @@
 
                     <div class="box-body">
 
-                        {{-- Id  --}}
+                        {{-- Project  --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Id</label>
+                            <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $location->id }}">
-                            </div>
-                        </div>
-
-                        {{-- Code  --}}
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $location->code }}">
+                                <input disabled class="form-control" value="{{ $location->project->name }}">
                             </div>
                         </div>
 
@@ -59,12 +50,12 @@
                             </div>
                         </div>
 
-                        {{-- Project  --}}
+                        {{-- Code  --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $location->project->name }}">
+                                <input disabled class="form-control" value="{{ $location->code }}">
                             </div>
                         </div>
 
@@ -76,6 +67,34 @@
                                 <input disabled class="form-control" value="{{ $location->sequence }}">
                             </div>
                         </div>
+
+                        {{-- Max Time Open Legal Sheet  --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('messages.maxtimeopen') }}</label>
+                            <div class="col-sm-10">
+                                <input disabled class="form-control" value="{{ $location->maxtimeopen }}">
+                            </div>
+                        </div>
+
+                        {{-- Max Time Create Note --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('messages.maxtimenote') }}</label>
+                            <div class="col-sm-10">
+                                <input disabled class="form-control" value="{{ $location->maxtimenote }}">
+                            </div>
+                        </div>
+
+                        {{-- Max Time Comments  --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('messages.maxtimecomment') }}</label>
+                            <div class="col-sm-10">
+                                <input disabled class="form-control" value="{{ $location->maxtimecomment }}">
+                            </div>
+                        </div>
+
 
                     </div>
 

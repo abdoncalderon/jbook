@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Location;
+use App\Models\Project;
 use App\Http\Requests\StoreLocationRequest;
 use App\Http\Requests\UpdateLocationRequest;
 
@@ -16,7 +17,9 @@ class LocationController extends Controller
 
     public function create()
     {
-        return view('locations.create');
+        $projects = Project::get();
+        return view('locations.create')
+        ->with('projects',$projects);
     }
 
     public function store(StoreLocationRequest $request )

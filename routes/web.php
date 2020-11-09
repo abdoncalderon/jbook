@@ -20,15 +20,19 @@ Route::resource('profiles','ProfileController');
 
 /* Routes Contractors */
 Route::resource('contractors','ContractorController');
+Route::get('/contractor/destroy/{contractor}','ContractorController@destroy')->name('contractors.destroy');
 
 /* Routes Equipments */
 Route::resource('equipments','EquipmentController');
+Route::get('/equipment/destroy/{equipment}','EquipmentController@destroy')->name('equipments.destroy');
 
 /* Routes Positions */
 Route::resource('positions','PositionController');
+Route::get('/position/destroy/{position}','PositionController@destroy')->name('positions.destroy');
 
 /* Routes Sectors */
 Route::resource('sectors','SectorController');
+Route::get('/sector/destroy/{sector}','SectorController@destroy')->name('sectors.destroy');
 
 /* Routes Menus */
 Route::resource('menus','MenuController');
@@ -41,6 +45,7 @@ Route::resource('locations','LocationController');
 
 /* Routes Periods */
 Route::resource('periods','PeriodController');
+Route::get('/periods/destroy/{period}','PeriodController@destroy')->name('periods.destroy');
 
 /* Routes Permits */
 Route::get('/permits/{user}','PermitController@index')->name('permits.index');

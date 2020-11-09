@@ -20,6 +20,14 @@
 
         <div>
 
+            {{-- Error Messages --}}
+            @if($errors->any())
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ $errors->first() }}
+                </div>
+            @endif
+
             <div class="box box-info">
 
                 <div class="box-header with-border">
@@ -28,7 +36,7 @@
                
                 {{-- Start Form  --}}
 
-                <form class="form-horizontal" method="POST" action="{{ route('projects.update', $project) }}">
+                <form class="form-horizontal" method="POST" action="{{ route('projects.update', $project) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
 
@@ -52,7 +60,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" value="{{ $project->name }}">
+                                    <input class="form-control" name="name" value="{{ $project->name }}">
                                 </div>
                             </div>
 
@@ -61,7 +69,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.start') }}</label>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control" value="{{ $project->datestart }}">
+                                    <input type="date" class="form-control" name="datestart" value="{{ date('Y-m-d',strtotime($project->datestart)) }}">
                                 </div>
                             </div>
 
@@ -70,7 +78,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.finish') }}</label>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control" value="{{ $project->datefinish }}">
+                                    <input type="date" class="form-control" name="datefinish" value="{{ date('Y-m-d',strtotime($project->datefinish)) }}">
                                 </div>
                             </div>
 
@@ -79,66 +87,73 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.logo') }} 1</label>
                                 <div class="col-sm-10">
-                                    <input id="logofilename1" type="file" class="form-control" name="logofilename1" value="{{ $project->logofilename1 }}">
+                                    <input id="logo1" type="file" class="form-control" name="logo1">
                                 </div>
                                 
                             </div>
 
-                            <div class="form-group" style="background-image: url({{ asset('logos/'.$project->logofilename1) }});"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-10">
+                                    <img src="{{ asset('images/logos/'.$project->logofilename1) }}" alt="" style="width: 200px">
+                                </div>
+                            </div>
+
+                            <input id="logofilename1" hidden type="text" name="logofilename1" value="{{ $project->logofilename1 }}">
                             
                             {{-- Logo 2  --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.logo') }} 2</label>
                                 <div class="col-sm-10">
-                                    <input id="logofilename2" type="file" class="form-control" name="logofilename2"}}>
+                                    <input id="logo2" type="file" class="form-control" name="logo2"}}>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-10">
+                                    <img src="{{ asset('images/logos/'.$project->logofilename2) }}" alt="" style="width: 200px">
+                                </div>
+                            </div>
+
+                            <input id="logofilename2" hidden type="text" name="logofilename2" value="{{ $project->logofilename2 }}">
                           
                             {{-- Logo 3  --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.logo') }} 3</label>
                                 <div class="col-sm-10">
-                                    <input id="logofilename3" type="file" class="form-control" name="logofilename3"}}>
+                                    <input id="logo3" type="file" class="form-control" name="logo3"}}>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-10">
+                                    <img src="{{ asset('images/logos/'.$project->logofilename3) }}" alt="" style="width: 200px">
+                                </div>
+                            </div>
+
+                            <input id="logofilename3" hidden type="text" name="logofilename3" value="{{ $project->logofilename3 }}">
                            
                             {{-- Logo 4  --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.logo') }} 4</label>
                                 <div class="col-sm-10">
-                                    <input id="logofilename4" type="file" class="form-control" name="logofilename4"}}>
+                                    <input id="logo4" type="file" class="form-control" name="logo4"}}>
                                 </div>
                             </div>
-                            
-                            {{-- Max Time for Open WorkBook  --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimeopen').' ('.__('content.hours').') '  }}</label>
+                                <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" value="{{ $project->maxtimeopen }}">
+                                    <img src="{{ asset('images/logos/'.$project->logofilename4) }}" alt="" style="width: 200px">
                                 </div>
                             </div>
 
-                            {{-- Max Time for Create Note  --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimenote').' ('.__('content.hours').') '  }}</label>
-                                <div class="col-sm-10">
-                                    <input type="number"class="form-control" value="{{ $project->maxtimenote }}">
-                                </div>
-                            </div>
-
-                            {{-- Max Time for Comment --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecomment').' ('.__('content.hours').') '  }}</label>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control" value="{{ $project->maxtimecomment }}">
-                                </div>
-                            </div>
+                            <input id="logofilename4" hidden type="text" name="logofilename4" value="{{ $project->logofilename4 }}">
                        
                         </div>
 
