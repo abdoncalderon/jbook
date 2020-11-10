@@ -18,13 +18,13 @@ class CreateProjectsTable extends Migration
             $table->string('name')->unique();
             $table->dateTime('datestart');
             $table->dateTime('datefinish');
-            $table->string('logofilename1');
-            $table->string('logofilename2');
-            $table->string('logofilename3');
-            $table->string('logofilename4');
-            $table->integer('maxtimeopen');
-            $table->integer('maxtimenote');
-            $table->integer('maxtimecomment');
+            $table->string('logofilename1')->nullable();
+            $table->string('logofilename2')->nullable();
+            $table->string('logofilename3')->nullable();
+            $table->string('logofilename4')->nullable();
+            // $table->integer('maxtimeopen');
+            // $table->integer('maxtimenote');
+            // $table->integer('maxtimecomment');
             $table->timestamps();
         });
     }

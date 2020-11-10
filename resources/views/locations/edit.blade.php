@@ -22,6 +22,14 @@
 
             <div class="box box-info">
 
+                {{-- Error Messages --}}
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ $location->name }}</strong></h3>
                 </div>
@@ -40,10 +48,18 @@
 
                             {{-- Id  --}}
 
+                            <input type="text" hidden name="name" value="{{ $location->id }}">
+
+                            {{-- Project ID  --}}
+
+                            <input type="text" hidden name="project_id" value="{{ $location->project_id }}">
+
+                            {{-- Project  --}}
+
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Id</label>
+                                <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
                                 <div class="col-sm-10">
-                                    <input disabled class="form-control" value="{{ $location->id }}">
+                                    <input disabled class="form-control" value="{{ $location->project->name }}">
                                 </div>
                             </div>
 
@@ -52,64 +68,25 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" value="{{ $location->name }}">
+                                    <input type="text" class="form-control" name="name" value="{{ $location->name }}" required>
                                 </div>
                             </div>
 
-                            {{-- Start Date  --}}
+                            {{-- Code  --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.start') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" value="{{ $location->datestart }}">
+                                    <input type="text" class="form-control" name="code" value="{{ $location->code }}" required>
                                 </div>
                             </div>
 
-                            {{-- Finish Date  --}}
+                            {{-- Sequence  --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.finish') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('content.sequence') }}</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" value="{{ $location->datefinish }}">
-                                </div>
-                            </div>
-
-                            {{-- Logo 1  --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.logo') }} 1</label>
-                                <div class="col-sm-10">
-                                    <input id="logofilename1" type="file" class="form-control" name="logofilename1" value="{{ $location->logofilename1 }}">
-                                </div>
-                                
-                            </div>
-
-                            <div class="form-group" style="background-image: url({{ asset('logos/'.$location->logofilename1) }});"></div>
-                            
-                            {{-- Logo 2  --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.logo') }} 2</label>
-                                <div class="col-sm-10">
-                                    <input id="logofilename2" type="file" class="form-control" name="logofilename2"}}>
-                                </div>
-                            </div>
-                          
-                            {{-- Logo 3  --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.logo') }} 3</label>
-                                <div class="col-sm-10">
-                                    <input id="logofilename3" type="file" class="form-control" name="logofilename3"}}>
-                                </div>
-                            </div>
-                           
-                            {{-- Logo 4  --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.logo') }} 4</label>
-                                <div class="col-sm-10">
-                                    <input id="logofilename4" type="file" class="form-control" name="logofilename4"}}>
+                                    <input type="number" class="form-control" name="sequence" value="{{ $location->sequence }}">
                                 </div>
                             </div>
                             
@@ -118,7 +95,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.maxtimeopen') }}</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" value="{{ $location->maxtimeopen }}">
+                                    <input type="number" class="form-control" name="maxtimeopen" value="{{ $location->maxtimeopen }}">
                                 </div>
                             </div>
 
@@ -127,7 +104,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.maxtimenote') }}</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" value="{{ $location->maxtimenote }}">
+                                    <input type="number" class="form-control" name="maxtimenote" value="{{ $location->maxtimenote }}">
                                 </div>
                             </div>
 
@@ -136,7 +113,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.maxtimecomment') }}</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" value="{{ $location->maxtimecomment }}">
+                                    <input type="number" class="form-control" name="maxtimecomment" value="{{ $location->maxtimecomment }}">
                                 </div>
                             </div>
                        

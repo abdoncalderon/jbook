@@ -74,7 +74,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.logo') }} 1</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $project->logofilename1 }}">
+                                <img src="{{ asset('images/logos/'.$project->logofilename1) }}" alt="" style="width: 200px">
                             </div>
                         </div>
 
@@ -83,7 +83,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.logo') }} 2</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $project->logofilename2 }}">
+                                <img src="{{ asset('images/logos/'.$project->logofilename2) }}" alt="" style="width: 200px">
                             </div>
                         </div>
 
@@ -92,7 +92,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.logo') }} 3</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $project->logofilename3 }}">
+                                <img src="{{ asset('images/logos/'.$project->logofilename3) }}" alt="" style="width: 200px">
                             </div>
                         </div>
 
@@ -101,39 +101,37 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.logo') }} 4</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $project->logofilename4 }}">
+                                <img src="{{ asset('images/logos/'.$project->logofilename4) }}" alt="" style="width: 200px">
                             </div>
                         </div>
 
                         {{-- Max Time for Open WorkBook  --}}
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('messages.maxtimeopen').' ('.__('content.hours').') '  }}</label>
                             <div class="col-sm-10">
                                 <input disabled class="form-control" value="{{ $project->maxtimeopen }}">
                             </div>
-                        </div>
+                        </div> --}}
 
                         {{-- Max Time for Create Note  --}}
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('messages.maxtimenote').' ('.__('content.hours').') ' }}</label>
                             <div class="col-sm-10">
                                 <input disabled class="form-control" value="{{ $project->maxtimenote }}">
                             </div>
-                        </div>
+                        </div> --}}
 
 
                         {{-- Max Time for Comment --}}
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('messages.maxtimecomment').' ('.__('content.hours').') '  }}</label>
                             <div class="col-sm-10">
                                 <input disabled class="form-control" value="{{ $project->maxtimecomment }}">
                             </div>
-                        </div>
-
-
+                        </div> --}}
                        
                         </div>
 

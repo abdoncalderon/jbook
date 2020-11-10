@@ -170,6 +170,7 @@ return [
     'comments'=>'Comentarios',
     'review'=>'Revisar',
     'origin'=>'Origen',
+    'nextday'=>'Siguiente Día',
 
 
     'currency'=>'US$',
