@@ -31,7 +31,7 @@
                 @endif
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.add') }} {{ __('content.location') }}</strong></h3>
                 </div>
                
                 {{-- Start Form  --}}

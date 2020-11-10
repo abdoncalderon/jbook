@@ -22,8 +22,16 @@
 
             <div class="box box-info">
 
+                {{-- Error Messages --}}
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.add') }} {{ __('content.equipment') }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
@@ -40,15 +48,9 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10" >
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nombre">
-                                @error('name')
-                                    <span class="invalid-feedback" equipment="alert" style="color:red">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="name" class="form-control" name="name" type="text" placeholder="Nombre" required>
                             </div>
                         </div>
-
 
                     </div>
 

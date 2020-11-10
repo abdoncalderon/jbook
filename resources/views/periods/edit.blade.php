@@ -43,9 +43,8 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10">
-                                <input id="name" class="form-control" name="name" type="text" maxlength="255" value="{{ $period->name }}" required>
+                                <input id="name" disabled class="form-control" name="name" type="text" value="{{ $period->name }}">
                             </div>
-                            
                         </div>
 
                         {{-- Start hour --}}
@@ -71,7 +70,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.nextday') }}</label>
                             <div class="col-sm-10">
-                                <input type="checkbox"  
+                                <input id="nextday" name="nextday" type="checkbox"  
                                     @if($period->nextday==1)
                                         checked
                                     @endif 

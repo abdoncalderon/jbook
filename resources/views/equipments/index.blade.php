@@ -46,7 +46,8 @@
                             <tr>
                                 <td>{{ $equipment->name }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('equipments.show', $equipment)}}">Ver</a>
+                                    <a class="btn btn-info btn-xs" href="{{ route('equipments.show', $equipment)}}">{{ __('content.show') }}</a>
+                                    <a class="btn btn-info btn-xs" href="{{ route('equipments.destroy', $equipment)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach

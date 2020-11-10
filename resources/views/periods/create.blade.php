@@ -31,7 +31,7 @@
                 @endif
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.add') }}  {{ __('content.period') }}</strong></h3>
                 </div>
                
                 {{-- Start Form  --}}
@@ -74,7 +74,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.nextday') }}</label>
                             <div class="col-sm-10">
-                                <input id="nextday" name="nextday" type="checkbox" required>
+                                <input id="nextday" name="nextday" type="checkbox">
                             </div>
                         </div>
 
