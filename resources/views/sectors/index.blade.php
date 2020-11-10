@@ -25,6 +25,15 @@
             </div>
             
             <div class="box-body">
+
+                {{-- Error Messages --}}
+                
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ $errors->first() }}
+                    </div>
+                @endif
                 
                  {{-- Start Table  --}}
 
@@ -46,7 +55,8 @@
                             <tr>
                                 <td>{{ $sector->name }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('sectors.show', $sector)}}">Ver</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('sectors.show', $sector)}}">{{ __('content.show') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('sectors.destroy', $sector)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach

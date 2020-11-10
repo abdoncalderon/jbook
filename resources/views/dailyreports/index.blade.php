@@ -61,9 +61,9 @@
                                 <td>{{ $dailyReport->status() }}</td>
                                 <td>
                                     @if($dailyReport->status==0)
-                                        <a class="btn btn-info btn-xs" href="{{ route('dailyReports.edit',$dailyReport) }}">{{ __('content.edit') }}</a>
+                                        <a class="btn btn-warning btn-xs" href="{{ route('dailyReports.edit',$dailyReport) }}">{{ __('content.edit') }}</a>
                                     @elseif($dailyReport->status==1)
-                                        <a class="btn btn-info btn-xs" href="{{ route('dailyReports.review',$dailyReport) }}">{{ __('content.review') }}</a>
+                                        <a class="btn btn-success btn-xs" href="{{ route('dailyReports.review',$dailyReport) }}">{{ __('content.review') }}</a>
                                     @else 
                                         <a class="btn btn-info btn-xs" href="{{ route('dailyReports.show',$dailyReport) }}">{{ __('content.show') }}</a>
                                     @endif

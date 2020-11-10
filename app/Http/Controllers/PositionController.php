@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Position;
 use App\Http\Requests\StorePositionRequest;
 use App\Http\Requests\UpdatePositionRequest;
+use Exception;
 
 class PositionController extends Controller
 {
@@ -22,7 +23,6 @@ class PositionController extends Controller
     public function store(StorePositionRequest $request )
     {
         Position::create($request ->validated());
-        
         return redirect()->route('positions.index');
     }
 
@@ -43,7 +43,16 @@ class PositionController extends Controller
     public function update(Position $position, UpdatePositionRequest $request)
     {
         $position->update($request->validated());
-
         return redirect()->route('positions.index');
+    }
+
+    public function destroy(Position $position)
+    {
+        try{
+            $position->delete();
+            return redirect()->route('positions.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
     }
 }

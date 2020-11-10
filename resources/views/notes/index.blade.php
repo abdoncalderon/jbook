@@ -58,9 +58,9 @@
                                 <td>{{ $note->user->name }}</td>
                                 <td>
                                     @if($note->status==0)
-                                        <a class="btn btn-info btn-xs" href="{{ route('notes.edit',$note) }}">{{ __('content.edit') }}</a>
+                                        <a style="margin: 0.3em" class="btn btn-warning btn-xs" href="{{ route('notes.edit',$note) }}">{{ __('content.edit') }}</a>
                                     @else
-                                        <a class="btn btn-info btn-xs" href="{{ route('notes.show',$note) }}">{{ __('content.show') }}</a>
+                                        <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('notes.show',$note) }}">{{ __('content.show') }}</a>
                                     @endif
                                 </td>
                             </tr>

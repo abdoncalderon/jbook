@@ -59,9 +59,9 @@
                                 <td>{{ __('content.inactive') }}</td>
                             @ENDIF
                             <td>
-                                <a class="btn btn-info btn-xs" href="{{ route('users.show', $user) }}">{{  __('content.view')  }}</a>
-                                <a class="btn btn-info btn-xs" href="{{ route('locationsUsers.index', $user) }}">{{  __('content.locations')  }}</a>
-                                <a class="btn btn-info btn-xs" href="{{ route('permits.index', $user) }}">{{  __('content.permits')  }}</a>
+                                <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('users.show', $user) }}">{{  __('content.view')  }}</a>
+                                <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('locationsUsers.index', $user) }}">{{  __('content.locations')  }}</a>
+                                <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('permits.index', $user) }}">{{  __('content.permits')  }}</a>
                             </td>
                         </tr>
                         @endforeach

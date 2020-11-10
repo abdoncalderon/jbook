@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10">
-                                <input id="name" class="form-control" name="name" type="text" maxlength="255" placeholder="{{ __('content.name') }}" required>
+                                <input id="name" class="form-control" name="name" type="text" maxlength="255" placeholder="{{ __('content.name') }}" maxlength="255" required>
                             </div>
                             
                         </div>

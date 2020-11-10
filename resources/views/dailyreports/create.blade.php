@@ -9,8 +9,8 @@
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('workbooks.index')}}"> {{ __('content.legalsheets') }} </a></li>
-        <li class="active">{{ __('content.create').' '.__('content.dailyreport') }}</li>
+        <li><a href="{{ route('workbooks.index')}}"> {{ __('content.dailyreports') }} </a></li>
+        <li class="active">{{ __('content.create') }}</li>
     </ol>
 @endsection
 

@@ -46,8 +46,8 @@
                             <tr>
                                 <td>{{ $contractor->name }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('contractors.show', $contractor)}}">{{ __('content.show') }}</a>
-                                    <a class="btn btn-info btn-xs" href="{{ route('contractors.destroy', $contractor)}}">{{ __('content.delete') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('contractors.show', $contractor)}}">{{ __('content.show') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('contractors.destroy', $contractor)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach

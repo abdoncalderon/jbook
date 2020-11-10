@@ -1,16 +1,16 @@
 @extends('layouts.main')
 
-@section('title', __('content.equipments'))
+@section('title', __('content.sectors'))
 
-@section('section', __('content.equipments'))
+@section('section', __('content.sectors'))
 
 @section('level', __('content.configuration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('equipments.index')}}"> {{ __('content.equipments') }} </a></li>
-        <li class="active">{{ __('content.add') }}</li>
+        <li><a href="{{ route('sectors.index')}}"> {{ __('content.sectors') }} </a></li>
+        <li class="active">{{ __('content.edit') }}</li>
     </ol>
 @endsection
 
@@ -31,13 +31,14 @@
                 @endif
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add') }} {{ __('content.equipment') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $sector->name }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
                
-                <form class="form-horizontal" method="POST" action="{{ route('equipments.store') }}">
+                <form class="form-horizontal" method="POST" action="{{ route('sectors.update',$sector) }}">
                     @csrf
+                    @method('PATCH')
 
                     {{-- Form Body --}}
 
@@ -48,9 +49,10 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10" >
-                                <input id="name" class="form-control" name="name" type="text" placeholder="{{ __('content.name') }}" maxlength="255" required>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $sector->name }}" placeholder="Nombre">
                             </div>
                         </div>
+
 
                     </div>
 
@@ -58,7 +60,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('equipments.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('sectors.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
                     
                 </form>

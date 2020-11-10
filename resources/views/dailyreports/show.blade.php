@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('dailyReports.index')}}"> {{ __('content.dailyreports') }} </a></li>
-        <li class="active">{{ __('content.show').' '.__('content.dailyreport') }}</li>
+        <li class="active">{{ __('content.show') }}</li>
     </ol>
 @endsection
 

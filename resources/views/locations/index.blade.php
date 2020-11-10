@@ -46,7 +46,7 @@
                             <tr>
                                 <td>{{ $location->name }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('locations.show', $location)}}">Ver</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('locations.show', $location)}}">Ver</a>
                                 </td>
                             </tr>
                         @endforeach

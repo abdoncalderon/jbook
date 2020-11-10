@@ -23,7 +23,7 @@
             <div class="box box-info">
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.add') }} {{ __('content.position') }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
@@ -40,15 +40,9 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10" >
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nombre">
-                                @error('name')
-                                    <span class="invalid-feedback" position="alert" style="color:red">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="name" class="form-control" name="name" type="text" placeholder="{{ __('content.name') }}" maxlength="255"  required>
                             </div>
                         </div>
-
 
                     </div>
 
