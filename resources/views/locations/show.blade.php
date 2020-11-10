@@ -68,7 +68,7 @@
                             </div>
                         </div>
 
-                        {{-- Max Time Open Legal Sheet  --}}
+                        {{-- Max Time Open Folio  --}}
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('messages.maxtimeopen') }}</label>

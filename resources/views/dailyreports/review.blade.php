@@ -46,12 +46,12 @@
 
                         <div class="col-sm-4 col-md-6 col-lg-10">
 
-                            {{-- dateWorkbook --}}
+                            {{-- date --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.date') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="dateWorkbook" disabled type="text" class="form-control" name="dateWorkbook" value="{{ $dailyReport->workbook->dateWorkbook }}">
+                                    <input id="date" disabled type="text" class="form-control" name="date" value="{{ $dailyReport->folio->date }}">
                                 </div>
                             </div>
                             
@@ -60,16 +60,16 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="dateWorkbook" disabled type="text" class="form-control" name="dateWorkbook" value="{{ $dailyReport->workbook->location->name }}">
+                                    <input id="location" disabled type="text" class="form-control" name="location" value="{{ $dailyReport->folio->location->name }}">
                                 </div>
                             </div>
 
-                            {{-- period --}}
+                            {{-- turn --}}
                             
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.period') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('content.turn') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="period" disabled type="text" class="form-control" name="period" value="{{ $dailyReport->period->name }}">
+                                    <input id="turn" disabled type="text" class="form-control" name="turn" value="{{ $dailyReport->turn->name }}">
                                 </div>
                             </div>
 

@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('workbooks.index')}}"> {{ __('content.dailyreports') }} </a></li>
+        <li><a href="{{ route('folios.index')}}"> {{ __('content.folios') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
 @endsection
@@ -48,12 +48,12 @@
 
                         <div class="col-sm-4 col-md-6 col-lg-10">
 
-                            {{-- dateWorkbook --}}
+                            {{-- date --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.date') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="dateWorkbook" disabled type="text" class="form-control" name="dateWorkbook" value="{{ $dailyReport->workbook->dateWorkbook }}">
+                                    <input id="date" disabled type="text" class="form-control" name="date" value="{{ $dailyReport->folio->date }}">
                                 </div>
                             </div>
                             
@@ -62,16 +62,16 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="dateWorkbook" disabled type="text" class="form-control" name="dateWorkbook" value="{{ $dailyReport->workbook->location->name }}">
+                                    <input id="date" disabled type="text" class="form-control" name="date" value="{{ $dailyReport->folio->location->name }}">
                                 </div>
                             </div>
 
-                            {{-- period --}}
+                            {{-- turn --}}
                             
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.period') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('content.turn') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="period" disabled type="text" class="form-control" name="period" value="{{ $dailyReport->period->name }}">
+                                    <input id="turn" disabled type="text" class="form-control" name="turn" value="{{ $dailyReport->turn->name }}">
                                 </div>
                             </div>
 
@@ -434,9 +434,9 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">{{ __('content.dailyreports') }} {{ __('content.olds') }} </label>
                                 <select id="old_daily_report_id" name="old_daily_report_id" class="form-control" required>
-                                    <option value="">{{ __('messages.select') }} {{ __('content.date') }} {{ __('content.period') }}</option>
+                                    <option value="">{{ __('messages.select') }} {{ __('content.date') }} {{ __('content.turn') }}</option>
                                     @foreach ($oldDailyReports as $oldDailyReport)
-                                        <option value="{{ $oldDailyReport->old_daily_report_id }}">{{ $oldDailyReport->dateWorkbook }} - {{ $oldDailyReport->period }}</option>
+                                        <option value="{{ $oldDailyReport->old_daily_report_id }}">{{ $oldDailyReport->date }} - {{ $oldDailyReport->turn }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -477,9 +477,9 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">{{ __('content.dailyreports') }} {{ __('content.olds') }} </label>
                                 <select id="old_daily_report_id" name="old_daily_report_id" class="form-control" required>
-                                    <option value="">{{ __('messages.select') }} {{ __('content.date') }} {{ __('content.period') }}</option>
+                                    <option value="">{{ __('messages.select') }} {{ __('content.date') }} {{ __('content.turn') }}</option>
                                     @foreach ($oldDailyReports as $oldDailyReport)
-                                        <option value="{{ $oldDailyReport->old_daily_report_id }}">{{ $oldDailyReport->dateWorkbook }} - {{ $oldDailyReport->period }}</option>
+                                        <option value="{{ $oldDailyReport->old_daily_report_id }}">{{ $oldDailyReport->date }} - {{ $oldDailyReport->turn }}</option>
                                     @endforeach
                                 </select>
                             </div>

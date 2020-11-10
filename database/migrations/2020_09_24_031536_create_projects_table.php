@@ -22,9 +22,6 @@ class CreateProjectsTable extends Migration
             $table->string('logofilename2')->nullable();
             $table->string('logofilename3')->nullable();
             $table->string('logofilename4')->nullable();
-            // $table->integer('maxtimeopen');
-            // $table->integer('maxtimenote');
-            // $table->integer('maxtimecomment');
             $table->timestamps();
         });
     }

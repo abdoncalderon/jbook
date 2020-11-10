@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
-use App\Models\Workbook;
+use App\Models\Folio;
 use App\Http\Requests\StoreNoteRequest;
 use App\Http\Requests\UpdateNoteRequest;
 use Exception;
@@ -16,10 +16,10 @@ class NoteController extends Controller
         return view('notes.index', compact('notes'));
     }
 
-    public function create(Workbook $workbook)
+    public function create(Folio $folio)
     {
         return view('notes.create')
-        ->with('workbook',$workbook);
+        ->with('folio',$folio);
     }
 
 

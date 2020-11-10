@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkbooksTable extends Migration
+class CreateFoliosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateWorkbooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('workbooks', function (Blueprint $table) {
+        Schema::create('folios', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('dateWorkbook');
+            $table->dateTime('date');
             $table->foreignId('location_id');
             $table->foreign('location_id')->references('id')->on('locations')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('user_id');
@@ -32,6 +32,6 @@ class CreateWorkbooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workbooks');
+        Schema::dropIfExists('folios');
     }
 }

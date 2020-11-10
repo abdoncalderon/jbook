@@ -19,6 +19,13 @@
 
         <div class="box box-info">
 
+            @if(session('message'))
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ session('message') }}
+                </div>
+            @endif
+
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.locations') }}</strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('locations.create') }}">{{ __('content.add') }}</a>
@@ -46,7 +53,9 @@
                             <tr>
                                 <td>{{ $location->name }}</td>
                                 <td>
-                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('locations.show', $location)}}">Ver</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('locations.show', $location)}}">{{ __('content.show') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="#">{{ __('content.turns') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-danger btn-xs" href="{{ route('locations.destroy', $location)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach

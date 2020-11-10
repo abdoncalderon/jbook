@@ -22,7 +22,6 @@ class RoleController extends Controller
     public function store(SaveRoleRequest $request )
     {
         Role::create($request ->validated());
-        
         return redirect()->route('roles.index');
     }
 
@@ -43,7 +42,6 @@ class RoleController extends Controller
     public function update(Role $role, UpdateRoleRequest $request)
     {
         $role->update($request->validated());
-
         return redirect()->route('roles.index');
     }
 

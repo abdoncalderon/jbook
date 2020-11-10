@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePeriodLocationsTable extends Migration
+class CreateTurnLocationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePeriodLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('period_locations', function (Blueprint $table) {
+        Schema::create('turn_locations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('period_id');
-            $table->foreign('period_id')->references('id')->on('periods')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('turn_id');
+            $table->foreign('turn_id')->references('id')->on('turns')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('location_id');
             $table->foreign('location_id')->references('id')->on('locations')->onUpdate('cascade')->onDelete('restrict');
             $table->dateTime('dateFrom');
@@ -32,6 +32,6 @@ class CreatePeriodLocationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('period_locations');
+        Schema::dropIfExists('turn_locations');
     }
 }

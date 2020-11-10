@@ -21,7 +21,7 @@
 
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('messages.locationsUsers') }} {{ $user->name }} </strong></h3> | 
-                
+                <a class="btn btn-success btn-sm" href="{{ route('locationsUsers.create') }}">{{ __('content.add') }}</a>
             </div>
             
             <div class="box-body">
@@ -51,7 +51,7 @@
                                 <td>{{ $locationUser->location->name }}</td>
                                 <td>{{ $locationUser->collaborator_report }}</td>
                                 <td>{{ $locationUser->approver_report }}</td>
-                                <td>{{ $locationUser->approver_workbook }}</td>
+                                <td>{{ $locationUser->approver_folio }}</td>
                                 <td>{{ $locationUser->notification }}</td>
                                 <td>
                                     <a class="btn btn-info btn-xs" href="{{ route('locationsUsers.edit', $locationUser)}}">{{ __('content.edit')}}</a>

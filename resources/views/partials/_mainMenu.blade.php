@@ -21,7 +21,7 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="{{ route('workbooks.index') }}"> {{ __('content.legalsheets') }} </a></li>
+                <li><a href="{{ route('folios.index') }}"> {{ __('content.folios') }} </a></li>
                 <li><a href="{{ route('dailyReports.index') }}"> {{ __('content.dailyreports') }} </a></li>
                 <li><a href="{{ route('notes.index') }}"> {{ __('content.notes') }} </a></li>
                 {{-- <li><a href="#"> Software </a></li> --}}
@@ -78,7 +78,7 @@
             <ul class="treeview-menu">
                 <li><a href="{{ route('projects.index')}}"> {{ __('content.projects') }} </a></li>
                 <li><a href="{{ route('locations.index')}}"> {{ __('content.locations') }} </a></li>
-                <li><a href="{{ route('periods.index')}}"> {{ __('content.periods') }} </a></li>
+                <li><a href="{{ route('turns.index')}}"> {{ __('content.turns') }} </a></li>
                 <li><a href="{{ route('contractors.index')}}"> {{ __('content.contractors') }} </a></li>
                 <li><a href="{{ route('equipments.index')}}"> {{ __('content.equipments') }} </a></li>
                 <li><a href="{{ route('positions.index')}}"> {{ __('content.positions') }} </a></li>

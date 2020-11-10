@@ -48,12 +48,12 @@
 
                         <div class="col-sm-4 col-md-6 col-lg-10">
 
-                            {{-- dateWorkbook --}}
+                            {{-- date --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.date') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="dateWorkbook" disabled type="text" class="form-control" name="dateWorkbook" value="{{ $note->workbook->dateWorkbook }}">
+                                    <input id="date" disabled type="text" class="form-control" name="date" value="{{ $note->folio->date }}">
                                 </div>
                             </div>
                             
@@ -62,16 +62,16 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="dateWorkbook" disabled type="text" class="form-control" name="dateWorkbook" value="{{ $note->workbook->location->name }}">
+                                    <input id="date" disabled type="text" class="form-control" name="date" value="{{ $note->folio->location->name }}">
                                 </div>
                             </div>
 
-                            {{-- period --}}
+                            {{-- turn --}}
                             
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.period') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('content.turn') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="period" disabled type="text" class="form-control" name="period" value="{{ $note->period->name }}">
+                                    <input id="turn" disabled type="text" class="form-control" name="turn" value="{{ $note->turn->name }}">
                                 </div>
                             </div>
 
@@ -138,7 +138,7 @@
                     <div class="box-footer">
                         <button type="submit" id="save" class="btn btn-success btn-sm">{{ __('content.save') }}</button>
                         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-save-note">{{ __('content.save') }} & {{ __('content.close') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('workbooks.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('folios.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

@@ -5,13 +5,12 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use PhpParser\Node\Expr\FuncCall;
 
-class Workbook extends Model
+class Folio extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['dateWorkbook','location_id','user_id','number'];
+    protected $fillable = ['date','location_id','user_id','number'];
 
     public function location(){
         return $this->belongsTo(Location::class);
@@ -26,9 +25,9 @@ class Workbook extends Model
     }
 
     public function status(){
-        $dateWorkbook = strtotime($this->dateWorkbook);
+        $date = strtotime($this->date);
         $today = strtotime(Carbon::today()->toDateString());
-        $differenceInHours = abs(round(($dateWorkbook - $today)/60/60,0));
+        $differenceInHours = abs(round(($date - $today)/60/60,0));
         $locationMaxTimeOpen = $this->location->maxtimeopen;
         if (($differenceInHours > $locationMaxTimeOpen)){
             return __('content.closed');
@@ -37,5 +36,4 @@ class Workbook extends Model
         }
         
     }
-
 }

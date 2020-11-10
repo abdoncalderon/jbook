@@ -2,13 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Workbook;
-
+use App\Models\Folio;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreWorkbookRequest extends FormRequest
+class StoreFolioRequest extends FormRequest
 {
-    
     public function authorize()
     {
         return true;
@@ -17,15 +15,15 @@ class StoreWorkbookRequest extends FormRequest
     public function rules()
     {
         $location_id = $this->get('location_id');
-        $dateWorkbook = $this->get('dateWorkbook');
-        $legalSheets = Workbook::where('location_id',$location_id)->where('dateWorkbook',$dateWorkbook)->get();
-        if (count($legalSheets)>0){
+        $date = $this->get('date');
+        $folios = Folio::where('location_id',$location_id)->where('date',$date)->get();
+        if (count($folios)>0){
             return [
                 'location_id'=>'max:0',
             ];
         }else{
             return [
-                'dateWorkbook'=>'required',
+                'date'=>'required',
                 'location_id'=>'required',
                 'user_id'=>'required',
                 'number'=>'required',

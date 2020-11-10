@@ -42,10 +42,15 @@ Route::resource('projects','ProjectController');
 
 /* Routes Locations */
 Route::resource('locations','LocationController');
+Route::get('/location/destroy/{location}','LocationController@destroy')->name('locations.destroy');
 
-/* Routes Periods */
-Route::resource('periods','PeriodController');
-Route::get('/periods/destroy/{period}','PeriodController@destroy')->name('periods.destroy');
+/* Routes Turns */
+Route::resource('turns','TurnController');
+Route::get('/turns/destroy/{turn}','TurnController@destroy')->name('turns.destroy');
+
+/* Routes Folios */
+Route::resource('folios','FolioController');
+Route::get('getNumber/{location}','FolioController@getNumber')->name('folios.getNumber');
 
 /* Routes Permits */
 Route::get('/permits/{user}','PermitController@index')->name('permits.index');
@@ -59,13 +64,9 @@ Route::post('/locationsUsers','LocationUserController@store')->name('locationsUs
 Route::get('/locationsUsers/edit/{permit}','LocationUserController@edit')->name('locationsUsers.edit');
 Route::patch('/locationsUsers/{permit}','LocationUserController@update')->name('locationsUsers.update');
 
-/* Routes Periods */
-Route::resource('workbooks','WorkbookController');
-Route::get('getNumber/{location}','WorkbookController@getNumber')->name('workbooks.getNumber');
-
 /* Routes Daily Reports */
 Route::get('/dailyReports','DailyReportController@index')->name('dailyReports.index');
-Route::get('/dailyReports/create/{workbook}','DailyReportController@create')->name('dailyReports.create');
+Route::get('/dailyReports/create/{folio}','DailyReportController@create')->name('dailyReports.create');
 Route::post('/dailyReports','DailyReportController@store')->name('dailyReports.store');
 Route::get('/dailyReports/show/{dailyReport}','DailyReportController@show')->name('dailyReports.show');
 Route::get('/dailyReports/review/{dailyReport}','DailyReportController@review')->name('dailyReports.review');
@@ -96,7 +97,7 @@ Route::get('/commentDailyReports/destroy/{commentDailyReport}','CommentDailyRepo
 
 /* Routes Notes */
 Route::get('/notes','NoteController@index')->name('notes.index');
-Route::get('/notes/create/{workbook}','NoteController@create')->name('notes.create');
+Route::get('/notes/create/{folio}','NoteController@create')->name('notes.create');
 Route::post('/notes','NoteController@store')->name('notes.store');
 Route::get('/notes/show/{note}','NoteController@show')->name('notes.show');
 Route::get('/notes/edit/{note}','NoteController@edit')->name('notes.edit');

@@ -11,7 +11,19 @@ class LocationUserController extends Controller
     {
         return view('locationsUsers.index', compact('user'));
     }
+
+    public function create()
+    {
+        $locations = LocationUser::where('user_id','!=',auth()->user()->id)->get();
+        return view('locations.create')
+        ->with('locations',$locations);
+    }
       
+    public function store(StoreLocationUserRequest $request )
+    {
+        LocationUser::create($request ->validated());
+        return redirect()->route('locationsusers.index');
+    }
 
     public function edit(LocationUser $locationUser)
     {
@@ -23,7 +35,6 @@ class LocationUserController extends Controller
     public function update(LocationUser $locationUser, UpdatePermitRequest $request)
     {
         $locationUser->update($request->validated());
-
         return redirect()->route('locationsUsers.index');
     }
 }

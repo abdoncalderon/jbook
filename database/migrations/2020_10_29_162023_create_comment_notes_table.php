@@ -17,7 +17,7 @@ class CreateCommentNotesTable extends Migration
             $table->id();
             $table->foreignId('note_id');
             $table->foreign('note_id')->references('id')->on('notes')->onUpdate('cascade')->onDelete('restrict');
-            $table->dateTime('dateComment');
+            $table->dateTime('date');
             $table->text('comment');
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');

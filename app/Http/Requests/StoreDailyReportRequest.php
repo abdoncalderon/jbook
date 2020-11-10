@@ -14,17 +14,17 @@ class StoreDailyReportRequest extends FormRequest
 
     public function rules()
     {
-        $workbook_id = $this->get('workbook_id');
-        $period_id = $this->get('period_id');
-        $dailyReports = DailyReport::where('workbook_id',$workbook_id)->where('period_id',$period_id)->get();
+        $folio_id = $this->get('folio_id');
+        $turn_id = $this->get('turn_id');
+        $dailyReports = DailyReport::where('folio_id',$folio_id)->where('turn_id',$turn_id)->get();
         if (count($dailyReports)>0){
             return [
-                'workbook_id'=>'max:0',
+                'folio_id'=>'max:0',
             ];
         }else{
             return [
-                'workbook_id'=>'required',
-                'period_id'=>'required',
+                'folio_id'=>'required',
+                'turn_id'=>'required',
                 'report'=>'required',
                 'user_id'=>'required',
             ];
@@ -34,7 +34,7 @@ class StoreDailyReportRequest extends FormRequest
     public function messages()
     {
         return [
-            'workbook_id.max' => __('messages.exists'),
+            'folio_id.max' => __('messages.exists'),
         ];
     }
 }

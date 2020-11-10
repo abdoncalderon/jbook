@@ -40,7 +40,7 @@ return [
     'maxtimeopen'=>'Tiempo Máximo  para Apertura de Libro',
     'maxtimenote'=>'Tiempo Máximo para Crear Anotación',
     'maxtimecomment'=>'Tiempo Máximo para Emitir Comentario',
-    'locationsUsers'=>'Ubicaciones Asignadas a Usuario',
+    'locationsUsers'=>'Ubicaciones Asignadas a ',
     'createWorkbook'=>'Crear Libro de Obra',
     'createReport'=>'Crear Reporte Diario',
     'createNote'=>'Crear Anotación',

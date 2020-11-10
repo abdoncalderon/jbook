@@ -56,21 +56,16 @@
                                 </div>
                             </div>
 
-                            {{-- Create Workbook  --}}
+                            {{-- Create Folio  --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.createWorkbook') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('messages.createfolio') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="name" type="checkbox"  @error('create_workbook') is-invalid @enderror" name="create_workbook" 
-                                        @if($permit->create_workbook==1)
+                                    <input id="create_folio" type="checkbox" name="create_folio" 
+                                        @if($permit->create_folio==1)
                                             checked
                                         @endif
                                     >
-                                    @error('create_workbook')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
@@ -79,16 +74,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.createReport') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="name" type="checkbox"  @error('create_report') is-invalid @enderror" name="create_report" 
+                                    <input id="create_report" type="checkbox" name="create_report" 
                                         @if($permit->create_report==1)
                                             checked
                                         @endif
                                     >
-                                    @error('create_report')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    
                                 </div>
                             </div>
 
@@ -97,16 +88,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.createNote') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="name" type="checkbox"  @error('create_note') is-invalid @enderror" name="create_note" 
+                                    <input id="create_note" type="checkbox" name="create_note" 
                                         @if($permit->create_note==1)
                                             checked
                                         @endif
                                     >
-                                    @error('create_note')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    
                                 </div>
                             </div>
 
@@ -115,16 +102,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.createComment') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="name" type="checkbox"  @error('create_comment') is-invalid @enderror" name="create_comment" 
+                                    <input id="create_comment" type="checkbox" name="create_comment" 
                                         @if($permit->create_comment==1)
                                             checked
                                         @endif
                                     >
-                                    @error('create_comment')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                   
                                 </div>
                             </div>
 
@@ -133,16 +116,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.printReport') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="name" type="checkbox"  @error('print_report') is-invalid @enderror" name="print_report" 
+                                    <input id="print_report" type="checkbox" name="print_report" 
                                         @if($permit->print_report==1)
                                             checked
                                         @endif
                                     >
-                                    @error('print_report')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    
                                 </div>
                             </div>
 
@@ -151,16 +130,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.printNote') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="name" type="checkbox"  @error('print_note') is-invalid @enderror" name="print_note" 
+                                    <input id="print_note" type="checkbox" name="print_note" 
                                         @if($permit->print_note==1)
                                             checked
                                         @endif
                                     >
-                                    @error('print_note')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    
                                 </div>
                             </div>
 
@@ -169,16 +144,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.receiveEmail') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="name" type="checkbox"  @error('receive_email') is-invalid @enderror" name="receive_email" 
+                                    <input id="receive_email" type="checkbox" name="receive_email" 
                                         @if($permit->create_workbook==1)
                                             checked
                                         @endif
                                     >
-                                    @error('receive_email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    
                                 </div>
                             </div>
 
@@ -187,16 +158,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.signReport') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="name" type="checkbox"  @error('sign_report') is-invalid @enderror name="sign_report" 
+                                    <input id="sign_report" type="checkbox" name="sign_report" 
                                         @if($permit->sign_report==1)
                                             checked
                                         @endif
                                     >
-                                    @error('sign_report')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    
                                 </div>
                             </div>
 
@@ -205,16 +172,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.editSequence') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="name" type="checkbox"  @error('edit_sequence') is-invalid @enderror name="edit_sequence" 
+                                    <input id="edit_sequence" type="checkbox" name="edit_sequence" 
                                         @if($permit->edit_sequence==1)
                                             checked
                                         @endif
                                     >
-                                    @error('edit_sequence')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    
                                 </div>
                             </div>
                        

@@ -14,9 +14,9 @@ class StoreNoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'workbook_id'=>'required',
-            'period_id'=>'required',
-            'dateNote'=>'required',
+            'folio_id'=>'required',
+            'turn_id'=>'required',
+            'date'=>'required',
             'note'=>'required',
             'user_id'=>'required',
         ];

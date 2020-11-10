@@ -53,8 +53,8 @@
                     <tbody>
                         @foreach($notes as $note)
                             <tr>
-                                <td>{{ $note->workbook->location->name }}</td>
-                                <td>{{ $note->workbook->dateWorkbook }}</td>
+                                <td>{{ $note->folio->location->name }}</td>
+                                <td>{{ date('Y-M-d',strtotime($note->folio->date)) }}</td>
                                 <td>{{ $note->user->name }}</td>
                                 <td>
                                     @if($note->status==0)

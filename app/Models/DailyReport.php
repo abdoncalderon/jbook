@@ -9,16 +9,16 @@ class DailyReport extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['workbook_id','period_id','report','user_id','status','approvedBy','reviewedBy','responsible',];
-
-    public function workbook()
+    protected $fillable = ['folio_id','turn_id','report','user_id','status','approvedBy','reviewedBy','responsible',];
+    
+    public function folio()
     {
-        return $this->belongsTo(Workbook::class);
+        return $this->belongsTo(Folio::class);
     }
-
-    public function period()
+  
+    public function turn()
     {
-        return $this->belongsTo(Period::class);
+        return $this->belongsTo(Turn::class);
     }
 
     public function equipments()

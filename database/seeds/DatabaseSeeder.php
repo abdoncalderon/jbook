@@ -25,6 +25,12 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('IdonSoft'),
             'role_id' => '1',
         ]);
+
+        DB::table('projects')->insert([
+            'name' => 'PROJECT EXAMPLE',
+            'datestart' => now()->format('Y-m-d H:i:s'),
+            'dateFinish' => now()->format('Y-m-d H:i:s'),
+        ]);
         
     }
 }

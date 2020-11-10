@@ -1,16 +1,16 @@
 @extends('layouts.main')
 
-@section('title', __('content.periods'))
+@section('title', __('content.turns'))
 
-@section('section', __('content.periods'))
+@section('section', __('content.turns'))
 
 @section('level', __('content.configuration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('periods.index')}}"> {{ __('content.periods') }} </a></li>
-        <li class="active">{{ __('content.details') }}</li>
+        <li><a href="{{ route('turns.index')}}"> {{ __('content.turns') }} </a></li>
+        <li class="active">{{ __('content.edit') }}</li>
     </ol>
 @endsection
 
@@ -23,21 +23,27 @@
             <div class="box box-info">
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ $period->name }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ $turn->name }}</strong></h3>
                 </div>
                
                 {{-- Start Form  --}}
 
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="POST" action="{{ route('turns.update', $turn) }}">
+                    @csrf
+                    @method('PATCH')
 
                     <div class="box-body">
+
+                        {{-- Id  --}}
+                                
+                        <input id="id" hidden name="id" value="{{ $turn->id }}">
 
                         {{-- Name  --}}
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $period->name }}">
+                                <input id="name" disabled class="form-control" name="name" type="text" value="{{ $turn->name }}">
                             </div>
                         </div>
 
@@ -46,7 +52,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.start') }}</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $period->start }}">
+                                <input id="start" class="form-control" name="start" type="time" value="{{ $turn->start }}" required>
                             </div>
                         </div>
 
@@ -55,17 +61,17 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.finish') }}</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $period->finish }}">
+                                <input id="finish" class="form-control" name="finish" type="time" value="{{ $turn->finish }}" required>
                             </div>
                         </div>
 
-                        {{-- Name  --}}
+                        {{-- Next Day  --}}
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.nextday') }}</label>
                             <div class="col-sm-10">
-                                <input disabled type="checkbox"  
-                                    @if($period->nextday==1)
+                                <input id="nextday" name="nextday" type="checkbox"  
+                                    @if($turn->nextday==1)
                                         checked
                                     @endif 
                                 >
@@ -77,8 +83,8 @@
                     {{-- Submit  --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-success btn-sm" href=" {{ route('periods.edit', $period) }} ">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href=" {{ route('periods.index') }} ">{{ __('messages.returntolist') }}</a>
+                        <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
+                        <a class="btn btn-info btn-sm" href=" {{ route('turns.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

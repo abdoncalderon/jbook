@@ -17,14 +17,14 @@ class CreatePermitsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->unique();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
-            $table->boolean('create_workbook')->default(false);
-            $table->boolean('create_report')->default(false);
+            $table->boolean('create_folio')->default(false);
+            $table->boolean('create_dailyreport')->default(false);
             $table->boolean('create_note')->default(false);
             $table->boolean('create_comment')->default(false);
-            $table->boolean('print_report')->default(false);
+            $table->boolean('print_dailyreport')->default(false);
             $table->boolean('print_note')->default(false);
             $table->boolean('receive_email')->default(false);
-            $table->boolean('sign_report')->default(false);
+            $table->boolean('sign_dailyreport')->default(false);
             $table->boolean('edit_sequence')->default(false);
             $table->timestamps();
         });

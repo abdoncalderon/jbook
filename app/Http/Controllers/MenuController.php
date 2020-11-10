@@ -22,7 +22,6 @@ class MenuController extends Controller
     public function store(StoreMenuRequest $request )
     {
         Menu::create($request ->validated());
-        
         return redirect()->route('menus.index');
     }
 
@@ -43,7 +42,6 @@ class MenuController extends Controller
     public function update(Menu $menu, UpdateMenuRequest $request)
     {
         $menu->update($request->validated());
-
         return redirect()->route('menus.index');
     }
 }

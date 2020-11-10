@@ -24,7 +24,6 @@ class PermitController extends Controller
     public function update(Permit $permit, UpdatePermitRequest $request)
     {
         $permit->update($request->validated());
-
         return redirect()->route('permits.index');
     }
 }

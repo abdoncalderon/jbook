@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('workbooks.index')}}"> {{ __('content.dailyreports') }} </a></li>
+        <li><a href="{{ route('dailyreports.index')}}"> {{ __('content.dailyreports') }} </a></li>
         <li class="active">{{ __('content.create') }}</li>
     </ol>
 @endsection
@@ -47,17 +47,17 @@
 
                         <div class="col-sm-4 col-md-6 col-lg-10">
 
-                            {{-- workbook_id --}}
+                            {{-- dailyreport_id --}}
     
-                            <input id="workbook_id" hidden type="text" name="workbook_id" value="{{ $workbook->id }}">
+                            <input id="daily_report_id" hidden type="text" name="daily_report_id" value="{{ $dailyreport->id }}">
 
 
-                            {{-- dateWorkbook --}}
+                            {{-- date --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.date') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="dateWorkbook" disabled type="text" class="form-control" name="dateWorkbook" value="{{ $workbook->dateWorkbook }}">
+                                    <input id="date" disabled type="text" class="form-control" name="date" value="{{ $dailyreport->date }}">
                                 </div>
                             </div>
                             
@@ -66,19 +66,19 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="location" disabled type="text" class="form-control" name="location" value="{{ $workbook->location->name }}">
+                                    <input id="location" disabled type="text" class="form-control" name="location" value="{{ $dailyreport->location->name }}">
                                 </div>
                             </div>
 
-                            {{-- period --}}
+                            {{-- turn --}}
                                 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.period') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('content.turn') }}</label>
                                 <div class="col-sm-10" >
-                                    <select id="period_id" name="period_id" class="form-control" required style="width: 100%;" >
-                                        <option value="">{{__('messages.select')}} {{__('content.period')}}</option>
-                                        @foreach ($workbook->location->periods as $periodLocation)
-                                            <option value="{{ $periodLocation->period_id }}">{{ $periodLocation->period->name }}</option>
+                                    <select id="turn_id" name="turn_id" class="form-control" required style="width: 100%;" >
+                                        <option value="">{{__('messages.select')}} {{__('content.turn')}}</option>
+                                        @foreach ($dailyreport->location->turns as $turnLocation)
+                                            <option value="{{ $turnLocation->turn_id }}">{{ $turnLocation->turn->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -110,7 +110,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('workbooks.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('dailyreports.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

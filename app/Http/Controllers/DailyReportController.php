@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DailyReport;
-use App\Models\Workbook;
+use App\Models\Folio;
 use App\Models\Equipment;
 use App\Models\Position;
 use App\Http\Requests\StoreDailyReportRequest;
@@ -19,12 +19,12 @@ class DailyReportController extends Controller
         return view('dailyreports.index', compact('dailyReports'));
     }
 
-    public function create(Workbook $workbook)
+    public function create(Folio $folio)
     {
         $equipments = Equipment::all();
         $positions = Position::all();
         return view('dailyreports.create')
-        ->with('workbook',$workbook)
+        ->with('folio',$folio)
         ->with('equipments',$equipments)
         ->with('positions',$positions);
     }
@@ -55,11 +55,11 @@ class DailyReportController extends Controller
         $contractors = Contractor::all();
         $equipments = Equipment::all();
         $positions = Position::all();
-        $oldDailyReports = DailyReport::select('daily_reports.id as old_daily_report_id', 'workbooks.dateWorkbook as dateWorkbook', 'periods.name as period')
-                                            ->join('workbooks','daily_reports.workbook_id','=','workbooks.id')
-                                            ->join('periods','daily_reports.period_id','=','periods.id')
-                                            ->where('workbooks.location_id',$dailyReport->workbook->location_id)
-                                            ->orderBy('dateWorkbook','desc')
+        $oldDailyReports = DailyReport::select('daily_reports.id as old_daily_report_id', 'folios.date as date', 'turns.name as turn')
+                                            ->join('folios','daily_reports.folio_id','=','folios.id')
+                                            ->join('turns','daily_reports.turn_id','=','turns.id')
+                                            ->where('folios.location_id',$dailyReport->folio->location_id)
+                                            ->orderBy('date','desc')
                                             ->get();
         return view('dailyreports.edit')
         ->with('dailyReport',$dailyReport)

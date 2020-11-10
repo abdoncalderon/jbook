@@ -76,7 +76,8 @@ return [
     'legalsheets'=>'Folios',
     'days'=>'Días',
     'olds'=>'Antiguos',
-
+    'turns'=>'Turnos',
+    'folios'=>'Folios',
 
 
     
@@ -175,7 +176,8 @@ return [
     'period'=>'Periodo',
     'event'=>'Evento',
     'sector'=>'Area',
-
+    'turn'=>'Turno',
+    'folio'=>'Folio',
 
     'currency'=>'US$',
     

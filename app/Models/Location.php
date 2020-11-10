@@ -21,9 +21,9 @@ class Location extends Model
         return $this->hasMany(PeriodLocation::class);
     }
 
-    public function workbooks()
+    public function folios()
     {
-        return $this->hasMany(Workbook::class);
+        return $this->hasMany(Folio::class);
     }
 
     public function uploadSequence(){

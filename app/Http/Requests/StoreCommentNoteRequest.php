@@ -15,7 +15,7 @@ class StoreCommentNoteRequest extends FormRequest
     {
         return [
             'note_id'=>'required',
-            'dateComment'=>'required',
+            'date'=>'required',
             'comment'=>'required',
             'user_id'=>'required',
         ];

@@ -18,7 +18,7 @@ class CreateCommentDailyReportsTable extends Migration
             $table->foreignId('daily_report_id');
             $table->foreign('daily_report_id')->references('id')->on('daily_reports')->onUpdate('cascade')->onDelete('restrict');
             $table->string('section');
-            $table->dateTime('dateComment');
+            $table->dateTime('date');
             $table->text('comment');
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');

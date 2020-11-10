@@ -16,7 +16,7 @@ class StoreCommentDailyReportRequest extends FormRequest
         return [
             'daily_report_id'=>'required',
             'section'=>'required',
-            'dateComment'=>'required',
+            'date'=>'required',
             'comment'=>'required',
             'user_id'=>'required',
         ];

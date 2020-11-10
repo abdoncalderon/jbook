@@ -15,10 +15,10 @@ class CreateDailyReportsTable extends Migration
     {
         Schema::create('daily_reports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('workbook_id');
-            $table->foreign('workbook_id')->references('id')->on('workbooks')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('period_id');
-            $table->foreign('period_id')->references('id')->on('periods')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('folio_id');
+            $table->foreign('folio_id')->references('id')->on('folios')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('turn_id');
+            $table->foreign('turn_id')->references('id')->on('turns')->onUpdate('cascade')->onDelete('restrict');
             $table->text('report');
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');

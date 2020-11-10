@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
-@section('title', __('content.periods'))
+@section('title', __('content.turns'))
 
-@section('section', __('content.periods'))
+@section('section', __('content.turns'))
 
 @section('level', __('content.configuration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li class="active">{{ __('content.periods') }}</li>
+        <li class="active">{{ __('content.turns') }}</li>
     </ol>
 @endsection
 
@@ -20,8 +20,8 @@
         <div class="box box-info">
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('content.periods') }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('periods.create') }}">{{ __('content.add') }}</a>
+                <h3 class="box-title"><strong>{{ __('content.turns') }}</strong></h3> | 
+                <a class="btn btn-success btn-sm" href="{{ route('turns.create') }}">{{ __('content.add') }}</a>
             </div>
             
             <div class="box-body">
@@ -42,12 +42,12 @@
                     {{-- Rows  --}}
 
                     <tbody>
-                        @foreach($periods as $period)
+                        @foreach($turns as $turn)
                             <tr>
-                                <td>{{ $period->name }}</td>
+                                <td>{{ $turn->name }}</td>
                                 <td>
-                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('periods.show', $period)}}">{{ __('content.show') }}</a>
-                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('periods.destroy', $period)}}">{{ __('content.delete') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('turns.show', $turn)}}">{{ __('content.show') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('turns.destroy', $turn)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach

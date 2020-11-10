@@ -22,14 +22,12 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::where('status', '=', 1)->get();
-
         return view('users.create', compact('roles'));
     }
     
     public function store(SaveUserRequest $request)
     {
         $request ->validated();
-
         User::create([
             'name' => $request['name'],
             'user'  => $request['user'],
@@ -37,7 +35,6 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
             'role_id' => $request['role_id'],
         ]);
-        
         return redirect()->route('users.index');
     }
 
@@ -51,7 +48,6 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::get();
-               
         return view('users.edit',[
             'user'=>$user
             ])
@@ -61,9 +57,7 @@ class UserController extends Controller
     public function update($id, UpdateUserRequest $request)
     {
         $user = User::where('id',$id)->first();
-        
         $user->update($request->validated());
-        
         return redirect()->route('users.index');
     }
     

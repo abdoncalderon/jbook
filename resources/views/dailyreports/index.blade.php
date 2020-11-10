@@ -29,7 +29,6 @@
 
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.dailyreports') }}</strong></h3> | 
-                {{-- <a class="btn btn-success btn-sm" href="{{ route('workbooks.create') }}">{{ __('content.create') }}</a> --}}
             </div>
             
             <div class="box-body">
@@ -44,8 +43,8 @@
                         <tr>
                             <th>{{ __('content.location') }}</th>
                             <th>{{ __('content.date') }}</th>
-                            <th>{{ __('content.period') }}</th>
-                            <th>{{ __('content.status') }}</th>
+                            <th>{{ __('content.turn') }}</th>
+                            {{-- <th>{{ __('content.status') }}</th> --}}
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -55,10 +54,10 @@
                     <tbody>
                         @foreach($dailyReports as $dailyReport)
                             <tr>
-                                <td>{{ $dailyReport->workbook->location->name }}</td>
-                                <td>{{ $dailyReport->workbook->dateWorkbook }}</td>
-                                <td>{{ $dailyReport->period->name }}</td>
-                                <td>{{ $dailyReport->status() }}</td>
+                                <td>{{ $dailyReport->folio->location->name }}</td>
+                                <td>{{ date('Y-M-d',strtotime($dailyReport->folio->date)) }}</td>
+                                <td>{{ $dailyReport->turn->name }} {{ $dailyReport->status() }}</td>
+                                {{-- <td></td> --}}
                                 <td>
                                     @if($dailyReport->status==0)
                                         <a class="btn btn-warning btn-xs" href="{{ route('dailyReports.edit',$dailyReport) }}">{{ __('content.edit') }}</a>

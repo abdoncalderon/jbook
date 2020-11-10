@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
-@section('title', __('content.legalsheets'))
+@section('title', __('content.folio'))
 
-@section('section', __('content.legalsheets'))
+@section('section', __('content.folios'))
 
 @section('level', __('content.workbook'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li class="active">{{ __('content.legalsheets') }}</li>
+        <li class="active">{{ __('content.folios') }}</li>
     </ol>
 @endsection
 
@@ -20,6 +20,7 @@
         <div class="box box-info">
 
             {{-- Messages --}}
+            
             @if(session('message'))
                 <div class="alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -28,8 +29,8 @@
             @endif
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('content.legalsheet') }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('workbooks.create') }}">{{ __('content.insert') }}</a>
+                <h3 class="box-title"><strong>{{ __('content.folio') }}</strong></h3> | 
+                <a class="btn btn-success btn-sm" href="{{ route('folios.create') }}">{{ __('content.insert') }}</a>
             </div>
             
             <div class="box-body">
@@ -52,15 +53,15 @@
                     {{-- Rows  --}}
 
                     <tbody>
-                        @foreach($workbooks as $workbook)
+                        @foreach($folios as $folio)
                             <tr>
-                                <td>{{ $workbook->location->name }}</td>
-                                <td>{{ $workbook->dateWorkbook }}</td>
-                                <td>{{ $workbook->number }}</td>
+                                <td>{{ $folio->location->name }}</td>
+                                <td>{{ date('Y-M-d',strtotime($folio->date)) }}</td>
+                                <td>{{ $folio->number }}</td>
                                 <td>
-                                    @if($workbook->status()==__('content.opened'))
-                                        <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('dailyReports.create',$workbook) }}">{{ __('content.dailyreport') }}</a>
-                                        <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('notes.create',$workbook) }}">{{ __('content.note') }}</a>
+                                    @if($folio->status()==__('content.opened'))
+                                        <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('dailyReports.create',$folio) }}">{{ __('content.dailyreport') }}</a>
+                                        <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('notes.create',$folio) }}">{{ __('content.note') }}</a>
                                     @endif
                                 </td>
                             </tr>

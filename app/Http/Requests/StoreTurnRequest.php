@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePeriodRequest extends FormRequest
+class StoreTurnRequest extends FormRequest
 {
     public function authorize()
     {
@@ -15,7 +15,7 @@ class StorePeriodRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:periods',
+            'name'=>'required|unique:turns',
             'start'=>'required',
             'finish'=>'required',
         ];

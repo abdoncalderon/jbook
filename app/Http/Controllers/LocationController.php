@@ -6,6 +6,7 @@ use App\Models\Location;
 use App\Models\Project;
 use App\Http\Requests\StoreLocationRequest;
 use App\Http\Requests\UpdateLocationRequest;
+use Exception;
 
 class LocationController extends Controller
 {
@@ -25,7 +26,6 @@ class LocationController extends Controller
     public function store(StoreLocationRequest $request )
     {
         Location::create($request ->validated());
-        
         return redirect()->route('locations.index');
     }
 
@@ -46,7 +46,16 @@ class LocationController extends Controller
     public function update(Location $location, UpdateLocationRequest $request)
     {
         $location->update($request->validated());
-
         return redirect()->route('locations.index');
+    }
+
+    public function destroy(Location $location)
+    {
+        try{
+            $location->delete();
+            return redirect()->route('locations.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
     }
 }
