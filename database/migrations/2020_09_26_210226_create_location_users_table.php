@@ -19,10 +19,10 @@ class CreateLocationUsersTable extends Migration
             $table->foreign('location_id')->references('id')->on('locations')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
-            $table->boolean('collaborator_dailyreport')->default(false);
-            $table->boolean('approver_dailyreport')->default(false);
-            $table->boolean('approver_folio')->default(false);
-            $table->boolean('notification')->default(false);
+            $table->boolean('dailyreport_collaborator')->default(false);
+            $table->boolean('dailyreport_approver')->default(false);
+            $table->boolean('folio_approver')->default(false);
+            $table->boolean('receive_notification')->default(false);
             $table->timestamps();
         });
     }

@@ -9,6 +9,8 @@ class LocationUser extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['location_id','user_id','dailyreport_collaborator','dailyreport_approver','folio_approver','receive_notification',];
+
     public function location(){
         return $this->belongsTo(Location::class);
     }

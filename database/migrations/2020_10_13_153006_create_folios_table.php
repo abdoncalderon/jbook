@@ -21,6 +21,8 @@ class CreateFoliosTable extends Migration
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
             $table->integer('number');
+            $table->string('signature_approver')->nullable();
+            $table->string('signature_reviewer')->nullable();
             $table->timestamps();
         });
     }

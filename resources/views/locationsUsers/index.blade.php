@@ -21,7 +21,7 @@
 
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('messages.locationsUsers') }} {{ $user->name }} </strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('locationsUsers.create') }}">{{ __('content.add') }}</a>
+                <a class="btn btn-success btn-sm" href="{{ route('locationsUsers.create', $user) }}">{{ __('content.add') }}</a>
             </div>
             
             <div class="box-body">

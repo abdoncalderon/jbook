@@ -23,8 +23,8 @@ class CreateDailyReportsTable extends Migration
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
             $table->unsignedTinyInteger('status')->default(0);
-            $table->unsignedBigInteger('approvedid')->nullable();
-            $table->unsignedBigInteger('reviewedid')->nullable();
+            $table->unsignedBigInteger('approvedby')->nullable();
+            $table->unsignedBigInteger('reviewedby')->nullable();
             $table->unsignedBigInteger('responsible')->nullable();
             $table->timestamps();
         });

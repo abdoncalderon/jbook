@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Location;
 use App\Models\LocationUser;
+use App\Http\Requests\StoreLocationUserRequest;
 
 class LocationUserController extends Controller
 {
@@ -12,17 +14,23 @@ class LocationUserController extends Controller
         return view('locationsUsers.index', compact('user'));
     }
 
-    public function create()
+    public function create(User $user)
     {
-        $locations = LocationUser::where('user_id','!=',auth()->user()->id)->get();
-        return view('locations.create')
+        if($user->locations->count()>0){
+            $locations = Location::select('locations.id as id','locations.name as name')->leftJoin('location_users','locations.id','=','location_users.location_id')->whereNull('user_id')->get();
+        }else{
+            $locations = Location::all();
+        }
+        // dd($locations);
+        return view('locationsUsers.create')
+        ->with('user',$user)
         ->with('locations',$locations);
     }
       
-    public function store(StoreLocationUserRequest $request )
+    public function store(StoreLocationUserRequest $request, User $user )
     {
         LocationUser::create($request ->validated());
-        return redirect()->route('locationsusers.index');
+        return redirect()->route('locationsUsers.index',$user);
     }
 
     public function edit(LocationUser $locationUser)
