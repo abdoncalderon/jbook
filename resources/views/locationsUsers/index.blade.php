@@ -1,15 +1,16 @@
 @extends('layouts.main')
 
-@section('title', __('messages.locationsUsers'))
+@section('title', __('content.user'))
 
-@section('section', __('messages.locationsUsers'))
+@section('section', __('content.users'))
 
 @section('level', __('content.configuration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li class="active">{{ __('messages.locationsUsers') }}</li>
+        <li><a href="{{ route('users.index')}}"> {{ __('content.users') }} </a></li>
+        <li class="active">{{ __('content.locations') }}</li>
     </ol>
 @endsection
 
@@ -20,7 +21,7 @@
         <div class="box box-info">
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('messages.locationsUsers') }} {{ $user->name }} </strong></h3> | 
+                <h3 class="box-title"><strong>{{ __('messages.locationsAssignedTo') }} {{ $user->name }} </strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('locationsUsers.create', $user) }}">{{ __('content.add') }}</a>
             </div>
             
@@ -35,9 +36,9 @@
                     <thead>
                         <tr>
                             <th>{{ __('content.location') }}</th>
-                            <th>{{ __('messages.collaborateReport') }}</th>
-                            <th>{{ __('messages.approverReport') }}</th>
-                            <th>{{ __('messages.approverFolio') }}</th>
+                            <th>{{ __('content.collaborate') }}</th>
+                            <th>{{ __('content.approve') }} {{ __('content.dailyreport') }}</th>
+                            <th>{{ __('content.approve') }} {{ __('content.folio') }}</th>
                             <th>{{ __('messages.receiveEmail') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
@@ -49,12 +50,13 @@
                         @foreach($user->locations as $locationUser)
                             <tr>
                                 <td>{{ $locationUser->location->name }}</td>
-                                <td>{{ $locationUser->dailyreport_collaborator }}</td>
-                                <td>{{ $locationUser->dailyreport_approver }}</td>
-                                <td>{{ $locationUser->folio_approver }}</td>
-                                <td>{{ $locationUser->receive_notification }}</td>
+                                <td>{{ yesNo($locationUser->dailyreport_collaborator) }}</td>
+                                <td>{{ yesNo($locationUser->dailyreport_approver) }}</td>
+                                <td>{{ yesNo($locationUser->folio_approver) }}</td>
+                                <td>{{ yesNo($locationUser->receive_notification) }}</td>
                                 <td>
                                     <a class="btn btn-info btn-xs" href="{{ route('locationsUsers.edit', $locationUser)}}">{{ __('content.edit')}}</a>
+                                    <a class="btn btn-danger btn-xs" href="{{ route('locationsUsers.destroy', $locationUser)}}">{{ __('content.delete')}}</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -61,8 +61,9 @@ Route::patch('/permits/{permit}','PermitController@update')->name('permits.updat
 Route::get('/locationsUsers/{user}','LocationUserController@index')->name('locationsUsers.index');
 Route::get('/locationsUsers/create/{user}','LocationUserController@create')->name('locationsUsers.create');
 Route::post('/locationsUsers/{user}','LocationUserController@store')->name('locationsUsers.store');
-Route::get('/locationsUsers/edit/{user}','LocationUserController@edit')->name('locationsUsers.edit');
-Route::patch('/locationsUsers/{user}','LocationUserController@update')->name('locationsUsers.update');
+Route::get('/locationsUsers/edit/{locationUser}','LocationUserController@edit')->name('locationsUsers.edit');
+Route::patch('/locationsUsers/{locationUser}','LocationUserController@update')->name('locationsUsers.update');
+Route::get('/locationsUsers/destroy/{locationUser}','LocationUserController@destroy')->name('locationsUsers.destroy');
 
 /* Routes Daily Reports */
 Route::get('/dailyReports','DailyReportController@index')->name('dailyReports.index');

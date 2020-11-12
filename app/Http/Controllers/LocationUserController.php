@@ -6,6 +6,8 @@ use App\User;
 use App\Models\Location;
 use App\Models\LocationUser;
 use App\Http\Requests\StoreLocationUserRequest;
+use App\Http\Requests\UpdateLocationUserRequest;
+use Exception;
 
 class LocationUserController extends Controller
 {
@@ -21,7 +23,6 @@ class LocationUserController extends Controller
         }else{
             $locations = Location::all();
         }
-        // dd($locations);
         return view('locationsUsers.create')
         ->with('user',$user)
         ->with('locations',$locations);
@@ -29,20 +30,54 @@ class LocationUserController extends Controller
       
     public function store(StoreLocationUserRequest $request, User $user )
     {
-        LocationUser::create($request ->validated());
+        $dailyreportCollaborator = $request->has('dailyreport_collaborator');
+        $dailyreportApprover = $request->has('dailyreport_approver');
+        $folioApprover = $request->has('folio_approver');
+        $receiveNotification = $request->has('receive_notification');
+        $request ->validated();
+        LocationUser::create([
+            'location_id'=>$request->location_id,
+            'user_id'=>$request->user_id,
+            'dailyreport_collaborator'=>$dailyreportCollaborator,
+            'dailyreport_approver'=>$dailyreportApprover,
+            'folio_approver'=>$folioApprover,
+            'receive_notification'=>$receiveNotification,
+        ]);
         return redirect()->route('locationsUsers.index',$user);
     }
 
     public function edit(LocationUser $locationUser)
     {
-        return view('locationsUsers.edit',[
-            'permit'=>$locationUser
-            ]);
+        $user = $locationUser->user;
+        return view('locationsUsers.edit')
+        ->with('locationUser',$locationUser)
+        ->with('user',$user);
     }
     
-    public function update(LocationUser $locationUser, UpdatePermitRequest $request)
+    public function update(LocationUser $locationUser, UpdateLocationUserRequest $request)
     {
-        $locationUser->update($request->validated());
-        return redirect()->route('locationsUsers.index');
+        $user = $locationUser->user;
+        $dailyreportCollaborator = $request->has('dailyreport_collaborator');
+        $dailyreportApprover = $request->has('dailyreport_approver');
+        $folioApprover = $request->has('folio_approver');
+        $receiveNotification = $request->has('receive_notification');
+        $request->validated();
+        $locationUser->update([
+            'dailyreport_collaborator'=>$dailyreportCollaborator,
+            'dailyreport_approver'=>$dailyreportApprover,
+            'folio_approver'=>$folioApprover,
+            'receive_notification'=>$receiveNotification,
+        ]);
+        return redirect()->route('locationsUsers.index',$user);
+    }
+
+    public function destroy(LocationUser $locationUser)
+    {
+        try{
+            $locationUser->delete();
+            return redirect()->route('locationsUsers.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
     }
 }

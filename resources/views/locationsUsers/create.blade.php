@@ -1,16 +1,17 @@
 @extends('layouts.main')
 
-@section('title', __('content.notes'))
+@section('title', __('content.user'))
 
-@section('section', __('content.notes'))
+@section('section', __('content.users'))
 
-@section('level', __('content.workbook'))
+@section('level', __('content.configuration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('folios.index')}}"> {{ __('content.folios') }} </a></li>
-        <li class="active">{{ __('content.create') }}</li>
+        <li><a href="{{ route('users.index')}}"> {{ __('content.users') }} </a></li>
+        <li><a href="{{ route('locationsUsers.index',$user)}}"> {{ __('content.locations') }} </a></li>
+        <li class="active">{{ __('content.assign') }}</li>
     </ol>
 @endsection
 
@@ -31,7 +32,7 @@
                 @endif
                 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.create').' '.__('content.location') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('messages.assignLocationTo').' '.$user->name }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}

@@ -45,6 +45,10 @@ class User extends Authenticatable
         return $this->hasMany(Location::class);
     }
 
+    public function permits(){
+        return $this->hasMany(Permit::class);
+    }
+
 
     
 }

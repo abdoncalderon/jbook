@@ -9,6 +9,8 @@ class Permit extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id','create_folio','create_dailyreport','create_note','create_comment','print_dailyreport','print_note','print_folio','approve_documents','edit_sequence',];
+
     public function user(){
         return $this->belongsTo(User::class);
     }

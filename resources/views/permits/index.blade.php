@@ -9,6 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('users.index')}}"> {{ __('content.users') }} </a></li>
         <li class="active">{{ __('content.permits') }}</li>
     </ol>
 @endsection
@@ -20,57 +21,125 @@
         <div class="box box-info">
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('content.permits') }}</strong></h3> | 
-                
+                <h3 class="box-title"><strong>{{ __('messages.permitsAssignedTo') }} {{ $user->name }} </strong></h3>
             </div>
             
             <div class="box-body">
                 
-                 {{-- Start Table  --}}
+                 {{-- Start Form  --}}
 
-                <table id="example1" class="table table-bordered table-striped">
+                <form class="form-horizontal">
 
-                    {{-- Header  --}}
+                    @foreach ($user->permits as $permit)
 
-                    <thead>
-                        <tr>
-                            <th>{{ __('messages.createWorkbook') }}</th>
-                            <th>{{ __('messages.createReport') }}</th>
-                            <th>{{ __('messages.createNote') }}</th>
-                            <th>{{ __('messages.createComment') }}</th>
-                            <th>{{ __('messages.printReport') }}</th>
-                            <th>{{ __('messages.printNote') }}</th>
-                            <th>{{ __('messages.receiveEmail') }}</th>
-                            <th>{{ __('messages.signReport') }}</th>
-                            <th>{{ __('messages.editSequence') }}</th>
-                            <th>{{ __('content.actions') }}</th>
-                        </tr>
-                    </thead>
+                        {{-- Form Body --}}
 
-                    {{-- Rows  --}}
+                        <div class="box-body">
 
-                    <tbody>
-                        @foreach($user->permits as $permit)
-                            <tr>
-                                <td>{{ $permit->create_workbook }}</td>
-                                <td>{{ $permit->create_report }}</td>
-                                <td>{{ $permit->create_note }}</td>
-                                <td>{{ $permit->create_comment }}</td>
-                                <td>{{ $permit->print_report }}</td>
-                                <td>{{ $permit->print_note }}</td>
-                                <td>{{ $permit->receive_email }}</td>
-                                <td>{{ $permit->sign_report }}</td>
-                                <td>{{ $permit->edit_sequence }}</td>
-                                <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('permits.edit', $permit)}}">{{ __('content.edit')}}</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
+                            <div class="col-sm-4 col-md-6 col-lg-10">
+                                
+                                {{-- Create Folio  --}}
 
-                </table>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('messages.createFolio') }}</label>
+                                    <div class="col-sm-10" >
+                                        <input id="create_folio" disabled type="checkbox" name="create_folio" {{ checked($permit->create_folio) }} >
+                                    </div>
+                                </div>
 
-                {{-- End Table  --}}
+                                {{-- Create Report --}}
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('messages.createReport') }}</label>
+                                    <div class="col-sm-10" >
+                                        <input id="create_dailyreport" disabled type="checkbox" name="create_dailyreport" {{ checked($permit->create_dailyreport) }}>
+                                        
+                                    </div>
+                                </div>
+
+                                {{-- Create Note  --}}
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('messages.createNote') }}</label>
+                                    <div class="col-sm-10" >
+                                        <input id="create_note" disabled type="checkbox" name="create_note" {{ checked($permit->create_note) }}>
+                                        
+                                    </div>
+                                </div>
+
+                                {{-- Create Comment  --}}
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('messages.createComment') }}</label>
+                                    <div class="col-sm-10" >
+                                        <input id="create_comment" disabled type="checkbox" name="create_comment" {{ checked($permit->create_comment) }}>
+                                    
+                                    </div>
+                                </div>
+
+                                {{-- Print Report  --}}
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('messages.printReport') }}</label>
+                                    <div class="col-sm-10" >
+                                        <input id="print_dailyreport" disabled type="checkbox" name="print_dailyreport" {{ checked($permit->print_dailyreport) }}>
+                                        
+                                    </div>
+                                </div>
+
+                                {{-- Print Note  --}}
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('messages.printNote') }}</label>
+                                    <div class="col-sm-10" >
+                                        <input id="print_note" disabled type="checkbox" name="print_note" {{ checked($permit->print_note) }}>
+                                        
+                                    </div>
+                                </div>
+
+                                {{-- Print Folio  --}}
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('messages.printFolio') }}</label>
+                                    <div class="col-sm-10" >
+                                        <input id="print_folio" disabled type="checkbox" name="print_folio" {{ checked($permit->print_folio) }}>
+                                        
+                                    </div>
+                                </div>
+
+                                {{-- Sign Report --}}
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('messages.signReport') }}</label>
+                                    <div class="col-sm-10" >
+                                        <input id="approve_documents" disabled type="checkbox" name="approve_documents" {{ checked($permit->approve_documents) }}>
+                                        
+                                    </div>
+                                </div>
+
+                                {{-- Edit Sequence  --}}
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('messages.editSequence') }}</label>
+                                    <div class="col-sm-10" >
+                                        <input id="edit_sequence" disabled type="checkbox" name="edit_sequence" {{ checked($permit->edit_sequence) }}>
+                                    </div>
+                                </div>
+                        
+                            </div>
+
+                        </div>
+
+                        {{-- Submit  --}}
+
+                        <div class="box-footer">
+                            <a class="btn btn-info btn-sm" href="{{ route('permits.edit', $permit)}}">{{ __('content.edit')}}</a>
+                            <a class="btn btn-info btn-sm" href=" {{ route('users.index') }} ">{{ __('content.cancel') }}</a>
+                        </div>
+                    
+                    @endforeach
+
+                </form>
 
             </div>
 

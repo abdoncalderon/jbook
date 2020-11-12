@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 Use App\User;
 Use App\Models\Permit;
+use App\Http\Requests\UpdatePermitRequest;
 
 
 class PermitController extends Controller
@@ -12,10 +13,10 @@ class PermitController extends Controller
     {
         return view('permits.index', compact('user'));
     }
-      
 
-    public function edit(Permit $permit)
+    public function edit(UpdatePermitRequest $request, Permit $permit)
     {
+        
         return view('permits.edit',[
             'permit'=>$permit
             ]);
@@ -23,7 +24,28 @@ class PermitController extends Controller
     
     public function update(Permit $permit, UpdatePermitRequest $request)
     {
-        $permit->update($request->validated());
-        return redirect()->route('permits.index');
+        $user = $permit->user;
+        $createfolio = $request->has('create_folio');
+        $createdailyreport = $request->has('create_dailyreport');
+        $createnote = $request->has('create_note');
+        $createcomment = $request->has('create_comment');
+        $printdailyreport = $request->has('print_dailyreport');
+        $printnote = $request->has('print_note');
+        $printfolio = $request->has('print_folio');
+        $approvedocuments = $request->has('approve_documents');
+        $editsequence = $request->has('edit_sequence');
+        $request->validated();
+        $permit->update([
+            'create_folio'=>$createfolio,
+            'create_dailyreport'=>$createdailyreport,
+            'create_note'=>$createnote,
+            'create_comment'=>$createcomment,
+            'print_dailyreport'=>$printdailyreport,
+            'print_note'=>$printnote,
+            'print_folio'=>$printfolio,
+            'approve_documents'=>$approvedocuments,
+            'edit_sequence'=>$editsequence,
+        ]);
+        return redirect()->route('permits.index',$user);
     }
 }

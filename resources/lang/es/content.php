@@ -184,6 +184,9 @@ return [
     'receive'=>'Recibe',
     'collaborate'=>'Colabora',
     'approve'=>'Aprueba',
+    'assignment'=>'Asignación',
+    'assign'=>'Asignar',
+    
     
 
     'currency'=>'US$',
