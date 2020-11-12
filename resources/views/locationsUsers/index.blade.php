@@ -37,7 +37,7 @@
                             <th>{{ __('content.location') }}</th>
                             <th>{{ __('messages.collaborateReport') }}</th>
                             <th>{{ __('messages.approverReport') }}</th>
-                            <th>{{ __('messages.approverWorkbook') }}</th>
+                            <th>{{ __('messages.approverFolio') }}</th>
                             <th>{{ __('messages.receiveEmail') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
@@ -49,10 +49,10 @@
                         @foreach($user->locations as $locationUser)
                             <tr>
                                 <td>{{ $locationUser->location->name }}</td>
-                                <td>{{ $locationUser->collaborator_report }}</td>
-                                <td>{{ $locationUser->approver_report }}</td>
-                                <td>{{ $locationUser->approver_folio }}</td>
-                                <td>{{ $locationUser->notification }}</td>
+                                <td>{{ $locationUser->dailyreport_collaborator }}</td>
+                                <td>{{ $locationUser->dailyreport_approver }}</td>
+                                <td>{{ $locationUser->folio_approver }}</td>
+                                <td>{{ $locationUser->receive_notification }}</td>
                                 <td>
                                     <a class="btn btn-info btn-xs" href="{{ route('locationsUsers.edit', $locationUser)}}">{{ __('content.edit')}}</a>
                                 </td>

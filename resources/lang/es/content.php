@@ -178,6 +178,13 @@ return [
     'sector'=>'Area',
     'turn'=>'Turno',
     'folio'=>'Folio',
+    'approver'=>'Aprobador',
+    'collaborator'=>'Colaborador',
+    'notification'=>'Notificación',
+    'receive'=>'Recibe',
+    'collaborate'=>'Colabora',
+    'approve'=>'Aprueba',
+    
 
     'currency'=>'US$',
     
