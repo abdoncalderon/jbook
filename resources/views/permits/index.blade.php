@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
-@section('title', __('content.permits'))
+@section('title', __('content.user'))
 
-@section('section', __('content.permits'))
+@section('section', __('content.users'))
 
 @section('level', __('content.configuration'))
 
@@ -107,15 +107,6 @@
                                     </div>
                                 </div>
 
-                                {{-- Sign Report --}}
-
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">{{ __('messages.signReport') }}</label>
-                                    <div class="col-sm-10" >
-                                        <input id="approve_documents" disabled type="checkbox" name="approve_documents" {{ checked($permit->approve_documents) }}>
-                                        
-                                    </div>
-                                </div>
 
                                 {{-- Edit Sequence  --}}
 

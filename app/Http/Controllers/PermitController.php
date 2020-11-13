@@ -32,7 +32,6 @@ class PermitController extends Controller
         $printdailyreport = $request->has('print_dailyreport');
         $printnote = $request->has('print_note');
         $printfolio = $request->has('print_folio');
-        $approvedocuments = $request->has('approve_documents');
         $editsequence = $request->has('edit_sequence');
         $request->validated();
         $permit->update([
@@ -43,7 +42,6 @@ class PermitController extends Controller
             'print_dailyreport'=>$printdailyreport,
             'print_note'=>$printnote,
             'print_folio'=>$printfolio,
-            'approve_documents'=>$approvedocuments,
             'edit_sequence'=>$editsequence,
         ]);
         return redirect()->route('permits.index',$user);

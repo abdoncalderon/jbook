@@ -23,7 +23,7 @@ class CreatePermitsTable extends Migration
             $table->boolean('create_comment')->default(false);
             $table->boolean('print_dailyreport')->default(false);
             $table->boolean('print_note')->default(false);
-            $table->boolean('approve_documents')->default(false);
+            $table->boolean('print_folio')->default(false);
             $table->boolean('edit_sequence')->default(false);
             $table->timestamps();
         });
