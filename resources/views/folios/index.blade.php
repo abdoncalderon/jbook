@@ -30,7 +30,9 @@
 
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.folio') }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('folios.create') }}">{{ __('content.insert') }}</a>
+                @if(auth()->user()->permit->create_folio==1)
+                    <a class="btn btn-success btn-sm" href="{{ route('folios.create') }}">{{ __('content.insert') }}</a>
+                @endif
             </div>
             
             <div class="box-body">
@@ -60,8 +62,15 @@
                                 <td>{{ $folio->number }}</td>
                                 <td>
                                     @if($folio->status()==__('content.opened'))
-                                        <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('dailyReports.create',$folio) }}">{{ __('content.dailyreport') }}</a>
-                                        <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('notes.create',$folio) }}">{{ __('content.note') }}</a>
+                                        @if(auth()->user()->permit->create_dailyreport==1)
+                                            <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('dailyReports.create',$folio) }}">{{ __('content.dailyreport') }}</a>
+                                        @endif
+                                        @if(auth()->user()->permit->create_note==1)
+                                            <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('notes.create',$folio) }}">{{ __('content.note') }}</a>
+                                        @endif
+                                    @endif
+                                    @if(auth()->user()->permit->edit_sequence==1)
+                                        <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('folios.edit',$folio) }}">{{ __('content.edit') }} {{ __('content.number') }}</a>
                                     @endif
                                 </td>
                             </tr>
@@ -77,5 +86,7 @@
         </div>
 
     </section>
+
+    
 
 @endsection

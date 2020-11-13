@@ -47,12 +47,12 @@
 
                         <div class="col-sm-4 col-md-6 col-lg-10">
 
-                            {{-- dailyreport_id --}}
+                            {{-- Folio --}}
     
-                            <input id="daily_report_id" hidden type="text" name="daily_report_id" value="{{ $folio->id }}">
+                            <input id="folio_id" hidden type="text" name="folio_id" value="{{ $folio->id }}">
 
 
-                            {{-- date --}}
+                            {{-- Date --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.date') }}</label>
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             
-                            {{-- location --}}
+                            {{-- Location --}}
                                 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
 
-                            {{-- turn --}}
+                            {{-- Turn --}}
                                 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.turn') }}</label>
@@ -79,6 +79,21 @@
                                         <option value="">{{__('messages.select')}} {{__('content.turn')}}</option>
                                         @foreach ($folio->location->turns as $turnLocation)
                                             <option value="{{ $turnLocation->turn_id }}">{{ $turnLocation->turn->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            
+                            {{-- Responsible --}}
+                                
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.responsible') }}</label>
+                                <div class="col-sm-10" >
+                                    <select id="responsible" name="responsible" class="form-control" required style="width: 100%;" >
+                                        <option value="">{{__('messages.select')}} {{__('content.responsible')}}</option>
+                                        @foreach ($responsibles as $responsible)
+                                            <option value="{{ $responsible->user->id }}">{{ $responsible->user->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

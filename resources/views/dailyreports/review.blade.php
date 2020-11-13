@@ -87,9 +87,11 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10" >
-                                    <button type="button" class="btn btn-info" onclick="$('#section').val('report');" data-toggle="modal" data-target="#modal-dailyReport-comments">
-                                        {{ __('content.add') }} {{ __('content.comment') }}
-                                    </button>
+                                    @if(auth()->user()->permit->create_comment==1)
+                                        <button type="button" class="btn btn-info" onclick="$('#section').val('report');" data-toggle="modal" data-target="#modal-dailyReport-comments">
+                                            {{ __('content.add') }} {{ __('content.comment') }}
+                                        </button>
+                                    @endif
                                     <div>
                                         <br>
                                     </div>
@@ -155,9 +157,11 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10" >
-                                    <button type="button" class="btn btn-info" onclick="$('#section').val('equipments');" data-toggle="modal" data-target="#modal-dailyReport-comments">
-                                        {{ __('content.add') }} {{ __('content.comment') }}
-                                    </button>
+                                    @if(auth()->user()->permit->create_comment==1)
+                                        <button type="button" class="btn btn-info" onclick="$('#section').val('equipments');" data-toggle="modal" data-target="#modal-dailyReport-comments">
+                                            {{ __('content.add') }} {{ __('content.comment') }}
+                                        </button>
+                                    @endif
                                     <div>
                                         <br>
                                     </div>
@@ -223,9 +227,11 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10" >
-                                    <button type="button" class="btn btn-info" onclick="$('#section').val('positions');"  data-toggle="modal" data-target="#modal-dailyReport-comments">
-                                        {{ __('content.add') }} {{ __('content.comment') }}
-                                    </button>
+                                    @if(auth()->user()->permit->create_comment==1)
+                                        <button type="button" class="btn btn-info" onclick="$('#section').val('positions');"  data-toggle="modal" data-target="#modal-dailyReport-comments">
+                                            {{ __('content.add') }} {{ __('content.comment') }}
+                                        </button>
+                                    @endif
                                     <div>
                                         <br>
                                     </div>
@@ -297,9 +303,11 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10" >
-                                    <button type="button" class="btn btn-info" onclick="$('#section').val('events');" data-toggle="modal" data-target="#modal-dailyReport-comments">
-                                        {{ __('content.add') }} {{ __('content.comment') }}
-                                    </button>
+                                    @if(auth()->user()->permit->create_comment==1)
+                                        <button type="button" class="btn btn-info" onclick="$('#section').val('events');" data-toggle="modal" data-target="#modal-dailyReport-comments">
+                                            {{ __('content.add') }} {{ __('content.comment') }}
+                                        </button>
+                                    @endif
                                     <div>
                                         <br>
                                     </div>
@@ -365,9 +373,11 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10" >
-                                    <button type="button" class="btn btn-info" onclick="$('#section').val('attachments');" data-toggle="modal" data-target="#modal-dailyReport-comments">
-                                        {{ __('content.add') }} {{ __('content.comment') }}
-                                    </button>
+                                    @if(auth()->user()->permit->create_comment==1)
+                                        <button type="button" class="btn btn-info" onclick="$('#section').val('attachments');" data-toggle="modal" data-target="#modal-dailyReport-comments">
+                                            {{ __('content.add') }} {{ __('content.comment') }}
+                                        </button>
+                                    @endif
                                     <div>
                                         <br>
                                     </div>

@@ -9,7 +9,7 @@ class Note extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['folio_id','turn_id','dateNote','note','user_id','status',];
+    protected $fillable = ['folio_id','turn_id','date','note','user_id','status',];
 
     public function folio()
     {

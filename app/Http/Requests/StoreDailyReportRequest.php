@@ -27,6 +27,7 @@ class StoreDailyReportRequest extends FormRequest
                 'turn_id'=>'required',
                 'report'=>'required',
                 'user_id'=>'required',
+                'responsible'=>'required',
             ];
         }
     }

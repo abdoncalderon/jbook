@@ -6,6 +6,7 @@ use App\Models\DailyReport;
 use App\Models\Folio;
 use App\Models\Equipment;
 use App\Models\Position;
+use App\Models\LocationUser;
 use App\Http\Requests\StoreDailyReportRequest;
 use App\Http\Requests\UpdateDailyReportRequest;
 use App\Models\Contractor;
@@ -23,10 +24,12 @@ class DailyReportController extends Controller
     {
         $equipments = Equipment::all();
         $positions = Position::all();
+        $responsibles = LocationUser::where('location_id',$folio->location_id)->where('dailyreport_approver',1)->get();
         return view('dailyreports.create')
         ->with('folio',$folio)
         ->with('equipments',$equipments)
-        ->with('positions',$positions);
+        ->with('positions',$positions)
+        ->with('responsibles',$responsibles);
     }
 
 

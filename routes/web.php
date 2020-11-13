@@ -51,6 +51,7 @@ Route::get('/turns/destroy/{turn}','TurnController@destroy')->name('turns.destro
 /* Routes Folios */
 Route::resource('folios','FolioController');
 Route::get('getNumber/{location}','FolioController@getNumber')->name('folios.getNumber');
+Route::patch('folios/updateNumber/{folio}','FolioController@updateNumber')->name('folios.updateNumber');
 
 /* Routes Permits */
 Route::get('/permits/{user}','PermitController@index')->name('permits.index');
@@ -111,3 +112,11 @@ Route::get('/attachmentNotes/destroy/{attachmentNote}','AttachmentNoteController
 /* Routes Comments x Note */
 Route::post('/commentNotes','CommentNoteController@store')->name('commentNotes.store');
 Route::get('/commentNotes/destroy/{commentNote}','CommentNoteController@destroy')->name('commentNotes.destroy');
+
+/* Routes Locations x User */
+Route::get('/turnsLocations/{location}','TurnLocationController@index')->name('turnsLocations.index');
+Route::get('/turnsLocations/create/{location}','TurnLocationController@create')->name('turnsLocations.create');
+Route::post('/turnsLocations/{location}','TurnLocationController@store')->name('turnsLocations.store');
+Route::get('/turnsLocations/edit/{turnlocation}','TurnLocationController@edit')->name('turnsLocations.edit');
+Route::patch('/turnsLocations/{turnlocation}','TurnLocationController@update')->name('turnsLocations.update');
+Route::get('/turnsLocations/destroy/{turnlocation}','TurnLocationController@destroy')->name('turnsLocations.destroy');

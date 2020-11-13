@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', __('content.locations'))
+@section('title', __('content.location'))
 
 @section('section', __('content.locations'))
 
@@ -9,7 +9,8 @@
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li class="active">{{ __('content.locations') }}</li>
+        <li><a href="{{ route('users.index')}}"> {{ __('content.locations') }} </a></li>
+        <li class="active">{{ __('content.turns') }}</li>
     </ol>
 @endsection
 
@@ -19,16 +20,17 @@
 
         <div class="box box-info">
 
-            @if(session('message'))
-                <div class="alert alert-success alert-dismissible">
+            {{-- Error Messages --}}
+            @if($errors->any())
+                <div class="alert alert-danger alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {{ session('message') }}
+                    {{ $errors->first() }}
                 </div>
             @endif
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('content.locations') }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('locations.create') }}">{{ __('content.add') }}</a>
+                <h3 class="box-title"><strong>{{ __('content.turns') }} {{ $location->name }} </strong></h3> | 
+                <a class="btn btn-success btn-sm" href="{{ route('turnsLocations.create', $location) }}">{{ __('content.add') }}</a>
             </div>
             
             <div class="box-body">
@@ -42,6 +44,8 @@
                     <thead>
                         <tr>
                             <th>{{ __('content.name') }}</th>
+                            <th>{{ __('content.from') }}</th>
+                            <th>{{ __('content.to') }} </th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -49,13 +53,13 @@
                     {{-- Rows  --}}
 
                     <tbody>
-                        @foreach($locations as $location)
+                        @foreach($location->turns as $turnlocation)
                             <tr>
-                                <td>{{ $location->name }}</td>
+                                <td>{{ $turnlocation->turn->name }}</td>
+                                <td>{{ $turnlocation->dateFrom }}</td>
+                                <td>{{ $turnlocation->dateTo }}</td>
                                 <td>
-                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('locations.show', $location)}}">{{ __('content.show') }}</a>
-                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('turnsLocations.index', $location)}}">{{ __('content.turns') }}</a>
-                                    <a style="margin: 0.3em" class="btn btn-danger btn-xs" href="{{ route('locations.destroy', $location)}}">{{ __('content.delete') }}</a>
+                                    <a class="btn btn-danger btn-xs" href="{{ route('turnsLocations.destroy', $turnlocation)}}">{{ __('content.delete')}}</a>
                                 </td>
                             </tr>
                         @endforeach

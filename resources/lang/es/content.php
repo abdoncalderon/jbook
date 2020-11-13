@@ -13,6 +13,7 @@ return [
     'open'=>'Abrir',
     'close'=>'Cerrar',
     'insert'=>'Insertar',
+    'new'=>'Nuevo',
     
     
     'actions' => 'Acciones',
@@ -186,6 +187,8 @@ return [
     'approve'=>'Aprueba',
     'assignment'=>'Asignación',
     'assign'=>'Asignar',
+    'responsible'=>'Responsable',
+    'current'=>'Actual',
     
     
 

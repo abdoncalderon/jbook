@@ -7,6 +7,7 @@ use App\Models\Folio;
 use App\Models\Location;
 use App\Models\LocationUser;
 use App\Http\Requests\StoreFolioRequest;
+use App\Http\Requests\UpdateFolioRequest;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -42,6 +43,19 @@ class FolioController extends Controller
             return back()->withErrors($e->getMessage());
         }
         
+    }
+
+    public function edit(Folio $folio)
+    {
+        return view('folios.edit', compact('folio'));
+    }
+
+    public function update(UpdateFolioRequest $request, Folio $folio)
+    {
+        $folio->update([
+            'number'=>$request->number,
+        ]);
+        return redirect()->route('folios.index');
     }
 
     public function getNumber(Request $request, $id)

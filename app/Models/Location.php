@@ -16,9 +16,9 @@ class Location extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function periods()
+    public function turns()
     {
-        return $this->hasMany(PeriodLocation::class);
+        return $this->hasMany(TurnLocation::class);
     }
 
     public function folios()

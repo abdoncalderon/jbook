@@ -118,9 +118,11 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.comments') }}</label>
                                 <div class="col-sm-10" >
-                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-comments">
-                                        {{ __('content.add') }}
-                                    </button>
+                                    @if(auth()->user()->permit->create_comment==1)
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-comments">
+                                            {{ __('content.add') }}
+                                        </button>
+                                    @endif
                                     <div>
                                         <br>
                                     </div>
