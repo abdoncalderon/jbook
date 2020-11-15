@@ -77,30 +77,39 @@
                                 </div>
                             </div>
                             
-                            {{-- Max Time for Open WorkBook  --}}
+                            {{-- Max Time for Open folio  --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimeopen') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('messages.maxtimeopenfolio') }}</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="maxtimeopen">
+                                    <input type="number" class="form-control" name="max_time_open_folio">
+                                </div>
+                            </div>
+
+                            {{-- Max Time for create daily report  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatedailyreport') }}</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="max_time_create_dailyreport">
                                 </div>
                             </div>
 
                             {{-- Max Time for Create Note  --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimenote') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatenote') }}</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="maxtimenote">
+                                    <input type="number" class="form-control" name="max_time_create_note">
                                 </div>
                             </div>
 
-                            {{-- Max Time for Comment --}}
+                            {{-- Max Time for create Comment --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecomment') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatecomment') }}</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="maxtimecomment">
+                                    <input type="number" class="form-control" name="max_time_create_comment">
                                 </div>
                             </div>
                        

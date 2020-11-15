@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CommentDailyReport extends Model
 {
-    use HasFactory;
+    // use HasFactory;
 
-    protected $fillable = ['daily_report_id','section','dateComment','comment','user_id',];
+    protected $fillable = ['daily_report_id','section','date','comment','user_id',];
 
     public function user()
     {

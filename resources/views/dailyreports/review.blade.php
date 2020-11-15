@@ -419,8 +419,9 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        {{-- <button type="submit" class="btn btn-success btn-sm">{{ __('content.save') }}</button> --}}
-                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-review-dailyreport">{{ __('content.reviewed') }}</button>
+                        @if(auth()->user()->isFolioApprover($dailyReport->folio->location))
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-review-dailyreport">{{ __('content.reviewed') }}</button>
+                        @endif
                         <a class="btn btn-info btn-sm" href="{{ route('dailyReports.index') }}">{{ __('content.cancel') }}</a>
                     </div>
 
@@ -460,7 +461,7 @@
 
                             {{-- Date --}}
 
-                            <input id="dateComment" hidden type="text" name="dateComment" value="{{ now()->format('Y-m-d H:i:s') }}">
+                            <input id="date" hidden type="text" name="date" value="{{ now()->format('Y-m-d H:i:s') }}">
 
                             {{-- Comment --}}
 
@@ -517,7 +518,7 @@
                         {{-- Finish --}}
 
                         <div class="form-group">
-                            <label for="finish">{{__('content.start')}}</label>
+                            <label for="finish">{{__('content.finish')}}</label>
                             <input id="finish" disabled type="text" class="form-control" name="finish" value="{{ $eventDailyReport->finish ?? '' }}">
                         </div>
 

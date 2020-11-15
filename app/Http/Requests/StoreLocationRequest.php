@@ -18,9 +18,10 @@ class StoreLocationRequest extends FormRequest
             'name'=>'required|unique:locations',
             'code'=>'required|unique:locations',
             'project_id'=>'required',
-            'maxtimeopen'=>'required',
-            'maxtimenote'=>'required',
-            'maxtimecomment'=>'required',
+            'max_time_open_folio'=>'required',
+            'max_time_create_dailyreport'=>'required',
+            'max_time_create_note'=>'required',
+            'max_time_create_comment'=>'required',
         ];
     }
 }

@@ -71,27 +71,36 @@
                         {{-- Max Time Open Folio  --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('messages.maxtimeopen') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('messages.maxtimeopenfolio') }}</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $location->maxtimeopen }}">
+                                <input disabled class="form-control" value="{{ $location->max_time_open_folio }}">
+                            </div>
+                        </div>
+
+                        {{-- Max Time Create Daily Report  --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatedailyreport') }}</label>
+                            <div class="col-sm-10">
+                                <input disabled class="form-control" value="{{ $location->max_time_create_dailyreport }}">
                             </div>
                         </div>
 
                         {{-- Max Time Create Note --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('messages.maxtimenote') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatenote') }}</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $location->maxtimenote }}">
+                                <input disabled class="form-control" value="{{ $location->max_time_create_note }}">
                             </div>
                         </div>
 
                         {{-- Max Time Comments  --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('messages.maxtimecomment') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatecomment') }}</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $location->maxtimecomment }}">
+                                <input disabled class="form-control" value="{{ $location->max_time_create_comment }}">
                             </div>
                         </div>
 

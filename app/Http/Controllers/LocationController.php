@@ -57,5 +57,7 @@ class LocationController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
+
+        
     }
 }

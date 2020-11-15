@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    use HasFactory;
+    // use HasFactory;
 
-    protected $fillable = ['name','code','project_id','sequence','maxtimeopen','maxtimenote','maxtimecomment',];
+    protected $fillable = ['name','code','project_id','sequence','max_time_open_folio','max_time_create_dailyreport','max_time_create_note','max_time_create_comment',];
 
     public function project()
     {

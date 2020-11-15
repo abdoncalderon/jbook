@@ -3,14 +3,14 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Folio extends Model
 {
-    use HasFactory;
+    // use HasFactory;
 
-    protected $fillable = ['date','location_id','user_id','number'];
+    protected $fillable = ['date','location_id','user_id','number',];
 
     public function location(){
         return $this->belongsTo(Location::class);
@@ -24,12 +24,16 @@ class Folio extends Model
         return $this->hasMany(DailyReport::class);
     }
 
+    public function notes(){
+        return $this->hasMany(Note::class);
+    }
+
     public function status(){
         $date = strtotime($this->date);
         $today = strtotime(Carbon::today()->toDateString());
         $differenceInHours = abs(round(($date - $today)/60/60,0));
-        $locationMaxTimeOpen = $this->location->maxtimeopen;
-        if (($differenceInHours > $locationMaxTimeOpen)){
+        $locationMaxTimeOpenFolio = $this->location->max_time_open_folio;
+        if (($differenceInHours > $locationMaxTimeOpenFolio)){
             return __('content.closed');
         }else{
             return __('content.opened');

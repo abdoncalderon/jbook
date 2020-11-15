@@ -10,6 +10,7 @@ use App\Http\Requests\StoreFolioRequest;
 use App\Http\Requests\UpdateFolioRequest;
 use Illuminate\Http\Request;
 use Exception;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class FolioController extends Controller
 {
@@ -32,12 +33,12 @@ class FolioController extends Controller
             $date = strtotime($request->date);
             $today = strtotime(Carbon::today()->toDateString());
             $differenceInHours = abs(round(($date - $today)/60/60,0));
-            if (($differenceInHours <= $location->maxtimeopen)){
+            if (($differenceInHours <= $location->max_time_open_folio)){
                 Folio::create($request ->validated());
                 $location->uploadSequence();
                 return redirect()->route('folios.index')->with('messages',__('messages.recordsuccessfullystored'));
             }else{
-                return back()->withErrors(__('messages.timeexpiredtocreate').' '.__('content.folio'));
+                return back()->withErrors(__('messages.timeexpiredtoOpen').' '.__('content.folio'));
             }
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
@@ -56,6 +57,12 @@ class FolioController extends Controller
             'number'=>$request->number,
         ]);
         return redirect()->route('folios.index');
+    }
+
+    public function print(Folio $folio)
+    {
+        $pdf = PDF::loadView('folios.print',compact('folio'));
+        return $pdf->stream('folio.pdf');
     }
 
     public function getNumber(Request $request, $id)

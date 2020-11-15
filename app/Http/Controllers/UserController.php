@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Role;
+use App\Models\Permit;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\SaveUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Permit as ModelsPermit;
 
 class UserController extends Controller
 {
@@ -28,13 +30,17 @@ class UserController extends Controller
     public function store(SaveUserRequest $request)
     {
         $request ->validated();
-        User::create([
+        $user = User::create([
             'name' => $request['name'],
             'user'  => $request['user'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
             'role_id' => $request['role_id'],
         ]);
+        Permit::create([
+            'user_id' => $user->id,
+        ]);
+
         return redirect()->route('users.index');
     }
 

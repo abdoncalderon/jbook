@@ -14,6 +14,7 @@ return [
     'close'=>'Cerrar',
     'insert'=>'Insertar',
     'new'=>'Nuevo',
+    'print'=>'Imprimir',
     
     
     'actions' => 'Acciones',

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\DailyReport;
 use App\Models\Folio;
 use App\Models\Equipment;
 use App\Models\Position;
+use App\Models\Location;
 use App\Models\LocationUser;
 use App\Http\Requests\StoreDailyReportRequest;
 use App\Http\Requests\UpdateDailyReportRequest;
@@ -36,8 +38,17 @@ class DailyReportController extends Controller
     public function store(StoreDailyReportRequest $request)
     {
         try{
-            $dailyReport = DailyReport::create($request ->validated());
-            return redirect()->route('dailyReports.edit',$dailyReport)->with('messages',__('messages.recordsuccessfullystored'));
+            $folio=Folio::find($request->folio_id);
+            $date = strtotime($folio->date);
+            $today = strtotime(Carbon::today()->toDateString());
+            $differenceInHours = abs(round(($date - $today)/60/60,0));
+            if (($differenceInHours <= $folio->location->max_time_create_dailyreport)){
+                $dailyReport = DailyReport::create($request ->validated());
+                return redirect()->route('dailyReports.edit',$dailyReport)->with('messages',__('messages.recordsuccessfullystored'));
+            }else{
+                return back()->withErrors(__('messages.timeexpiredtocreate').' '.__('content.dailyreport'));
+            }
+            
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }

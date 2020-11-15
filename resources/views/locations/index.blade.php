@@ -19,10 +19,12 @@
 
         <div class="box box-info">
 
-            @if(session('message'))
-                <div class="alert alert-success alert-dismissible">
+            {{-- Error Messages --}}
+
+            @if($errors->any())
+                <div class="alert alert-danger alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {{ session('message') }}
+                    {{ $errors->first() }}
                 </div>
             @endif
 

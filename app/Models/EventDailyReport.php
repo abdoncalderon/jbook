@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class EventDailyReport extends Model
 {
-    use HasFactory;
+    // use HasFactory;
 
     protected $fillable = ['daily_report_id','cause','start','finish','description','haveImpact','user_id',];
 

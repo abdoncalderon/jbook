@@ -19,15 +19,15 @@
 
         <div class="box box-info">
 
-            {{-- Messages --}}
-            
-            @if(session('message'))
-                <div class="alert alert-success alert-dismissible">
+            {{-- Error Messages --}}
+
+            @if($errors->any())
+                <div class="alert alert-danger alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {{ session('message') }}
+                    {{ $errors->first() }}
                 </div>
             @endif
-
+            
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.folio') }}</strong></h3> | 
                 @if(auth()->user()->permit->create_folio==1)
@@ -71,6 +71,9 @@
                                     @endif
                                     @if(auth()->user()->permit->edit_sequence==1)
                                         <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('folios.edit',$folio) }}">{{ __('content.edit') }} {{ __('content.number') }}</a>
+                                    @endif
+                                    @if(auth()->user()->permit->print_folio==1)
+                                        <a target="_blank" style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('folios.print',$folio) }}">{{ __('content.print') }}</a>
                                     @endif
                                 </td>
                             </tr>

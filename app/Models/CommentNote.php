@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CommentNote extends Model
 {
-    use HasFactory;
+    // use HasFactory;
 
     protected $fillable = ['note_id','dateComment','comment','user_id',];
 

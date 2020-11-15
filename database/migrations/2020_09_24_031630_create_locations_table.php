@@ -20,9 +20,10 @@ class CreateLocationsTable extends Migration
             $table->foreignId('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
             $table->integer('sequence')->default('1');
-            $table->integer('maxtimeopen')->default('24');
-            $table->integer('maxtimenote')->default('24');
-            $table->integer('maxtimecomment')->default('24');
+            $table->integer('max_time_open_folio')->default('24');
+            $table->integer('max_time_create_dailyreport')->default('24');
+            $table->integer('max_time_create_note')->default('24');
+            $table->integer('max_time_create_comment')->default('24');
             $table->timestamps();
         });
     }

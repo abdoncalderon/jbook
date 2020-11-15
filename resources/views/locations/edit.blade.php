@@ -90,30 +90,39 @@
                                 </div>
                             </div>
                             
-                            {{-- Max Time for Open WorkBook  --}}
+                            {{-- Max Time for Open folio  --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimeopen') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('messages.maxtimeopenfolio') }}</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="maxtimeopen" value="{{ $location->maxtimeopen }}">
+                                    <input type="number" class="form-control" name="maxtimeopen" value="{{ $location->max_time_open_folio }}">
+                                </div>
+                            </div>
+
+                            {{-- Max Time for Create Daily Report  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatedailyreport') }}</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="maxtimeopen" value="{{ $location->max_time_create_dailyreport }}">
                                 </div>
                             </div>
 
                             {{-- Max Time for Create Note  --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimenote') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatenote') }}</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="maxtimenote" value="{{ $location->maxtimenote }}">
+                                    <input type="number" class="form-control" name="maxtimenote" value="{{ $location->max_time_create_note }}">
                                 </div>
                             </div>
 
                             {{-- Max Time for Comment --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecomment') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatecomment') }}</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="maxtimecomment" value="{{ $location->maxtimecomment }}">
+                                    <input type="number" class="form-control" name="maxtimecomment" value="{{ $location->max_time_create_comment }}">
                                 </div>
                             </div>
                        
@@ -126,8 +135,6 @@
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
                         <a class="btn btn-info btn-sm" href=" {{ route('home') }} ">{{ __('content.cancel') }}</a>
-                       {{--  <a class="btn btn-success btn-sm" href=" {{ route('locations.edit', $location) }} ">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href=" {{ route('locations.index') }} ">{{ __('messages.returntolist') }}</a> --}}
                     </div>
 
                 </form>

@@ -268,7 +268,9 @@
 
                     <div class="box-footer">
                         <button id="save" type="submit" class="btn btn-success btn-sm">{{ __('content.save') }}</button>
-                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-save-dailyreport">{{ __('content.save') }} & {{ __('content.finalize') }}</button>
+                        @if(auth()->user()->isDailyReportApprover($dailyReport->folio->location))
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-save-dailyreport">{{ __('content.save') }} & {{ __('content.finalize') }}</button>
+                        @endif
                         <a class="btn btn-info btn-sm" href="{{ route('dailyReports.index') }}">{{ __('content.cancel') }}</a>
                     </div>
 

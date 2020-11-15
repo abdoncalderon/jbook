@@ -55,5 +55,14 @@ class User extends Authenticatable
         return $this->hasMany(Permit::class);
     }
 
+    public function isDailyReportApprover($location){
+        $locationUser = LocationUser::where('user_id',$this->id)->where('location_id',$location->id)->first();
+        return ($locationUser->dailyreport_approver==1);
+    }
+
+    public function isFolioApprover($location){
+        $locationUser = LocationUser::where('user_id',$this->id)->where('location_id',$location->id)->first();
+        return ($locationUser->folio_approver==1);
+    }
     
 }

@@ -51,6 +51,7 @@ Route::get('/turns/destroy/{turn}','TurnController@destroy')->name('turns.destro
 /* Routes Folios */
 Route::resource('folios','FolioController');
 Route::get('getNumber/{location}','FolioController@getNumber')->name('folios.getNumber');
+Route::get('folios/print/{folio}','FolioController@print')->name('folios.print');
 Route::patch('folios/updateNumber/{folio}','FolioController@updateNumber')->name('folios.updateNumber');
 
 /* Routes Permits */

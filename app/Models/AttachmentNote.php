@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class AttachmentNote extends Model
 {
-    use HasFactory;
+    // use HasFactory;
 
     protected $fillable = ['note_id','filename','description',];
 }

@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DailyReport extends Model
 {
-    use HasFactory;
+    // use HasFactory;
 
     protected $fillable = ['folio_id','turn_id','report','user_id','status','approvedBy','reviewedBy','responsible',];
     
