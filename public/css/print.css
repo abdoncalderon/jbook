@@ -1,0 +1,94 @@
+header{
+    position: fixed;
+    top: 0cm;
+    left: 0cm;
+    right: 0cm;
+    margin: 0.5em;
+}
+
+.project {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: right;
+    margin: 0.5em;
+}
+
+.line {
+    border: 0.1em solid black;
+}
+
+.titleHeader {
+    display: block;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.details {
+    display: block;
+    border: 1px solid black;
+}
+
+.fields {
+    display: inline-block;
+    width: 15%;
+}
+
+.contents {
+    display: inline-block;
+    width: 35%;
+}
+
+
+.logos {
+    display: block;
+}
+        
+.logo {
+    display: inline-block;
+    width: 24%;
+    height: 100px;
+    background-size: contain;
+    background-position: center;
+    background-color: white;
+}
+
+section {
+    display: block;
+    margin-top: 2000px;
+    margin: 0.5em;
+    display: block;
+}
+
+.report {
+    display: block;
+}
+
+.titleSection {
+    display: block;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: left;
+    background-color: lightgray;
+    color: black;
+}
+
+
+footer {
+    position: fixed;
+    bottom: 0cm;
+    left: 0cm;
+    right: 0cm;
+
+}
+
+
+
+

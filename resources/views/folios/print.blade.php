@@ -7,41 +7,79 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    {{-- <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
     {{-- <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css"> --}}
     <!-- Ionicons -->
     {{-- <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css"> --}}
     <!-- Theme style -->
-    {{-- <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css"> --}}
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
     <!-- Google Font -->
     {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> --}}
 
-    <link rel="stylesheet" href="{{ asset() }}">
+    <link rel="stylesheet" href="{{ asset('css/print.css') }}">
 </head>
+
 <body onload="window.print();">
-    <div>
-      <div class="box box-info">
+    @foreach ($folio->daily_reports as $dailyReport)
+        <header>
+            <div class="logos">
+                <div class="logo" style="background-image: url({{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename1) }})"></div>
+                <div class="logo" style="background-image: url({{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename2) }})"></div>
+                <div class="logo" style="background-image: url({{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename3) }})"></div>
+                <div class="logo" style="background-image: url({{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename4) }})"></div>
+            </div>
+            <p class="project">{{ $dailyReport->folio->location->project->name }}</p>
+            <hr class="line">
+            <p class="titleHeader">{{ __('messages.workbookdailyreport') }}</p>
+            <hr class="line">
+            <div class="details">
+                <div class="fields">{{ __('content.location') }}</div>
+                <div class="contents">{{ $dailyReport->folio->location->name }}</div>
+                <div class="fields"></div>
+                <div class="contents"></div>
+                <div class="fields">{{ __('content.date') }}</div>
+                <div class="contents">{{ $dailyReport->folio->date }}</div>
+                <div class="fields">{{ __('content.number') }}</div>
+                <div class="contents">{{ $dailyReport->folio->number }}</div>
+                <div class="fields">{{ __('content.turn') }}</div>
+                <div class="contents">{{ $dailyReport->turn->name }}</div>
+            </div>
+            <hr class="line">
+        </header>
+        <section>
+            <div class="report">
+                <p class="titleSection">ACTIVIDADES</p>
+                <p class="report">{{ $dailyReport->report }}</p>
+            </div>
+            <div class="positions">
+                <p class="title"></p>
+            </div>
+            <div class="equipments">
+                <p class="title"></p>
+            </div>
+            <div class="attachments">
+                <p class="title"></p>
+            </div>
+            <div class="notes">
+                <p class="title"></p>
+            </div>
+            <div class="signatures">
+                <p class="title"></p>
+            </div>
+        </section>
         
-        <div class="box-header with-border">
-            <h3 class="box-title"><strong>{{ __('content.review').' '.__('content.dailyreport') }}</strong></h3>
-        </div>
+        <footer>
 
-        {{-- Start Form  --}}
+        </footer>
+    @endforeach
+    
 
-        <form class="form-horizontal">
-
-            {{-- Form Body --}}
-
-            <div class="box-body">
-
-                {{-- Fields --}}
+            {{-- <div class="box-body">
 
                 <div class="col-sm-4 col-md-6 col-lg-10">
 
                     @foreach ($folio->daily_reports as $dailyReport)
-
-                      {{-- date --}}
 
                       <p>
                           {{ $dailyReport->folio->date }}
@@ -54,7 +92,6 @@
                           </div>
                       </div>
                       
-                      {{-- location --}}
                           
                       <div class="form-group">
                           <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
@@ -63,7 +100,6 @@
                           </div>
                       </div>
 
-                      {{-- turn --}}
                       
                       <div class="form-group">
                           <label class="col-sm-2 control-label">{{ __('content.turn') }}</label>
@@ -72,7 +108,6 @@
                           </div>
                       </div>
 
-                      {{-- report --}}
 
                       <div class="form-group">
                           <label class="col-sm-2 control-label">{{ __('content.description') }}</label>
@@ -81,7 +116,6 @@
                           </div>
                       </div>
 
-                      {{-- Comments Report --}}
 
                       <div class="form-group">
                           <label class="col-sm-2 control-label"></label>
@@ -114,7 +148,6 @@
 
                       <hr>
 
-                      {{-- equipments --}}
 
                       <div class="form-group">
                           <label class="col-sm-2 control-label">{{ __('content.equipments') }}</label>
@@ -140,7 +173,6 @@
                           </div>
                       </div>
 
-                      {{-- Comments Equipments --}}
 
                       <div class="form-group">
                           <label class="col-sm-2 control-label"></label>
@@ -174,7 +206,6 @@
 
                       <hr>
 
-                      {{-- positions --}}
 
                       <div class="form-group">
                           <label class="col-sm-2 control-label">{{ __('content.positions') }}</label>
@@ -200,7 +231,6 @@
                           </div>
                       </div>
 
-                      {{-- Comments Positions --}}
 
                       <div class="form-group">
                           <label class="col-sm-2 control-label"></label>
@@ -233,7 +263,6 @@
 
                       <hr>
 
-                      {{-- events --}}
 
                       <div class="form-group">
                           <label class="col-sm-2 control-label">{{ __('content.events') }}</label>
@@ -265,7 +294,6 @@
                           </div>
                       </div>
 
-                      {{-- Comments Events --}}
 
                       <div class="form-group">
                           <label class="col-sm-2 control-label"></label>
@@ -299,7 +327,6 @@
 
                       <hr>
 
-                      {{-- attachments --}}
 
                       <div class="form-group">
                           <label class="col-sm-2 control-label">{{ __('content.attachments') }}</label>
@@ -325,7 +352,6 @@
                           </div>
                       </div>
 
-                      {{-- Comments Attachments --}}
 
                       <div class="form-group">
                           <label class="col-sm-2 control-label"></label>
@@ -363,7 +389,6 @@
                     
                     @foreach ($folio->notes as $note)
 
-                        {{-- date --}}
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.date') }}</label>
@@ -372,7 +397,6 @@
                             </div>
                         </div>
                       
-                        {{-- location --}}
                             
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
@@ -381,7 +405,6 @@
                             </div>
                         </div>
 
-                        {{-- turn --}}
                         
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.turn') }}</label>
@@ -390,7 +413,6 @@
                             </div>
                         </div>
 
-                        {{-- note --}}
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.note') }}</label>
@@ -401,7 +423,6 @@
 
                         <hr>
 
-                        {{-- attachments --}}
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.attachments') }}</label>
@@ -430,7 +451,6 @@
 
                         <hr>
 
-                        {{-- comments --}}
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.comments') }}</label>
@@ -464,13 +484,8 @@
 
                 </div>
 
-            </div>
+            </div> --}}
 
-        </form>
 
-        {{-- End Form  --}}
-
-    </div>
-    </div>
 </body>
 </html>
