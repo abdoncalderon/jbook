@@ -24,10 +24,15 @@
     @foreach ($folio->daily_reports as $dailyReport)
         <header>
             <div class="logos">
-                <div class="logo" style="background-image: url({{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename1) }})"></div>
+                {{-- <div class="logo" style="background-image: url({{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename1) }})"></div>
                 <div class="logo" style="background-image: url({{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename2) }})"></div>
                 <div class="logo" style="background-image: url({{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename3) }})"></div>
-                <div class="logo" style="background-image: url({{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename4) }})"></div>
+                <div class="logo" style="background-image: url({{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename4) }})"></div> --}}
+                
+                <div class="logo"><img src="{{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename1) }}" alt=""></div>
+                <div class="logo"><img src="{{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename2) }}" alt=""></div>
+                <div class="logo"><img src="{{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename3) }}" alt=""></div>
+                <div class="logo"><img src="{{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename4) }}" alt=""></div>
             </div>
             <p class="project">{{ $dailyReport->folio->location->project->name }}</p>
             <hr class="line">
