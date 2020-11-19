@@ -1,51 +1,22 @@
+@font-face {
+    font-family: impact;
+    src: url('fonts/impact.ttf');
+}
+
+* {
+    margin: 0px;
+}
+
 header{
     position: fixed;
     top: 0;
     left: 0;
-    margin: 0.5em;
     width: 100%;
-    overflow: hidden;
-    z-index: 1000;
+    margin-top: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+    background-color: white;
 }
-
-.project {
-    display: block;
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: italic;
-    font-size: 12px;
-    text-transform: uppercase;
-    text-align: right;
-    margin: 0.5em;
-}
-
-.line {
-    border: 0.1em solid black;
-}
-
-.titleHeader {
-    display: block;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.details {
-    display: block;
-    border: 1px solid black;
-}
-
-.fields {
-    display: inline-block;
-    width: 15%;
-}
-
-.contents {
-    display: inline-block;
-    width: 35%;
-}
-
 
 .logos {
     display: block;
@@ -54,9 +25,7 @@ header{
 .logo {
     display: inline-block;
     width: 24%;
-    height: 100px;
-   /*  background-size: cover;
-    background-position: center; */
+    height: 50px;
     background-color: white;
     padding: 0.2em;
 }
@@ -66,25 +35,258 @@ header{
         margin: auto;
     }
 
+
+.projectTitle {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: right;
+    margin-left: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.line {
+    border: 0.1em solid black;
+}
+
+.headerTitle {
+    
+    display: block;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    font-stretch: narrower;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.25em;
+}
+
+.details {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    width: 100%;
+}
+
+.fields {
+    display: inline-block;
+    width: 15%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 14px ;
+    font-weight: bold;
+    font-stretch: narrower;
+}
+
+.contents {
+    display: inline-block;
+    width: 30%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 14px ;
+    font-weight: bold;
+    font-stretch: narrower;
+}
+
+
 section {
-    margin-top: 2000px;
-    margin: 0.5em;
+    margin-top: 315px;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .report {
-    margin-top: 2000px;
     display: block;
+    text-align: justify;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    margin: 0.5em;
 }
 
-.titleSection {
+.sectionTitle {
     display: block;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: narrower;
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
     text-align: left;
     background-color: lightgray;
     color: black;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+table {
+    
+    width: 100%;
+    border-spacing: 0;
+    
+}
+
+.comments {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: narrower;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: left;
+    color: black;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+.td-date {
+    width: 20%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: narrower;
+    font-size: 12px;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+}
+
+.td-comment {
+    width: 60%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: narrower;
+    font-size: 12px;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+}
+
+.td-author {
+    width: 20%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: narrower;
+    font-size: 12px;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+}
+
+
+.td-contractor {
+    width: 40%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+    text-transform: uppercase;
+}
+
+.td-equipment {
+    width: 40%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+    text-transform: uppercase;
+}
+
+.td-position {
+    width: 40%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+    text-transform: uppercase;
+}
+
+.td-quantity {
+    width: 18%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: right;
+    border-spacing: 0;
+    text-transform: uppercase;
+}
+
+.td-origin {
+    width: 10%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-start {
+    width: 10%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-finish {
+    width: 10%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-description {
+    width: 60%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: justify;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-impact {
+    width: 8%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-attachment {
+    width: 40%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-description {
+    width: 58%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: justify;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-attachment img {
+    width: 100%;
+    padding: 1em;
 }
 
 
@@ -93,7 +295,6 @@ footer {
     bottom: 0cm;
     left: 0cm;
     right: 0cm;
-
 }
 
 

@@ -45,6 +45,66 @@ class DailyReport extends Model
     {
         return $this->hasMany(CommentDailyReport::class);
     }
+    
+    public function haveCommentsReport(){
+        $comments = $this->comments();
+        $answer = false;
+        foreach($comments as $comment){
+            if ($comment->section=='report') {
+                $answer = true;
+                break;
+            }
+        }
+        return $answer;
+    }
+
+    public function haveCommentsEquipments(){
+        $comments = $this->comments();
+        $answer = false;
+        foreach($comments as $comment){
+            if ($comment->section=='report') {
+                $answer = true;
+                break;
+            }
+        }
+        return $answer;
+    }
+
+    public function haveCommentsPositions(){
+        $comments = $this->comments();
+        $answer = false;
+        foreach($comments as $comment){
+            if ($comment->section=='report') {
+                $answer = true;
+                break;
+            }
+        }
+        return $answer;
+    }
+
+    public function haveCommentsEvents(){
+        $comments = $this->comments();
+        $answer = false;
+        foreach($comments as $comment){
+            if ($comment->section=='report') {
+                $answer = true;
+                break;
+            }
+        }
+        return $answer;
+    }
+
+    public function haveCommentsAttachments(){
+        $comments = $this->comments();
+        $answer = false;
+        foreach($comments as $comment){
+            if ($comment->section=='report') {
+                $answer = true;
+                break;
+            }
+        }
+        return $answer;
+    }
 
     public function status(){
         $status = $this->status;
