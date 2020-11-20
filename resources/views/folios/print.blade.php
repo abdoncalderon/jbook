@@ -63,7 +63,7 @@
 
         {{-- Sections --}}
 
-        <section>
+        <div class="sections">
 
             {{-- Report --}}
 
@@ -101,7 +101,7 @@
             </div>
 
             {{-- Equipments --}}
-            
+
             <div class="positions">
                 <p class="sectionTitle">{{ __('content.equipments') }}</p>
                 <table>
@@ -316,6 +316,10 @@
             <div class="signatures">
                 <p class="sectionTitle">{{ __('content.signatures') }}</p>
             </div>
+
+        </div>
+
+            
             
         </section>
         
