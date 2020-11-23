@@ -80,6 +80,7 @@ return [
     'olds'=>'Antiguos',
     'turns'=>'Turnos',
     'folios'=>'Folios',
+    'signatures'=>'Firmas',
 
 
     
@@ -190,6 +191,7 @@ return [
     'assign'=>'Asignar',
     'responsible'=>'Responsable',
     'current'=>'Actual',
+    'signature'=>'Firma',
     
     
 

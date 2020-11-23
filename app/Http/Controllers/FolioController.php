@@ -61,8 +61,11 @@ class FolioController extends Controller
 
     public function print(Folio $folio)
     {
-        $pdf = PDF::loadView('folios.print',compact('folio'));
-        return $pdf->stream('folio.pdf');
+        return view('folios.print1',compact('folio'));
+        
+        /* $pdf = PDF::loadView('folios.print',compact('folio'));
+        return $pdf->stream('folio.pdf'); */
+
     }
 
     public function getNumber(Request $request, $id)
