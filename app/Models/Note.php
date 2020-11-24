@@ -35,4 +35,9 @@ class Note extends Model
     {
         return $this->hasMany(CommentNote::class);
     }
+
+    public function haveComments(){
+        return  $this->comments()->count() > 0;
+        
+    }
 }

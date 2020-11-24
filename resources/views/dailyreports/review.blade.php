@@ -435,7 +435,7 @@
 
     </section>
 
-    {{-- Add Comments in Report --}}
+    {{-- Add Comment --}}
 
     <div class="modal fade" id="modal-dailyReport-comments">
         <div class="modal-dialog">

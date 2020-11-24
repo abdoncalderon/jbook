@@ -13,11 +13,11 @@ class CommentNoteController extends Controller
 {
     public function store(StoreCommentNoteRequest $request){
         try{
-            $folio=Folio::find($request->folio_id);
-            $date = strtotime($folio->date);
+            $note=Note::find($request->note_id);
+            $date = strtotime($note->folio->date);
             $today = strtotime(Carbon::today()->toDateString());
             $differenceInHours = abs(round(($date - $today)/60/60,0));
-            if (($differenceInHours <= $folio->location->max_time_create_comment)){
+            if (($differenceInHours <= $note->folio->location->max_time_create_comment)){
                 CommentNote::create($request ->validated());
                 $note = Note::find($request->note_id);
                 return redirect()->route('notes.show',$note);

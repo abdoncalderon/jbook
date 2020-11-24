@@ -63,7 +63,7 @@ class FolioController extends Controller
     {
         // return view('folios.print1',compact('folio'));
         
-        $pdf = PDF::loadView('folios.print1',compact('folio'));
+        $pdf = PDF::loadView('folios.print',compact('folio'));
         return $pdf->stream('folio.pdf');
 
     }

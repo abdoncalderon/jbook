@@ -138,7 +138,7 @@
                                         <tbody>
                                             @foreach($note->comments as $commentNote)
                                                 <tr>
-                                                    <td>{{ $commentNote->dateComment }}</td>
+                                                    <td>{{ $commentNote->date }}</td>
                                                     <td>{{ $commentNote->comment }}</td>
                                                     <td>{{ $commentNote->user->name }}</td>
                                                     <td>
@@ -152,8 +152,6 @@
                                     </table>
                                 </div>
                             </div>
-
-
                         </div>
 
                     </div>
@@ -198,7 +196,7 @@
 
                             {{-- Date --}}
 
-                            <input id="dateComment" hidden type="text" name="dateComment" value="{{ now()->format('Y-m-d H:i:s') }}">
+                            <input id="date" hidden type="text" name="date" value="{{ now()->format('Y-m-d H:i:s') }}">
 
                             {{-- Comment --}}
 
