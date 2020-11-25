@@ -328,21 +328,22 @@ table {
 } 
 
 .signatures {
+    margin-top: 40px;
     display: block;
     width: 100%;
-    height: 150px;
+    height: 200px;
 }
 
 .signature {
     display: inline-block;
     width: 49%;
-    height: 150px;
+    height: 200px;
     border: 1px solid gray;
 }
 
 .signature-img {
-    width: 100%;
-    height: 100%;
+    width: 99%;
+    height: 99%;
     object-fit: cover;
 }
 
@@ -355,4 +356,8 @@ footer {
     background-color: red;
     color: white;
     text-align: center;
+}
+
+footer .page:after {
+    content: counter(page);
 }

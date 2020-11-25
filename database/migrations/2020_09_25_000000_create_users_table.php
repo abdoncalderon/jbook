@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('role_id');
             $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('restrict');
             $table->string('avatar')->default('avatar.jpg');
-            $table->string('signature')->default('signature.jpg');
+            $table->string('signature')->default('signature.png');
             $table->boolean('status')->default(true);
             $table->rememberToken();
             $table->timestamps();

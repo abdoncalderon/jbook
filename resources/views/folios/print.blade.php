@@ -336,8 +336,8 @@
         <div class="section">
             <p class="sectionTitle">{{ __('content.signatures') }}</p>
             <div class="signatures">
-                <div class="signature"><img src="{{ asset('images/attachments/daily_reports/'.$folio->signature_approver) }}"></div>
-                <div class="signature"><img src="{{ asset('images/attachments/daily_reports/'.$folio->signature_reviewer) }}"></div>
+                <div class="signature"><img src="{{ asset('images/signatures/'.$folio->signature_approver) }}" class="signature-img"></div>
+                <div class="signature"><img src="{{ asset('images/signatures/'.$folio->signature_reviewer) }}" class="signature-img"></div>
             </div>
             <div class="names">
                 <div class="name"></div>

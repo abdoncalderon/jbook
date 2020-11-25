@@ -18,10 +18,10 @@ class CreateProjectsTable extends Migration
             $table->string('name')->unique();
             $table->dateTime('datestart');
             $table->dateTime('datefinish');
-            $table->string('logofilename1')->nullable();
-            $table->string('logofilename2')->nullable();
-            $table->string('logofilename3')->nullable();
-            $table->string('logofilename4')->nullable();
+            $table->string('logofilename1')->default('logo.png');
+            $table->string('logofilename2')->default('logo.png');
+            $table->string('logofilename3')->default('logo.png');
+            $table->string('logofilename4')->default('logo.png');
             $table->timestamps();
         });
     }
