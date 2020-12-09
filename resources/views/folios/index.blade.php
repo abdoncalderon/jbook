@@ -34,6 +34,35 @@
                     <a class="btn btn-success btn-sm" href="{{ route('folios.create') }}">{{ __('content.insert') }}</a>
                 @endif
             </div>
+
+            <form method="GET" action="{{ route('folios.filterLocation') }}" class="horizontal">
+
+                <div class="box-body">
+                    <div class="col-sm-4 col-md-6 col-lg-10">
+
+                        {{-- location --}}
+                                    
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
+                            <div class="col-sm-8" >
+                                <select id="location" name="location" class="form-control" required style="width: 100%;" >
+                                    <option value="">{{__('messages.select')}} {{__('content.location')}}</option>
+                                    @foreach (auth()->user()->locations as $locationUser)
+                                        <option value="{{ $locationUser->location_id }}"
+                                            @if($locationUser->location_id==$location_id):
+                                                selected="selected"
+                                            @endif
+                                        >{{ $locationUser->location->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button class="col-sm-2 btn btn-success pull-left btn-sm" type="submit">{{ __('content.search') }}</button>
+                        </div>
+    
+                    </div>
+                </div>
+
+            </form>
             
             <div class="box-body">
                 

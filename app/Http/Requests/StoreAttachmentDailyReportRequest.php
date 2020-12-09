@@ -16,7 +16,6 @@ class StoreAttachmentDailyReportRequest extends FormRequest
         return [
             'daily_report_id'=>'required',
             'image'=>'required',
-            'description'=>'required',
             'user_id'=>'required',
         ];
     }

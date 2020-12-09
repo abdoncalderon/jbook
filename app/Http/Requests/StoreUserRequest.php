@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveUserRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     public function authorize()
     {
@@ -18,8 +18,8 @@ class SaveUserRequest extends FormRequest
             'user'=>'required|string|unique:users|max:30', 
             'email'=> 'required|string|email|unique:users|max:255',
             'role_id'=>'required',
+            'contractor_id'=>'required',
             'password'=>'required|string|confirmed|min:8',
         ];
     }
-
 }

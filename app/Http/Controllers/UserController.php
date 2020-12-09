@@ -6,8 +6,9 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use App\Models\Permit;
+use App\Models\Contractor;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\SaveUserRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Permit as ModelsPermit;
 
@@ -24,10 +25,13 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::where('status', '=', 1)->get();
-        return view('users.create', compact('roles'));
+        $contractors = Contractor::all();
+        return view('users.create')
+        ->with('roles',$roles)
+        ->with('contractors',$contractors);
     }
     
-    public function store(SaveUserRequest $request)
+    public function store(StoreUserRequest $request)
     {
         $request ->validated();
         $user = User::create([
@@ -36,6 +40,7 @@ class UserController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
             'role_id' => $request['role_id'],
+            'contractor_id' => $request['contractor_id'],
         ]);
         Permit::create([
             'user_id' => $user->id,
@@ -53,11 +58,13 @@ class UserController extends Controller
     
     public function edit(User $user)
     {
-        $roles = Role::get();
+        $roles = Role::where('status', '=', 1)->get();
+        $contractors = Contractor::all();
         return view('users.edit',[
             'user'=>$user
             ])
-        ->with(compact('roles'));
+        ->with('roles', $roles)
+        ->with('contractors', $contractors);
     }
 
     public function update($id, UpdateUserRequest $request)

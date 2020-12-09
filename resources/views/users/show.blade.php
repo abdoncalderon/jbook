@@ -63,6 +63,15 @@
                                 </div>
                             </div>
 
+                            {{-- Contractor  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.contractor') }}</label>
+                                <div class="col-sm-10">
+                                    <input disabled class="form-control" value="{{ $user->contractor->name }}">
+                                </div>
+                            </div>
+
                             {{-- Role  --}}
 
                             <div class="form-group">

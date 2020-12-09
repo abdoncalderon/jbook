@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveRoleRequest extends FormRequest
+class StoreRolRequest extends FormRequest
 {
     public function authorize()
     {
@@ -19,5 +19,4 @@ class SaveRoleRequest extends FormRequest
             'status'=>'required',
         ];
     }
-    
 }

@@ -82,7 +82,24 @@
                                 </div>
                             </div>
 
-                            {{-- role --}}
+                            {{-- Contractor --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.contractor') }}</label>
+                                <div class="col-sm-10" >
+                                    <select name="contractor_id" class="form-control" style="width: 100%;" value="{{ old('contractor', $user->contractor->name) }}">
+                                        @foreach ($contractors as $contractor)
+                                            <option value="{{ $contractor->id }}"
+                                                @if($user->contractor_id==$contractor->id):
+                                                    selected="selected"
+                                                @endif
+                                                >{{ $contractor->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- Role --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
@@ -92,7 +109,7 @@
                                     @if($user->name=='ADMIN')
                                         disabled
                                     @endif
-                                    class="form-control" data-placeholder="Rol" style="width: 100%;" value="{{ old('role', $user->role->name) }}">
+                                    class="form-control" style="width: 100%;" value="{{ old('role', $user->role->name) }}">
                                         @foreach ($roles as $role)
                                             <option value="{{ $role->id }}"
                                                 @if($user->role_id==$role->id):

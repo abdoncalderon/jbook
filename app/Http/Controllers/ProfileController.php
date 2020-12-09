@@ -26,14 +26,22 @@ class ProfileController extends Controller
     public function update($id, UpdateProfileRequest $request)
     {
         $user = User::where('id',$id)->first();
-        $name = $user->avatar;
+        $avatar = $user->avatar;
         if($request->hasFile('avatar'))
         {
             $file = $request->file('avatar');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/images/users/',$name);
+            $avatar = time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/avatars/',$avatar);
         }
-        $user->avatar = $name;
+        $signature = $user->signature;
+        if($request->hasFile('signature'))
+        {
+            $file = $request->file('signature');
+            $signature = time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/signatures/',$signature);
+        }
+        $user->avatar = $avatar;
+        $user->signature = $signature;
         $user->update($request->validated());
         return redirect()->route('home');
 

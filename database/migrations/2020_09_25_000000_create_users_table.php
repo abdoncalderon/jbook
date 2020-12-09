@@ -22,8 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->foreignId('role_id');
             $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('contractor_id');
+            $table->foreign('contractor_id')->references('id')->on('contractors')->onUpdate('cascade')->onDelete('restrict');
             $table->string('avatar')->default('avatar.jpg');
-            $table->string('signature')->default('signature.png');
+            $table->string('signature')->nullable()->default('signature.png');
             $table->boolean('status')->default(true);
             $table->rememberToken();
             $table->timestamps();

@@ -18,8 +18,8 @@ class CreateAttachmentDailyReportsTable extends Migration
             $table->foreignId('daily_report_id');
             $table->foreign('daily_report_id')->references('id')->on('daily_reports')->onUpdate('cascade')->onDelete('restrict');
             $table->string('filename');
-            $table->text('description');
-            $table->foreignId('user_id');
+            $table->text('description')->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });

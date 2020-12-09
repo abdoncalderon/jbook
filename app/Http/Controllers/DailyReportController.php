@@ -12,14 +12,37 @@ use App\Models\LocationUser;
 use App\Http\Requests\StoreDailyReportRequest;
 use App\Http\Requests\UpdateDailyReportRequest;
 use App\Models\Contractor;
+use Illuminate\Http\Request;
 use Exception;
 
 class DailyReportController extends Controller
 {
-    public function index()
+    public function index($location_id = null)
     {
-        $dailyReports = DailyReport::where('user_id',auth()->user()->id)->get();
-        return view('dailyreports.index', compact('dailyReports'));
+        if (empty($location_id)){
+            $dailyReports = DailyReport::join('folios','daily_reports.folio_id','=','folios.id')
+                                ->join('location_users','folios.location_id','=','location_users.location_id')
+                                ->where('location_users.user_id',auth()->user()->id)
+                                ->where('folios.location_id',0)
+                                ->get();
+        }else{
+            $dailyReports = DailyReport::select('daily_reports.id as id','locations.name as location','folios.date as date','turns.name as turn','daily_reports.status as status')->join('folios','daily_reports.folio_id','=','folios.id')
+                                ->join('location_users','folios.location_id','=','location_users.location_id')
+                                ->join('locations','folios.location_id','=','locations.id')
+                                ->join('turns','daily_reports.turn_id','=','turns.id')
+                                ->where('location_users.user_id',auth()->user()->id)
+                                ->where('folios.location_id',$location_id)
+                                ->get();
+        }
+        return view('dailyreports.index')
+        ->with(compact('dailyReports'))
+        ->with(compact('location_id'));
+    }
+
+    public function filterLocation(Request $request)
+    {
+        $location_id = $request->location;
+        return redirect()->route('dailyReports.index',$location_id);
     }
 
     public function create(Folio $folio)

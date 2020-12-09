@@ -675,7 +675,7 @@
 
                             <div class="form-group">
                                 <label for="description">{{__('content.description')}}</label>
-                                <textarea id="description" class="form-control" name="description" style="resize: vertical" required></textarea>
+                                <textarea id="description" class="form-control" name="description" style="resize: vertical"></textarea>
                             </div>
 
                             {{-- Author --}}

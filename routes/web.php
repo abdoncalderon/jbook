@@ -49,7 +49,10 @@ Route::resource('turns','TurnController');
 Route::get('/turns/destroy/{turn}','TurnController@destroy')->name('turns.destroy');
 
 /* Routes Folios */
-Route::resource('folios','FolioController');
+
+Route::get('folios/{location_id?}','FolioController@index')->name('folios.index');
+// Route::resource('folios','FolioController');
+Route::get('filterFoliosXLocation','FolioController@filterLocation')->name('folios.filterLocation');
 Route::get('getNumber/{location}','FolioController@getNumber')->name('folios.getNumber');
 Route::get('folios/print/{folio}','FolioController@print')->name('folios.print');
 Route::patch('folios/updateNumber/{folio}','FolioController@updateNumber')->name('folios.updateNumber');
@@ -68,7 +71,8 @@ Route::patch('/locationsUsers/{locationUser}','LocationUserController@update')->
 Route::get('/locationsUsers/destroy/{locationUser}','LocationUserController@destroy')->name('locationsUsers.destroy');
 
 /* Routes Daily Reports */
-Route::get('/dailyReports','DailyReportController@index')->name('dailyReports.index');
+Route::get('dailyReports/{location_id?}','DailyReportController@index')->name('dailyReports.index');
+Route::get('filterDailyReportsXLocation','DailyReportController@filterLocation')->name('dailyReports.filterLocation');
 Route::get('/dailyReports/create/{folio}','DailyReportController@create')->name('dailyReports.create');
 Route::post('/dailyReports','DailyReportController@store')->name('dailyReports.store');
 Route::get('/dailyReports/show/{dailyReport}','DailyReportController@show')->name('dailyReports.show');

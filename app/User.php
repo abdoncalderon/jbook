@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\LocationUser;
 use App\Models\Permit;
+use App\Models\Contractor;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'user', 'email', 'role_id','password', 'status', 'avatar',
+        'name', 'user', 'email', 'role_id','contractor_id','password', 'status', 'avatar',
     ];
 
     /**
@@ -41,6 +42,10 @@ class User extends Authenticatable
 
     public function role(){
         return $this->belongsTo(Role::class);
+    }
+
+    public function contractor(){
+        return $this->belongsTo(Contractor::class);
     }
 
     public function permit(){

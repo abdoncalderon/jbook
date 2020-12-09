@@ -78,6 +78,6 @@
     'normal' => $rootDir . '/lib/fonts/DejaVuSerif',
   ),
   'impact' => array(
-    'normal' => $fontDir . '/impact-normal_deb7a91bafaba8b02db13e8184b5d88d',
+    'normal' => $fontDir . '/impact-normal_c9afd4370168470cc3b1e69d0db36957',
   ),
 ) ?>

@@ -45,12 +45,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="name" disabled type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name) }}">
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $user->name) }}">
                                 </div>
                             </div>
                             
@@ -59,12 +54,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.user') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="user" disabled type="text" class="form-control @error('user') is-invalid @enderror" name="user" value="{{ old('user', $user->user) }}" required autocomplete="user">
-                                    @error('user')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="user" disabled type="text" class="form-control" name="user" value="{{ old('user', $user->user) }}">
                                 </div>
                             </div>
 
@@ -73,25 +63,29 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.email') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="email" disabled type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $user->email) }}">
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="email" disabled type="email" class="form-control" name="email" value="{{ old('email', $user->email) }}">
                                 </div>
                             </div>
 
-                            {{-- role --}}
+                            {{-- Contractor --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.contractor') }}</label>
+                                <div class="col-sm-10" >
+                                    <input id="contractor" disabled type="text" class="form-control" name="contractor" value="{{ old('contractor', $user->contractor->name) }}">
+                                </div>
+                            </div>
+
+                            {{-- Role --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="role" disabled type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role', $user->role->name) }}">
+                                    <input id="role" disabled type="text" class="form-control" name="role" value="{{ old('role', $user->role->name) }}">
                                 </div>
                             </div>
                             
-                            {{-- avatar --}}
+                            {{-- Avatar --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.avatar') }}</label>
@@ -100,7 +94,17 @@
                                 </div>
                             </div>
 
-                            {{-- status --}}
+                            {{-- Signature --}}
+    
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.signature') }}</label>
+                                <div class="col-sm-10">
+                                    <input id="signature" type="file" class="form-control" name="signature"}}>
+                                </div>
+                            </div>
+
+
+                            {{-- Status --}}
                         
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
