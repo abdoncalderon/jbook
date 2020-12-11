@@ -60,10 +60,17 @@ return [
     'timeexpiredtocomment'=>'Expiró el tiempo para comentar',
     'timeexpiredtonote'=>'Expiró el tiempo para anotar',
     'confirmsavenote'=>'La Anotación se guardará definitivamente. ¿Está Seguro?',
-    'confirmapprovedailyreport'=>'El Reporte Diario se guardará definitivamente y cambiará su estado a Finalizado. ¿Está Seguro?',
-    'confirmreviewdailyreport'=>'El Reporte Diario se cerrará por completo y cambiará su estado a Revisado. ¿Está Seguro?',
+    'confirmapprovedailyreport'=>'El Reporte Diario se cerrará por completo y cambiará su estado a Aprobado. ¿Está Seguro?',
+    'confirmreviewdailyreport'=>'El Reporte Diario se guardará definitivamente y cambiará su estado a Finalizado. ¿Está Seguro?',
     'workbookdailyreport'=>'Reporte Diario de Libro de Obra',
-    
+    'reportCompletedSubject'=>'JBOOK - Nuevo Reporte Diario',
+    'noteCreatedSubject'=>'JBOOK - Nueva Anotación',
+    'commentReportCreatedSubject'=>'JBOOK - Nuevo comentario en Reporte Diario',
+    'commentNoteCreatedSubject'=>'JBOOK - Nuevo comentario en Anotación',
+    'revieweddby'=>'REVISADO por ',
+    'approvedby'=>'APROBADO por ',
+    'madeby'=>'Hecha por ',
+
     
 
 ];

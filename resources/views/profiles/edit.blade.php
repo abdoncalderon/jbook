@@ -130,7 +130,13 @@
 
                         <div class="col-sm-2 col-md-2 col-lg-2">
                             <div>
-                                <img src="../../images/users/{{ old('avatar', $user->avatar) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
+                                <img src="{{ asset('images/avatars/'.$user->avatar) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <div>
+                                <img src="{{ asset('images/signatures/'.$user->signature) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
                             </div>
                         </div>
                         

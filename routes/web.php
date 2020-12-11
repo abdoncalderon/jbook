@@ -51,11 +51,14 @@ Route::get('/turns/destroy/{turn}','TurnController@destroy')->name('turns.destro
 /* Routes Folios */
 
 Route::get('folios/{location_id?}','FolioController@index')->name('folios.index');
-// Route::resource('folios','FolioController');
+//Route::resource('folios','FolioController');
+Route::get('create','FolioController@create')->name('folios.create');
+Route::get('folios/edit/{folio}','FolioController@edit')->name('folios.edit');
+Route::post('/folios','FolioController@store')->name('folios.store');
 Route::get('filterFoliosXLocation','FolioController@filterLocation')->name('folios.filterLocation');
 Route::get('getNumber/{location}','FolioController@getNumber')->name('folios.getNumber');
 Route::get('folios/print/{folio}','FolioController@print')->name('folios.print');
-Route::patch('folios/updateNumber/{folio}','FolioController@updateNumber')->name('folios.updateNumber');
+Route::patch('folios/updateNumber/{folio}','FolioController@update')->name('folios.update');
 
 /* Routes Permits */
 Route::get('/permits/{user}','PermitController@index')->name('permits.index');
@@ -103,7 +106,8 @@ Route::post('/commentDailyReports','CommentDailyReportController@store')->name('
 Route::get('/commentDailyReports/destroy/{commentDailyReport}','CommentDailyReportController@destroy')->name('commentDailyReports.destroy');
 
 /* Routes Notes */
-Route::get('/notes','NoteController@index')->name('notes.index');
+Route::get('notes/{location_id?}','NoteController@index')->name('notes.index');
+Route::get('filterNotesXLocation','NoteController@filterLocation')->name('notes.filterLocation');
 Route::get('/notes/create/{folio}','NoteController@create')->name('notes.create');
 Route::post('/notes','NoteController@store')->name('notes.store');
 Route::get('/notes/show/{note}','NoteController@show')->name('notes.show');

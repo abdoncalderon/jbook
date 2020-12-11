@@ -86,7 +86,7 @@
                     <tbody>
                         @foreach($folios as $folio)
                             <tr>
-                                <td>{{ $folio->location->name }}</td>
+                                <td>{{ $folio->name }}</td>
                                 <td>{{ date('Y-M-d',strtotime($folio->date)) }}</td>
                                 <td>{{ $folio->number }}</td>
                                 <td>

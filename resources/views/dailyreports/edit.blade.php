@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', __('content.dailyreports'))
+@section('title', ' - '.date('Y-M-d',strtotime($dailyReport->folio->date)).' - '.$dailyReport->folio->location->name.' - '.$dailyReport->turn->name)
 
 @section('section', __('content.dailyreports'))
 
@@ -48,7 +48,7 @@
 
                         <div class="col-sm-4 col-md-6 col-lg-10">
 
-                            {{-- date --}}
+                            {{-- Date --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.date') }}</label>
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             
-                            {{-- location --}}
+                            {{-- Location --}}
                                 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
 
-                            {{-- turn --}}
+                            {{-- Turn --}}
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.turn') }}</label>
@@ -74,6 +74,16 @@
                                     <input id="turn" disabled type="text" class="form-control" name="turn" value="{{ $dailyReport->turn->name }}">
                                 </div>
                             </div>
+
+                            {{-- Responsible --}}
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.responsible') }}</label>
+                                <div class="col-sm-10" >
+                                    <input id="turn" disabled type="text" class="form-control" name="turn" value="{{ $dailyReport->responsible() }}">
+                                </div>
+                            </div>
+
 
                             {{-- report --}}
     
@@ -236,8 +246,8 @@
                                         <tbody>
                                             @foreach($dailyReport->attachments as $attachmentDailyReport)
                                                 <tr>
-                                                    <td><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt="" style="max-width: 30%; min-width:100%"></td>
-                                                    <td>{{ $attachmentDailyReport->description }}</td>
+                                                    <td style="width:50%"><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt="" style="width:100%"></td>
+                                                    <td style="width:40%">{{ $attachmentDailyReport->description }}</td>
                                                     <td>
                                                         <a class="btn btn-info btn-xs" href="{{ route('attachmentDailyReports.destroy',$attachmentDailyReport) }}">{{ __('content.delete') }}</a>
                                                     </td>
@@ -252,13 +262,17 @@
     
                             <input id="user_id" hidden type="text" name="user_id" value="{{ auth()->user()->id }}">
 
-                            {{-- status --}}
+                            {{-- Status --}}
     
                             <input id="status" hidden type="text" name="status" value="{{ $dailyReport->status }}">
 
-                            {{-- approved by --}}
+                            {{-- Approved by --}}
     
-                            <input id="approvedid" hidden type="text" name="approvedid">
+                            <input id="reviewedby" hidden type="text" name="reviewedby" value="0">
+
+                            {{-- Reviewed by --}}
+    
+                            <input id="approvedby" hidden type="text" name="approvedby" value="0">
 
                         </div>
 
@@ -702,16 +716,16 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title">{{ __('content.save').' & '.__('content.close').' '.__('content.dailyreport') }}</h4>
+                    <h4 class="modal-title"><strong>{{ __('content.save').' & '.__('content.close').' '.__('content.dailyreport') }}</strong></h4>
                 </div>
                 <div class="modal-body">
                     <div>
-                        <p class="">{{ __('messages.confirmapprovedailyreport') }}</p>
+                        <p class="">{{ __('messages.confirmreviewdailyreport') }}</p>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.no')}}</button>
-                    <button type="button" class="btn btn-primary" onclick="$('#status').val('1');$('#approvedid').val('{{ auth()->user()->id }}');$('#save').click();">{{__('content.yes')}}</button>
+                    <button type="button" class="btn btn-primary" onclick="$('#status').val('1');$('#reviewedby').val('{{ auth()->user()->id }}');$('#save').click();">{{__('content.yes')}}</button>
                 </div>
             </div>
         </div>

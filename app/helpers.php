@@ -1,5 +1,7 @@
 <?php
 
+
+
 function yesNo($value){
     if ($value==1){
         return __('content.yes');
@@ -15,3 +17,4 @@ function checked($value){
         return '';
     }
 }
+

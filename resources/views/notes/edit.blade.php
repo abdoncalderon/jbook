@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', __('content.notes'))
+@section('title', ' - '.date('Y-M-d',strtotime($note->folio->date)).' - '.$note->folio->location->name.' - '.$note->turn->name)
 
 @section('section', __('content.notes'))
 

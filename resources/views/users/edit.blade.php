@@ -22,6 +22,14 @@
 
             <div class="box box-info">
 
+                {{-- Error Messages --}}
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $user->name }}</strong></h3>
                 </div>
@@ -105,7 +113,7 @@
                                 <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
                                 <div class="col-sm-10" >
                                                 
-                                    <select name="role" 
+                                    <select name="role_id" 
                                     @if($user->name=='ADMIN')
                                         disabled
                                     @endif

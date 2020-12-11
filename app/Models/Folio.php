@@ -32,7 +32,10 @@ class Folio extends Model
         $date = strtotime($this->date);
         $today = strtotime(Carbon::today()->toDateString());
         $differenceInHours = abs(round(($date - $today)/60/60,0));
-        $locationMaxTimeOpenFolio = $this->location->max_time_open_folio;
+        
+        // $locationMaxTimeOpenFolio = $this->location->max_time_open_folio;
+        $location = Location::find($this->location_id);
+        $locationMaxTimeOpenFolio = $location->max_time_open_folio;
         if (($differenceInHours > $locationMaxTimeOpenFolio)){
             return __('content.closed');
         }else{

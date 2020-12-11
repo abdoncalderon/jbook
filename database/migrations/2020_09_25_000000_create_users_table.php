@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('contractor_id');
             $table->foreign('contractor_id')->references('id')->on('contractors')->onUpdate('cascade')->onDelete('restrict');
             $table->string('avatar')->default('avatar.jpg');
-            $table->string('signature')->nullable()->default('signature.png');
+            $table->string('signature')->nullable()->default('nosignature.png');
             $table->boolean('status')->default(true);
             $table->rememberToken();
             $table->timestamps();

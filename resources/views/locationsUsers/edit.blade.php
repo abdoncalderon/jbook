@@ -90,7 +90,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.receive') }} {{ __('content.notification') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="receive_notification" type="checkbox" name="receive_notifcation" {{ checked($locationUser->receive_notifcation) }}>
+                                    <input id="receive_notification" type="checkbox" name="receive_notification" {{ checked($locationUser->receive_notifcation) }}>
                                 </div>
                             </div>
 

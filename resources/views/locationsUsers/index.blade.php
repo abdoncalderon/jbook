@@ -37,8 +37,8 @@
                         <tr>
                             <th>{{ __('content.location') }}</th>
                             <th>{{ __('content.collaborate') }}</th>
-                            <th>{{ __('content.approve') }} {{ __('content.dailyreport') }}</th>
-                            <th>{{ __('content.approve') }} {{ __('content.folio') }}</th>
+                            <th>{{ __('content.checkout') }}</th>
+                            <th>{{ __('content.approve') }}</th>
                             <th>{{ __('messages.receiveEmail') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>

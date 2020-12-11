@@ -18,9 +18,19 @@ class FolioController extends Controller
     public function index($location_id = null)
     {
         if (empty($location_id)){
-            $folios = Folio::join('location_users','folios.location_id','=','location_users.location_id')->where('location_users.user_id',auth()->user()->id)->where('folios.location_id',0)->get();
+            $folios = Folio::select('folios.id as id','folios.location_id as location_id','locations.name as name','folios.date as date','folios.number as number')
+                            ->join('location_users','folios.location_id','=','location_users.location_id')
+                            ->join('locations','folios.location_id','=','locations.id')
+                            ->where('location_users.user_id',auth()->user()->id)
+                            ->where('folios.location_id',0)
+                            ->get();
         }else{
-            $folios = Folio::join('location_users','folios.location_id','=','location_users.location_id')->where('location_users.user_id',auth()->user()->id)->where('folios.location_id',$location_id)->get();
+            $folios = Folio::select('folios.id as id','folios.location_id as location_id','locations.name as name','folios.date as date','folios.number as number')
+                            ->join('location_users','folios.location_id','=','location_users.location_id')
+                            ->join('locations','folios.location_id','=','locations.id')
+                            ->where('location_users.user_id',auth()->user()->id)
+                            ->where('folios.location_id',$location_id)
+                            ->get();
         }
         return view('folios.index')
         ->with(compact('folios'))

@@ -15,4 +15,9 @@ class CommentNote extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function note()
+    {
+        return $this->belongsTo(Note::class);
+    }
 }

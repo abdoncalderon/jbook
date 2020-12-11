@@ -76,7 +76,6 @@
                             <th>{{ __('content.date') }}</th>
                             <th>{{ __('content.turn') }}</th>
                             <th>{{ __('content.actions') }}</th>
-                            <th>{{ __('content.actions') }}</th>
 
                         </tr>
                     </thead>
@@ -86,18 +85,14 @@
                     <tbody>
                         @foreach($dailyReports as $dailyReport)
                             <tr>
-                                {{-- <td>{{ $dailyReport->folio->location->name }}</td> --}}
-                                {{-- <td>{{ date('Y-M-d',strtotime($dailyReport->folio->date)) }}</td> --}}
-                                {{-- <td>{{ $dailyReport->turn->name }} {{ $dailyReport->status() }}</td> --}}
                                 <td>{{ $dailyReport->location }}</td>
                                 <td>{{ date('Y-M-d',strtotime($dailyReport->date)) }}</td>
-                                <td>{{ $dailyReport->turn }} {{ $dailyReport->status }}</td>
-                                <td>{{ $dailyReport->id }}</td>
+                                <td>{{ $dailyReport->turn }} {{ $dailyReport->status() }}</td>
                                 <td>
                                     @if($dailyReport->status==0)
                                         <a target="_blank" class="btn btn-warning btn-xs" href="{{ route('dailyReports.edit',$dailyReport) }}" >{{ __('content.edit') }}</a>
                                     @elseif($dailyReport->status==1)
-                                        <a target="_blank" class="btn btn-success btn-xs" href="{{ route('dailyReports.review',$dailyReport) }}">{{ __('content.review') }}</a>
+                                        <a target="_blank" class="btn btn-success btn-xs" href="{{ route('dailyReports.review',$dailyReport) }}">{{ __('content.Approve') }}</a>
                                     @else 
                                         <a target="_blank" class="btn btn-info btn-xs" href="{{ route('dailyReports.show',$dailyReport) }}">{{ __('content.show') }}</a>
                                     @endif

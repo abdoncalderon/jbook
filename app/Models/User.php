@@ -50,6 +50,10 @@ class User extends Authenticatable
         return $this->hasMany(Permit::class);
     }
 
+    public function contractor(){
+        return $this->belongsTo(Contractor::class);
+    }
+
 
     
 }

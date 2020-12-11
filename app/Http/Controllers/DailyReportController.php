@@ -11,9 +11,11 @@ use App\Models\Location;
 use App\Models\LocationUser;
 use App\Http\Requests\StoreDailyReportRequest;
 use App\Http\Requests\UpdateDailyReportRequest;
+use App\Mail\ReportCompleted;
 use App\Models\Contractor;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Mail;
 
 class DailyReportController extends Controller
 {
@@ -109,6 +111,21 @@ class DailyReportController extends Controller
     public function update(DailyReport $dailyReport, UpdateDailyReportRequest $request)
     {
         $dailyReport->update($request->validated());
+        if (($request->status==1)||($request->status==2)){
+            if ($request->status==1){
+                $dailyReport->folio->update([
+                    'signature_reviewer'=>auth()->user()->signature,
+                ]);
+            }else{
+                $dailyReport->folio->update([
+                    'signature_approver'=>auth()->user()->signature,
+                ]);
+            }
+            $usersReceiveNotification = LocationUser::where('location_id',$dailyReport->folio->location_id)->where('receive_notification',1)->get();
+                foreach ($usersReceiveNotification as $user){
+                    Mail::to($user->user->email)->queue(new ReportCompleted($dailyReport));
+                }
+        }
         return redirect()->route('dailyReports.index');
     }
 

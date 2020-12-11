@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\CommentNote;
 use App\Models\Note;
-use App\Models\Folio;
 use App\Http\Requests\StoreCommentNoteRequest;
+use App\Mail\CommentNoteCreated;
+use App\Models\LocationUser;
 use Exception;
+use Illuminate\Support\Facades\Mail;
 
 class CommentNoteController extends Controller
 {
@@ -18,7 +20,11 @@ class CommentNoteController extends Controller
             $today = strtotime(Carbon::today()->toDateString());
             $differenceInHours = abs(round(($date - $today)/60/60,0));
             if (($differenceInHours <= $note->folio->location->max_time_create_comment)){
-                CommentNote::create($request ->validated());
+                $comment = CommentNote::create($request ->validated());
+                $usersReceiveNotification = LocationUser::where('location_id',$note->folio->location_id)->where('receive_notification',1)->get();
+                foreach ($usersReceiveNotification as $user){
+                    Mail::to($user->user->email)->queue(new CommentNoteCreated($comment));
+                }
                 $note = Note::find($request->note_id);
                 return redirect()->route('notes.show',$note);
             }else{

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', __('content.dailyreports'))
+@section('title', ' - '.date('Y-M-d',strtotime($dailyReport->folio->date)).' - '.$dailyReport->folio->location->name.' - '.$dailyReport->turn->name)
 
 @section('section', __('content.dailyreports'))
 
@@ -358,9 +358,9 @@
                                         <tbody>
                                             @foreach($dailyReport->attachments as $attachmentDailyReport)
                                                 <tr>
-                                                    <td><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt="" style="max-width: 100%; min-width:50%"></td>
-                                                    <td>{{ $attachmentDailyReport->description }}</td>
-                                                    <td>{{ $attachmentDailyReport->user->name }}</td>
+                                                    <td style="width:50%"><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt="" style="width:100%"></td>
+                                                    <td style="width:40%">{{ $attachmentDailyReport->description }}</td>
+                                                    <td style="width:10%">{{ $attachmentDailyReport->user->name }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -420,7 +420,7 @@
 
                     <div class="box-footer">
                         @if(auth()->user()->isFolioApprover($dailyReport->folio->location))
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-review-dailyreport">{{ __('content.reviewed') }}</button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-review-dailyreport">{{ __('content.Approve').' & '.__('content.close').' '.__('content.dailyreport') }}</button>
                         @endif
                         <a class="btn btn-info btn-sm" href="{{ route('dailyReports.index') }}">{{ __('content.cancel') }}</a>
                     </div>
@@ -568,7 +568,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title">{{ __('content.review').' '.__('content.dailyreport') }}</h4>
+                        <h4 class="modal-title"><strong>{{ __('content.Approve').' & '.__('content.close').' '.__('content.dailyreport') }}</strong></h4>
                     </div>
                     <div class="modal-body">
 
@@ -584,12 +584,16 @@
 
                         <input id="status" hidden type="text" name="status" value="2">
 
-                        {{-- reviewed by --}}
+                        {{-- Reviewed by --}}
     
-                        <input id="reviewedid" hidden type="text" name="reviewedid" value="{{ auth()->user()->id }}">
+                        <input id="reviewedby" hidden type="text" name="reviewedby" value="{{ $dailyReport->reviewedby }}">
+
+                        {{-- Approved by --}}
+    
+                        <input id="approveddby" hidden type="text" name="approvedby" value="{{ auth()->user()->id }}">
 
                         <div>
-                            <p class="">{{ __('messages.confirmreviewdailyreport') }}</p>
+                            <p class="">{{ __('messages.confirmapprovedailyreport') }}</p>
                         </div>
 
                     </div>

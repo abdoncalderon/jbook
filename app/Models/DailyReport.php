@@ -9,7 +9,7 @@ class DailyReport extends Model
 {
     // use HasFactory;
 
-    protected $fillable = ['folio_id','turn_id','report','user_id','status','approvedBy','reviewedBy','responsible',];
+    protected $fillable = ['folio_id','turn_id','report','user_id','status','approvedby','reviewedby','responsible',];
     
     public function folio()
     {
@@ -44,6 +44,24 @@ class DailyReport extends Model
     public function comments()
     {
         return $this->hasMany(CommentDailyReport::class);
+    }
+
+    public function reviewer()
+    {
+        $user = User::find($this->reviewedby);
+        return $user->name;
+    }
+
+    public function approver()
+    {
+        $user = User::find($this->approvedby);
+        return $user->name;
+    }
+
+    public function responsible()
+    {
+        $user = User::find($this->responsible);
+        return $user->name;
     }
     
     public function haveCommentsReport(){

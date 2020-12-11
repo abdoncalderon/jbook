@@ -15,4 +15,9 @@ class AttachmentDailyReport extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function dailyReport()
+    {
+        return $this->belongsTo(DailyReport::class);
+    }
 }

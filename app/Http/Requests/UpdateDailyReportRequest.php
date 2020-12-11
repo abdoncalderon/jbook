@@ -17,6 +17,8 @@ class UpdateDailyReportRequest extends FormRequest
             'report'=>'required',
             'user_id'=>'required',
             'status'=>'required',
+            'reviewedby'=>'required',
+            'approvedby'=>'required',
         ];
     }
 }

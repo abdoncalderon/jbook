@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', __('content.dailyreports'))
+@section('title', ' - '.date('Y-M-d',strtotime($dailyReport->folio->date)).' - '.$dailyReport->folio->location->name.' - '.$dailyReport->turn->name)
 
 @section('section', __('content.dailyreports'))
 
@@ -306,9 +306,9 @@
                                         <tbody>
                                             @foreach($dailyReport->attachments as $attachmentDailyReport)
                                                 <tr>
-                                                    <td><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt="" style="max-width: 50%; min-width:100%"></td>
-                                                    <td>{{ $attachmentDailyReport->description }}</td>
-                                                    <td>{{ $attachmentDailyReport->user->name }}</td>
+                                                    <td style="width:50%"><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt="" style="width:100%"></td>
+                                                    <td style="width:40%">{{ $attachmentDailyReport->description }}</td>
+                                                    <td style="width:10%">{{ $attachmentDailyReport->user->name }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

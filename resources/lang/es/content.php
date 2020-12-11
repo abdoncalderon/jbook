@@ -186,12 +186,19 @@ return [
     'notification'=>'Notificación',
     'receive'=>'Recibe',
     'collaborate'=>'Colabora',
+    'checkout'=>'Revisa',
     'approve'=>'Aprueba',
+    'Approve'=>'Aprobar',
     'assignment'=>'Asignación',
     'assign'=>'Asignar',
     'responsible'=>'Responsable',
     'current'=>'Actual',
     'signature'=>'Firma',
+    'of'=>'de',
+    'by'=>'por',
+    'for'=>'para',
+    'in'=>'en',
+    'say'=>'Dice',
     
     
 
