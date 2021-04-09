@@ -67,7 +67,7 @@ return [
     'noteCreatedSubject'=>'JBOOK - Nueva Anotación',
     'commentReportCreatedSubject'=>'JBOOK - Nuevo comentario en Reporte Diario',
     'commentNoteCreatedSubject'=>'JBOOK - Nuevo comentario en Anotación',
-    'revieweddby'=>'REVISADO por ',
+    'reviewedby'=>'REVISADO por ',
     'approvedby'=>'APROBADO por ',
     'madeby'=>'Hecha por ',
 

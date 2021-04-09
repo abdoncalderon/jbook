@@ -199,6 +199,7 @@ return [
     'for'=>'para',
     'in'=>'en',
     'say'=>'Dice',
+    'activities'=>'Actividades',
     
     
 

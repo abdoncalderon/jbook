@@ -49,19 +49,19 @@ class DailyReport extends Model
     public function reviewer()
     {
         $user = User::find($this->reviewedby);
-        return $user->name;
+        return $user;
     }
 
     public function approver()
     {
         $user = User::find($this->approvedby);
-        return $user->name;
+        return $user;
     }
 
     public function responsible()
     {
         $user = User::find($this->responsible);
-        return $user->name;
+        return $user;
     }
     
     public function haveCommentsReport(){

@@ -109,6 +109,15 @@ header {
             font-stretch: narrower;
         }
 
+        .contents_full {
+            display: inline-block;
+            width: 80%;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 14px ;
+            font-weight: bold;
+            font-stretch: narrower;
+        }
+
 .section {
     margin-top: 0px;
     margin-left: 0px;
@@ -194,9 +203,9 @@ table {
 
 
 .td-contractor {
-    width: 40%;
+    width: 42%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-stretch: narrower;
     border: 1px solid lightgray;
     border-spacing: 0;
@@ -204,9 +213,9 @@ table {
 }
 
 .td-equipment {
-    width: 40%;
+    width: 42%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-stretch: narrower;
     border: 1px solid lightgray;
     border-spacing: 0;
@@ -214,9 +223,9 @@ table {
 }
 
 .td-position {
-    width: 40%;
+    width: 42%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-stretch: narrower;
     border: 1px solid lightgray;
     border-spacing: 0;
@@ -224,9 +233,9 @@ table {
 }
 
 .td-quantity {
-    width: 18%;
+    width: 14%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-stretch: narrower;
     border: 1px solid lightgray;
     text-align: right;
@@ -298,10 +307,12 @@ table {
     text-align: center;
     vertical-align: top;
     border-spacing: 0;
+    padding: 5px;
 }
 
     .td-attachment img {
         width: 100%;
+        height: 300px;
         padding: 1em;
     }
 
@@ -314,6 +325,7 @@ table {
     text-align: justify;
     vertical-align: top;
     border-spacing: 0;
+    padding: 5px;
 }
 
 .td-note {
@@ -327,24 +339,35 @@ table {
     border-spacing: 0;
 } 
 
-.signatures {
-    margin-top: 40px;
-    display: block;
-    width: 100%;
-    height: 200px;
-}
-
-.signature {
-    display: inline-block;
+.td-signature {
     width: 49%;
-    height: 200px;
-    border: 1px solid gray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+    padding: 5px;
 }
 
-.signature-img {
-    width: 99%;
-    height: 99%;
-    object-fit: cover;
+    .td-signature img {
+        width: 100%;
+        height: 200px;
+        padding: 1em;
+    }
+
+.td-name {
+    width: 49%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    font-weight: bold;
+    border: 1px solid lightgray;
+    text-align: justify;
+    vertical-align: top;
+    border-spacing: 0;
+    padding: 5px;
 }
 
 footer {
@@ -353,7 +376,7 @@ footer {
     left: 0cm;
     right: 0cm;
     height: 1cm;
-    background-color: red;
+    background-color:yellow ;
     color: white;
     text-align: center;
 }

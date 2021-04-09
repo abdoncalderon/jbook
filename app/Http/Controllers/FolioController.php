@@ -11,7 +11,8 @@ use App\Http\Requests\UpdateFolioRequest;
 use Illuminate\Http\Request;
 use Exception;
 use Barryvdh\DomPDF\Facade as PDF;
-use Faker\Provider\ar_JO\Company;
+use Font;
+// use Faker\Provider\ar_JO\Company;
 
 class FolioController extends Controller
 {
@@ -87,6 +88,8 @@ class FolioController extends Controller
         // return view('folios.print1',compact('folio'));
         
         $pdf = PDF::loadView('folios.print',compact('folio'));
+        
+        // $pdf->page_text(72, 18, "Footer: {PAGE_NUM} of {PAGE_COUNT}", , 6, array(0,0,0));
         return $pdf->stream('folio.pdf');
 
     }
