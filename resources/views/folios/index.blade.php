@@ -101,7 +101,7 @@
                                     @if(auth()->user()->permit->edit_sequence==1)
                                         <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('folios.edit',$folio) }}">{{ __('content.edit') }} {{ __('content.number') }}</a>
                                     @endif
-                                    @if(auth()->user()->permit->print_folio==1)
+                                    @if((auth()->user()->permit->print_folio==1)&&(($folio->daily_reports->count()>0)||($folio->notes->count()>0)))
                                         <a target="_blank" style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('folios.print',$folio) }}">{{ __('content.print') }}</a>
                                     @endif
                                 </td>
